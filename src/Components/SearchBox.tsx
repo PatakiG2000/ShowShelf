@@ -1,0 +1,46 @@
+import * as React from "react";
+import { ReactDOM } from "react";
+import Searchresults from "../Layout/Searchresults";
+
+/* export interface  SearchBoxProps {
+} */
+
+export default function SearchBox(props: any) {
+  const [isShowing, setIsShowing] = React.useState(false);
+  const [searchResults, setSearchResults] = React.useState([]);
+
+  console.log(searchResults);
+
+  function searching(searchterm: string): void {
+    setSearchResults([]);
+    fetch(`https://api.tvmaze.com/search/shows?q=${searchterm}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setSearchResults(data);
+      });
+  }
+
+  function onChange(e: Event): void {
+    if (!e.target.value) {
+      setIsShowing(false);
+    } else {
+      setIsShowing(true);
+      searching(e.target.value);
+    }
+  }
+
+  return (
+    <>
+      <input
+        onInput={(e) => onChange(e)}
+        type="search"
+        className="searchbar"
+        placeholder="Search for a show..."
+      />
+      <Searchresults
+        show={isShowing ? "block" : "none"}
+        results={searchResults}
+      />
+    </>
+  );
+}
