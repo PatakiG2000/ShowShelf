@@ -2,9 +2,11 @@ import * as React from "react";
 import SearchCard from "../Components/SearchCard";
 
 export default function Searchresults(props: any) {
+  const [seen, setSeen] = React.useState(true);
   const renderedCards = props.results.map(
     (show: {
       show: {
+        id: number;
         name: string;
         image: { medium: string };
         summary: string;
@@ -25,6 +27,8 @@ export default function Searchresults(props: any) {
           genre={show.show.genres.join(" ")}
           year={show.show?.ended}
           imdbLink={show.show.externals.imdb}
+          id={show.show.id}
+          key={show.show.id}
         />
       );
     }
@@ -34,16 +38,18 @@ export default function Searchresults(props: any) {
     <div
       className="search-results"
       style={{
-        display: show,
+        display: seen ? show : "none",
         position: "fixed",
         top: 60,
         bottom: 0,
         left: 0,
         right: 0,
       }}
+      onClick={() => {
+        props.showing();
+      }}
     >
       {renderedCards}
     </div>
   );
 }
-

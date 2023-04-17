@@ -1,8 +1,12 @@
 import * as React from "react";
-
+import { useSelector, useDispatch } from "react-redux";
+import { addToWatchlist } from "../features/watchlist/watchlistSlice";
 /* export interface IAppProps {} */
+import RateButton from "./buttons/RateButton";
 
 export default function SearchCard(props: any /* props: IAppProps */) {
+  const dispatch = useDispatch();
+  const id = props.id;
   return (
     <div className="card">
       <div className="card_left">
@@ -22,9 +26,28 @@ export default function SearchCard(props: any /* props: IAppProps */) {
             Read More
           </a>
           <div className="btn-container">
-            <button className="btn">Watchlist</button>
+            <button
+              className="btn"
+              aria-label="Decrement value"
+              onClick={() =>
+                dispatch(
+                  addToWatchlist({
+                    title: props.title,
+                    year: props.year,
+                    genre: props.genre,
+                    time: props.time,
+                    description: props.description,
+                    imdbLink: props.imdbLink,
+                    img: props.img,
+                    id,
+                  })
+                )
+              }
+            >
+              Watchlist
+            </button>
             <button className="btn">Track show</button>
-            <button className="btn">Rate</button>
+            <RateButton></RateButton>
           </div>
         </div>
       </div>

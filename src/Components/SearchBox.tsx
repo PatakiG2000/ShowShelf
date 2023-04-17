@@ -2,14 +2,17 @@ import * as React from "react";
 import { ReactDOM } from "react";
 import Searchresults from "../Layout/Searchresults";
 
-/* export interface  SearchBoxProps {
-} */
+export interface SearchBoxProps {}
 
-export default function SearchBox(props: any) {
+export default function SearchBox(props: SearchBoxProps) {
   const [isShowing, setIsShowing] = React.useState(false);
-  const [searchResults, setSearchResults] = React.useState([]);
+  const [searchResults, setSearchResults] = React.useState<[] | null>([]);
 
   console.log(searchResults);
+
+  function hideSearch() {
+    setIsShowing(false);
+  }
 
   function searching(searchterm: string): void {
     setSearchResults([]);
@@ -20,12 +23,13 @@ export default function SearchBox(props: any) {
       });
   }
 
-  function onChange(e: Event): void {
-    if (!e.target.value) {
+  function onChange(e: React.FormEvent<HTMLInputElement>): void {
+    const target = e.target as HTMLInputElement;
+    if (!target.value) {
       setIsShowing(false);
     } else {
       setIsShowing(true);
-      searching(e.target.value);
+      searching(target.value);
     }
   }
 
@@ -40,6 +44,7 @@ export default function SearchBox(props: any) {
       <Searchresults
         show={isShowing ? "block" : "none"}
         results={searchResults}
+        showing={hideSearch}
       />
     </>
   );
