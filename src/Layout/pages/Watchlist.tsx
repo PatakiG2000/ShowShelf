@@ -1,20 +1,14 @@
-import * as React from "react";
-import SearchCard from "../../Components/SearchCard";
-import { useContext } from "react";
+
 
 import { useSelector, useDispatch } from "react-redux";
-import {
-  decrement,
-  addToWatchlist,
-  deleteFromWatchlist,
-} from "../../features/watchlist/watchlistSlice";
+
 import WatchlistCard from "../../Components/WatchlistCard";
 
 export interface IWatchlistProps {}
 
 export default function Watchlist(props: IWatchlistProps) {
   const watchlist = useSelector((state: any) => state.watchlistHandler.value);
-  const dispatch = useDispatch();
+ 
 
   const currentWatchlist = watchlist.map((show: any) => {
     return (

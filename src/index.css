@@ -235,15 +235,15 @@ a {
 
 /* //Rating form */
 .rating {
-  position: fixed;
-  z-index: 99;
-  width: 900px;
+  position: relative;
+  max-width: 900px;
   margin: 1em auto;
   background-color: #305c68;
   text-align: center;
   color: white;
   flex-direction: column;
   border-radius: 10px;
+  z-index: 3;
 }
 
 .form {
@@ -253,6 +253,18 @@ a {
   padding: 2em;
   margin: 0 auto;
   max-width: 80%;
+}
+
+.backdrop {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000;
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 .rating-title {
