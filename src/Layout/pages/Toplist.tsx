@@ -18,6 +18,7 @@ export default function Toplist(props: IToplistProps) {
         description={show.description}
         time={show.time}
         imdbLink={show.imdbLink}
+        formData={show.formData}
       />
     );
   });

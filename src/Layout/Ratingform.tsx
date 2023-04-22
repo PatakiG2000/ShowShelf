@@ -5,6 +5,11 @@ import { addToToplist } from "../features/toplist/toplistSlice";
 export interface IAppProps {
   movieData: {
     title: string;
+    id: string;
+    year: number;
+    genre: string;
+    time: number;
+    img: string;
   };
 }
 
@@ -25,7 +30,12 @@ export default function Ratingform(props: IAppProps) {
     dispatch(
       addToToplist({
         title: movieData.title,
+        year: movieData.year,
+        genre: movieData.genre,
+        time: movieData.time,
+        img: movieData.img,
         formData,
+        id: movieData.id,
       })
     );
   }

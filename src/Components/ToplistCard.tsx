@@ -18,7 +18,7 @@ export default function ToplistCard(props: any /* props: IAppProps */) {
             <p className="genre"> {props.genre} </p>
             <p className="time">{props.time} </p>
           </div>
-          <p className="disc">{props.description}</p>
+          <p className="disc">{props.formData.experience}</p>
           <a
             href={`https://www.imdb.com/title/${props.imdbLink}/`}
             target="_blank"
