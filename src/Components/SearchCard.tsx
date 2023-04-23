@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToWatchlist } from "../features/watchlist/watchlistSlice";
+import { addToTracklist } from "../features/tracklist/tracklistSlice";
 /* export interface IAppProps {} */
 import RateButton from "./buttons/RateButton";
 
@@ -57,7 +58,25 @@ export default function SearchCard(props: any /* props: IAppProps */) {
             >
               Watchlist
             </button>
-            <button className="btn">Track show</button>
+            <button
+              className="btn"
+              onClick={() =>
+                dispatch(
+                  addToTracklist({
+                    title: props.title,
+                    year: props.year,
+                    genre: props.genre,
+                    time: props.time,
+                    description: props.description,
+                    imdbLink: props.imdbLink,
+                    img: props.img,
+                    id,
+                  })
+                )
+              }
+            >
+              Track show
+            </button>
             <RateButton movieData={movieData} />
           </div>
         </div>

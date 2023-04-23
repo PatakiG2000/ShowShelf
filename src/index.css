@@ -92,6 +92,7 @@ html {
   max-height: 100vh;
   overflow-y: scroll;
   cursor: pointer;
+  z-index: 4;
 }
 
 .search-results::-webkit-scrollbar {
@@ -339,4 +340,10 @@ input[type="range"] {
     padding: 1em;
     cursor: pointer;
   }
+}
+
+.accordion {
+  width: 100%;
+  margin: 0 auto;
+  z-index: 0;
 }
