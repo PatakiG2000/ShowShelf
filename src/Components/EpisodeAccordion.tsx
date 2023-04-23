@@ -5,10 +5,18 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useState } from "react";
 
-export interface IEpisodeAccordionProps {}
+export interface IEpisodeAccordionProps {
+  description: string;
+  episodeNumber: number;
+  episodeTitle: string;
+  seen: boolean;
+}
 
 export default function EpisodeAccordion(props: IEpisodeAccordionProps) {
+  const [episodeSeen, setEpisodeSeen] = useState(props.seen);
+
   return (
     <div className="accordion">
       <Accordion>
@@ -21,11 +29,13 @@ export default function EpisodeAccordion(props: IEpisodeAccordionProps) {
             type="checkbox"
             onClick={(e) => {
               e.stopPropagation();
+              setEpisodeSeen(!episodeSeen);
             }}
+            checked={episodeSeen}
           />
-          <Typography>Episode 1 Accordion </Typography>
+          <Typography>{props.episodeTitle} </Typography>
         </AccordionSummary>
-        <AccordionDetails>ASDASDASDASDADADASD</AccordionDetails>
+        <AccordionDetails>{props.description}</AccordionDetails>
       </Accordion>
     </div>
   );

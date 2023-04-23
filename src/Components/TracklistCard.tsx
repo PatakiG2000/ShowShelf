@@ -12,7 +12,7 @@ export interface ITracklistCardProps {
 export default function TracklistCard(props: ITracklistCardProps) {
   const dispatch = useDispatch();
   const [showData, setShowData] = useState("breakingbad");
-  const [seriesInfos, setSeriesInfos] = useState({
+  const [seriesInfos, setSeriesInfos]: any = useState({
     season1: [{}],
   }); //Minden seasonnek külön property amibe mennek az epizódok
 
@@ -54,13 +54,24 @@ export default function TracklistCard(props: ITracklistCardProps) {
 
   console.log("seriesinfos", seriesInfos);
 
+  console.log(Object.keys(seriesInfos));
+  const seasons = Object.keys(seriesInfos);
+  const renderedAccordions = seasons.map((season) => {
+    return (
+      <SeasonAccordion
+        season={season}
+        episodes={seriesInfos[season]}
+      ></SeasonAccordion>
+    );
+  });
+
   //seasonoket kinyerni az azt tartalmazó arrayekkel, propokkal lemegy a seasonbe ahol lerendereli majd az epizódokat
 
   return (
     <>
       <div className="card">
         <h1>{props.title}</h1>
-        <SeasonAccordion season={1} episodes={{}}></SeasonAccordion>
+        <div className="seasons">{renderedAccordions}</div>
         <button onClick={() => dispatch(deleteFromTracklist(props.id))}>
           Remove
         </button>

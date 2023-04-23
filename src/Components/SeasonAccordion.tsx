@@ -14,6 +14,17 @@ export interface ISeasonAccordionProps {
 export default function SeasonAccordion(props: ISeasonAccordionProps) {
   const episodes = props.episodes;
 
+  const renderedEpisodeAccordions = episodes.map((episode: any, i) => {
+    return (
+      <EpisodeAccordion
+        description={episode.summary}
+        episodeNumber={i}
+        episodeTitle={episode.name}
+        seen={episode.seen}
+      />
+    );
+  });
+
   return (
     <div className="accordion">
       <Accordion>
@@ -28,11 +39,9 @@ export default function SeasonAccordion(props: ISeasonAccordionProps) {
               e.stopPropagation();
             }}
           />
-          <Typography>Season {props.season} </Typography>
+          <Typography>{props.season} </Typography>
         </AccordionSummary>
-        <AccordionDetails>
-          <EpisodeAccordion></EpisodeAccordion>
-        </AccordionDetails>
+        <AccordionDetails>{renderedEpisodeAccordions}</AccordionDetails>
       </Accordion>
     </div>
   );
