@@ -21,7 +21,7 @@ const persistedState: any = localStorage.getItem("reduxState")
 console.log("persisted", persistedState);
 
 const initialState: WatchlistState = {
-  value: persistedState.watchlistHandler.value,
+  value: persistedState.watchlistHandler?.value ?  persistedState.watchlistHandler?.value  : ['ASD']
 };
 
 export const watchlistSlice = createSlice({

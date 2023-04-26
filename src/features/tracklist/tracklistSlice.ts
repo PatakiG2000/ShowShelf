@@ -7,7 +7,7 @@ export interface TracklistState {
 
 const persistedState: any = localStorage.getItem("reduxState")
   ? JSON.parse(localStorage.getItem("reduxState"))
-  : {
+  : [{
       title: "asd",
       year: 2013,
       genre: "horror",
@@ -17,12 +17,12 @@ const persistedState: any = localStorage.getItem("reduxState")
       img: "https://images.unsplash.com/photo-1681696559487-264354658add?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
       id: 123,
       seenByUser: {},
-    };
+    },];
 
 console.log("persisted", persistedState);
 
 const initialState: TracklistState = {
-  value: persistedState.tracklistHandler?.value
+  value: persistedState
     ? persistedState.tracklistHandler?.value
     : [
         {
