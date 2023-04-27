@@ -7,22 +7,12 @@ export interface TracklistState {
 
 const persistedState: any = localStorage.getItem("reduxState")
   ? JSON.parse(localStorage.getItem("reduxState"))
-  : [{
-      title: "asd",
-      year: 2013,
-      genre: "horror",
-      time: "4h12m",
-      description: "lorem asd asa ds asdklas  adsjiosd aias jd aos daisd ",
-      imdbLink: "tt564656",
-      img: "https://images.unsplash.com/photo-1681696559487-264354658add?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      id: 123,
-      seenByUser: {},
-    },];
+  : ["asd"];
 
 console.log("persisted", persistedState);
 
 const initialState: TracklistState = {
-  value: persistedState
+  value: persistedState.tracklistHandler?.value
     ? persistedState.tracklistHandler?.value
     : [
         {
@@ -35,7 +25,7 @@ const initialState: TracklistState = {
           img: "https://images.unsplash.com/photo-1681696559487-264354658add?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
           id: 123,
           seasons: [],
-          episodes: [],
+          seenEpisodes: [],
           seenByUser: {},
         },
       ],
@@ -65,10 +55,21 @@ export const tracklistSlice = createSlice({
       );
       state.value = newState;
     },
+    handleSeenEpisode: (
+      state,
+      action: PayloadAction<{ id: string; episodeId: string }>
+    ) => {
+      state.value.forEach((show: { id: string; seenEpisodes: string[] }) => {
+        if (show.id === action.payload.id) {
+          show.seenEpisodes.push(action.payload.episodeId);
+        }
+      });
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addToTracklist, deleteFromTracklist } = tracklistSlice.actions;
+export const { addToTracklist, deleteFromTracklist, handleSeenEpisode } =
+  tracklistSlice.actions;
 
 export default tracklistSlice.reducer;

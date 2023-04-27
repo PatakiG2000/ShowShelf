@@ -21,6 +21,7 @@ export default function SeasonAccordion(props: ISeasonAccordionProps) {
         episodeNumber={i}
         episodeTitle={episode.name}
         seen={episode.seen}
+        episodeId={episode.id}
       />
     );
   });

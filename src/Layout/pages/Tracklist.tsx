@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 export interface ITracklistProps {}
 
 export default function Tracklist(props: ITracklistProps) {
-  const tracklist = useSelector((state: any) => state.tracklistHandler.value);
+  const tracklist = useSelector((state: any) => state.tracklistHandler?.value);
 
   const currentTracklist = tracklist.map((show: any) => {
     return <TracklistCard title={show.title} id={show.id} />;

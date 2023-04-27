@@ -36,6 +36,7 @@ export default function TracklistCard(props: ITracklistCardProps) {
             seriesObject[`season${i}`] = [];
             data._embedded.episodes.forEach((episode: any) => {
               if (episode.season == i) {
+                /* lásd 101 */
                 episode.seen = false;
 
                 seriesObject[`season${i}`] = [
@@ -46,6 +47,9 @@ export default function TracklistCard(props: ITracklistCardProps) {
             });
           }
           setSeriesInfos(seriesObject);
+         
+          /* 101 */ /* seen Episode id-t arrayt csinálni a storeba amit lehet  settelni és ahogy csinálja lekérésnél a series objectet checkolja az EpisodeAccordion.seen-t onnan  */
+          /* storeba kell igy egy dispatch function ami kezeli a látto részeket seasonoket */
         })
         .catch()
     );
