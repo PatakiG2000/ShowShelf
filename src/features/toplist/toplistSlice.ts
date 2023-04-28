@@ -5,8 +5,9 @@ export interface ToplistState {
   value: any;
 }
 
-const persistedState = localStorage.getItem("reduxState")
-  ? JSON.parse(localStorage.getItem("reduxState"))
+const persistedStateString = localStorage.getItem("reduxState");
+const persistedState = persistedStateString
+  ? JSON.parse(persistedStateString)
   : [
       {
         title: "asd",
@@ -20,8 +21,6 @@ const persistedState = localStorage.getItem("reduxState")
       },
     ];
 
-console.log("persisted", persistedState);
-
 const initialState: ToplistState = {
   value: persistedState.toplistHandler?.value
     ? persistedState.toplistHandler?.value
@@ -32,7 +31,7 @@ export const toplistSlice = createSlice({
   name: "toplist",
   initialState,
   reducers: {
-    addToToplist: (state, action: PayloadAction<{}>) => {
+    addToToplist: (state, action: PayloadAction<{ id: string | number }>) => {
       let alreadyOnList = false;
       state.value.forEach((show: any) => {
         if (show.id === action.payload.id) {

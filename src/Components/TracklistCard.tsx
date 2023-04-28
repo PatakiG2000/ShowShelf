@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 export interface ITracklistCardProps {
   title: string;
-  id: string;
+  id: number;
 }
 
 export default function TracklistCard(props: ITracklistCardProps) {
@@ -15,6 +15,9 @@ export default function TracklistCard(props: ITracklistCardProps) {
   const [seriesInfos, setSeriesInfos]: any = useState({
     season1: [{}],
   }); //Minden seasonnek külön property amibe mennek az epizódok
+  const seenEpisodes = useSelector(
+    (state: any) => state.tracklistHandler?.value?.seenEpisodes
+  );
 
   useEffect(() => {
     fetch(
@@ -24,12 +27,11 @@ export default function TracklistCard(props: ITracklistCardProps) {
         .json()
         .then((data) => {
           setShowData(data);
-          console.log("asd", data._embedded.episodes);
-          console.log(data);
+
           //Organizing the series data by seasons and episodes
           const seasonNumber =
             data._embedded.episodes[data._embedded.episodes.length - 1]?.season;
-          console.log("seasonNumber", seasonNumber);
+
           const seriesObject: any = {};
 
           for (let i = 1; i < seasonNumber + 1; i++) {
@@ -37,7 +39,11 @@ export default function TracklistCard(props: ITracklistCardProps) {
             data._embedded.episodes.forEach((episode: any) => {
               if (episode.season == i) {
                 /* lásd 101 */
-                episode.seen = false;
+                if (seenEpisodes.includes(episode.id)) {
+                  episode.seen = true;
+                } else {
+                  episode.seen = false;
+                }
 
                 seriesObject[`season${i}`] = [
                   ...seriesObject[`season${i}`],
@@ -46,9 +52,11 @@ export default function TracklistCard(props: ITracklistCardProps) {
               }
             });
           }
-          setSeriesInfos(seriesObject);
-         
-          /* 101 */ /* seen Episode id-t arrayt csinálni a storeba amit lehet  settelni és ahogy csinálja lekérésnél a series objectet checkolja az EpisodeAccordion.seen-t onnan  */
+          setSeriesInfos(
+            seriesObject
+          ); /* seen Episode id-t arrayt csinálni a storeba amit lehet  settelni és ahogy csinálja lekérésnél a series objectet checkolja az EpisodeAccordion.seen-t onnan  */
+
+          /* 101 */
           /* storeba kell igy egy dispatch function ami kezeli a látto részeket seasonoket */
         })
         .catch()
@@ -56,15 +64,14 @@ export default function TracklistCard(props: ITracklistCardProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log("seriesinfos", seriesInfos);
-
-  console.log(Object.keys(seriesInfos));
   const seasons = Object.keys(seriesInfos);
   const renderedAccordions = seasons.map((season) => {
+    //itt lehet baj
     return (
       <SeasonAccordion
         season={season}
         episodes={seriesInfos[season]}
+        key={props.id}
       ></SeasonAccordion>
     );
   });

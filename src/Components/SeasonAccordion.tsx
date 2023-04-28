@@ -5,6 +5,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useSelector } from "react-redux";
 
 export interface ISeasonAccordionProps {
   season: number | string;
@@ -22,6 +23,7 @@ export default function SeasonAccordion(props: ISeasonAccordionProps) {
         episodeTitle={episode.name}
         seen={episode.seen}
         episodeId={episode.id}
+        key={episode.id}
       />
     );
   });

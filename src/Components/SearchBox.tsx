@@ -8,7 +8,7 @@ export default function SearchBox(props: SearchBoxProps) {
   const [isShowing, setIsShowing] = React.useState(false);
   const [searchResults, setSearchResults] = React.useState<[] | null>([]);
 
-  console.log(searchResults);
+
 
   function hideSearch() {
     setIsShowing(false);

@@ -2,7 +2,7 @@ import * as React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToToplist } from "../features/toplist/toplistSlice";
 
-export interface IAppProps {
+export interface IRatingFormProps {
   movieData: {
     title: string;
     id: string;
@@ -13,20 +13,20 @@ export interface IAppProps {
   };
 }
 
-export default function Ratingform(props: IAppProps) {
+export default function Ratingform(props: IRatingFormProps) {
   const movieData = props.movieData;
   const dispatch = useDispatch();
 
-  function formSubmit(e: SubmitEvent): void {
+  function formSubmit(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
-    const target = e.target;
+    const target = e.target as HTMLFormElement;
     const data = new FormData(target);
     const formData: any = {};
 
     for (const [name, value] of data.entries()) {
       formData[name] = value;
     }
-    console.log(formData);
+
     dispatch(
       addToToplist({
         title: movieData.title,

@@ -18,7 +18,7 @@ const persistedState: any = localStorage.getItem("reduxState")
       id: 123,
     };
 
-console.log("persisted", persistedState);
+
 
 const initialState: WatchlistState = {
   value: persistedState.watchlistHandler?.value ?  persistedState.watchlistHandler?.value  : ['ASD']

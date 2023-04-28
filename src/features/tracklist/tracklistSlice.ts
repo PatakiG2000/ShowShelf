@@ -5,65 +5,72 @@ export interface TracklistState {
   value: any;
 }
 
-const persistedState: any = localStorage.getItem("reduxState")
-  ? JSON.parse(localStorage.getItem("reduxState"))
-  : ["asd"];
-
-console.log("persisted", persistedState);
+const persistedStateString = localStorage.getItem("reduxState");
+const persistedState: any = persistedStateString
+  ? JSON.parse(persistedStateString)
+  : { tracklistItems: ["asd"], seenEpisodes: [] };
 
 const initialState: TracklistState = {
   value: persistedState.tracklistHandler?.value
     ? persistedState.tracklistHandler?.value
-    : [
-        {
-          title: "asd",
-          year: 2013,
-          genre: "horror",
-          time: "4h12m",
-          description: "lorem asd asa ds asdklas  adsjiosd aias jd aos daisd ",
-          imdbLink: "tt564656",
-          img: "https://images.unsplash.com/photo-1681696559487-264354658add?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-          id: 123,
-          seasons: [],
-          seenEpisodes: [],
-          seenByUser: {},
-        },
-      ],
+    : {
+        tracklistItems: [
+          {
+            title: "asd",
+            year: 2013,
+            genre: "horror",
+            time: "4h12m",
+            description:
+              "lorem asd asa ds asdklas  adsjiosd aias jd aos daisd ",
+            imdbLink: "tt564656",
+            img: "https://images.unsplash.com/photo-1681696559487-264354658add?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+            id: 123,
+            seasons: [],
+
+            seenByUser: {},
+          },
+        ],
+        seenEpisodes: [],
+      },
 };
 
 export const tracklistSlice = createSlice({
   name: "tracklist",
   initialState,
   reducers: {
-    addToTracklist: (state, action: PayloadAction<{}>) => {
+    addToTracklist: (state, action: PayloadAction<{ id: string | number }>) => {
       let alreadyOnList = false;
-      state.value.forEach((show: any) => {
+      state.value.tracklistItems.forEach((show: any) => {
         if (show.id === action.payload.id) {
           alreadyOnList = true;
         }
       });
       if (!alreadyOnList) {
-        state.value.push(action.payload);
+        state.value.tracklistItems.push(action.payload);
       } else {
         alert("This item is already on your watchlist");
       }
     },
 
     deleteFromTracklist: (state, action: PayloadAction<number>) => {
-      const newState = state.value.filter(
+      const newState = state.value.tracklistItems.filter(
         (show: any) => show.id !== action.payload
       );
-      state.value = newState;
+      state.value.tracklistItems = newState;
     },
-    handleSeenEpisode: (
-      state,
-      action: PayloadAction<{ id: string; episodeId: string }>
-    ) => {
-      state.value.forEach((show: { id: string; seenEpisodes: string[] }) => {
-        if (show.id === action.payload.id) {
-          show.seenEpisodes.push(action.payload.episodeId);
-        }
-      });
+    handleSeenEpisode: (state, action: PayloadAction<number>) => {
+      if (!state.value.seenEpisodes.includes(action.payload)) {
+        state.value.seenEpisodes.push(action.payload);
+      } else {
+        const newSeenEpisodes = state.value.seenEpisodes.filter(
+          (episode: number) => {
+            return episode !== action.payload;
+          }
+        );
+        state.value.seenEpisodes = newSeenEpisodes;
+
+        //seent kiszedni az objectből removenál
+      }
     },
   },
 });
