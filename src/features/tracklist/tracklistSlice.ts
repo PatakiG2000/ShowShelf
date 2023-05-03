@@ -8,7 +8,7 @@ export interface TracklistState {
 const persistedStateString = localStorage.getItem("reduxState");
 const persistedState: any = persistedStateString
   ? JSON.parse(persistedStateString)
-  : { tracklistItems: ["asd"], seenEpisodes: [] };
+  : { tracklistItems: ["asd"] };
 
 const initialState: TracklistState = {
   value: persistedState.tracklistHandler?.value
@@ -28,11 +28,14 @@ const initialState: TracklistState = {
             seasons: [],
 
             seenByUser: {},
+            progress: 0,
+            seenEpisodes: [],
           },
         ],
-        seenEpisodes: [],
+      
       },
 };
+
 
 export const tracklistSlice = createSlice({
   name: "tracklist",
@@ -58,20 +61,20 @@ export const tracklistSlice = createSlice({
       );
       state.value.tracklistItems = newState;
     },
-    handleSeenEpisode: (state, action: PayloadAction<number>) => {
-      if (!state.value.seenEpisodes.includes(action.payload)) {
-        state.value.seenEpisodes.push(action.payload);
-      } else {
-        const newSeenEpisodes = state.value.seenEpisodes.filter(
-          (episode: number) => {
-            return episode !== action.payload;
+    handleSeenEpisode: (state, action: PayloadAction<{showTitle: string, ep: number;}>) => {
+      state.value.tracklistItems.forEach((item: {title:string, seenEpisodes: number[]}) => {
+        if(item.title === action.payload.showTitle){
+          if(!item.seenEpisodes.includes(action.payload.ep)){
+            item.seenEpisodes.push(action.payload.ep)
+          } else {
+            const newArr = item.seenEpisodes.filter(ep => ep !== action.payload.ep)
+            item.seenEpisodes = newArr
           }
-        );
-        state.value.seenEpisodes = newSeenEpisodes;
-
-        //seent kiszedni az objectből removenál
-      }
+        }
+      })
+  
     },
+  /*  handleSeenSeason(state,action: PayloadAction<[]>)  */
   },
 });
 

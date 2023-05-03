@@ -15,12 +15,14 @@ export interface IEpisodeAccordionProps {
   episodeTitle: string;
   seen: boolean;
   episodeId: number;
+  showTitle: string;
 }
 
 export default function EpisodeAccordion(props: IEpisodeAccordionProps) {
   const [episodeSeen, setEpisodeSeen] = useState(props.seen);
   const dispatch = useDispatch();
   const episodeId = props.episodeId;
+  const showTitle = props.showTitle
 
   return (
     <div className="accordion">
@@ -36,7 +38,7 @@ export default function EpisodeAccordion(props: IEpisodeAccordionProps) {
               e.stopPropagation();
               setEpisodeSeen(!episodeSeen);
             
-              dispatch(handleSeenEpisode(episodeId));
+              dispatch(handleSeenEpisode({showTitle: showTitle , ep:episodeId}));
             }}
             defaultChecked={episodeSeen}
           />

@@ -71,6 +71,7 @@ export default function SearchCard(props: any /* props: IAppProps */) {
                     imdbLink: props.imdbLink,
                     img: props.img,
                     id,
+                    seenEpisodes: [],
                     
                   })
                 )

@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 export interface ISeasonAccordionProps {
   season: number | string;
   episodes: [];
+  showTitle: string;
 }
 
 export default function SeasonAccordion(props: ISeasonAccordionProps) {
@@ -24,6 +25,7 @@ export default function SeasonAccordion(props: ISeasonAccordionProps) {
         seen={episode.seen}
         episodeId={episode.id}
         key={episode.id}
+        showTitle={props.showTitle}
       />
     );
   });
