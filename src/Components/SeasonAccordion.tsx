@@ -9,14 +9,13 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   addToSeenEpisode,
   handleSeenSeason,
-  handleSeenEpisode,
   removeFromSeenEpisode,
 } from "../features/tracklist/tracklistSlice";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 export interface ISeasonAccordionProps {
   season: number | string;
-  episodes: [];
+  episodes: any[];
   showTitle: string;
 }
 
@@ -25,8 +24,6 @@ export default function SeasonAccordion(props: ISeasonAccordionProps) {
   const dispatch = useDispatch();
   const showTitle = props.showTitle;
   const season = `${showTitle}${props.season}`;
-
-  //episodeba kéne a season
 
   const tracklistItems = useSelector(
     (state: any) => state.tracklistHandler?.value?.tracklistItems
@@ -39,7 +36,7 @@ export default function SeasonAccordion(props: ISeasonAccordionProps) {
   const seenSeasons = currentShow.seenSeason;
   const isSeasonSeen = seenSeasons.includes(season);
 
-  const allEpisodesSeen = episodes.every((episode) =>
+  const allEpisodesSeen = episodes.every((episode: { id: number }) =>
     currentShow.seenEpisodes.includes(episode.id)
   );
 
@@ -94,15 +91,17 @@ export default function SeasonAccordion(props: ISeasonAccordionProps) {
             onClick={(e) => {
               e.stopPropagation();
 
-              episodes.forEach((ep) => {
+              episodes.forEach((episode: { id: number }) => {
                 if (!isSeasonSeen) {
                   dispatch(
-                    addToSeenEpisode({ showTitle: showTitle, ep: ep.id })
+                    addToSeenEpisode({ showTitle: showTitle, ep: episode.id })
                   );
                 } else {
                   dispatch(
-                    //removeolja
-                    removeFromSeenEpisode({ showTitle: showTitle, ep: ep.id })
+                    removeFromSeenEpisode({
+                      showTitle: showTitle,
+                      ep: episode.id,
+                    })
                   );
                 }
               });

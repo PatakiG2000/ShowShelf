@@ -26,7 +26,6 @@ const initialState: TracklistState = {
             img: "https://images.unsplash.com/photo-1681696559487-264354658add?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
             id: 123,
             seasons: [],
-
             seenByUser: {},
             progress: 0,
             seenEpisodes: [],
@@ -40,7 +39,14 @@ export const tracklistSlice = createSlice({
   name: "tracklist",
   initialState,
   reducers: {
-    addToTracklist: (state, action: PayloadAction<{ id: string | number }>) => {
+    addToTracklist: (
+      state,
+      action: PayloadAction<{
+        id: number;
+        seenEpisodes: number[];
+        seenSeason: string[];
+      }>
+    ) => {
       let alreadyOnList = false;
       state.value.tracklistItems.forEach((show: any) => {
         if (show.id === action.payload.id) {
@@ -84,7 +90,7 @@ export const tracklistSlice = createSlice({
       action: PayloadAction<{ showTitle: string; season: string }>
     ) => {
       const show = state.value.tracklistItems.find(
-        (show) => show.title === action.payload.showTitle
+        (show: { title: string }) => show.title === action.payload.showTitle
       );
 
       if (!show.seenSeason.includes(action.payload.season)) {
@@ -112,10 +118,10 @@ export const tracklistSlice = createSlice({
       action: PayloadAction<{ showTitle: string; ep: number }>
     ) => {
       const show = state.value.tracklistItems.find(
-        (show) => show.title === action.payload.showTitle
+        (show: { title: string }) => show.title === action.payload.showTitle
       );
       const filteredArr = show.seenEpisodes.filter(
-        (ep) => ep === action.payload.ep
+        (ep: number) => ep !== action.payload.ep
       );
       show.seenEpisodes = filteredArr;
     },
