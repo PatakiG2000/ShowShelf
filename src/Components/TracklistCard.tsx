@@ -5,6 +5,7 @@ import { deleteFromTracklist } from "../features/tracklist/tracklistSlice";
 import { useState, useEffect } from "react";
 import useFormattedEpisodes from "../Hooks/useFormattedEpisodes";
 import ProgressBar from "./ProgressBar";
+import useTracklistShow from "../Hooks/useTracklistShow";
 
 export interface ITracklistCardProps {
   title: string;
@@ -13,20 +14,11 @@ export interface ITracklistCardProps {
 
 export default function TracklistCard(props: ITracklistCardProps) {
   const dispatch = useDispatch();
-  const tracklistItems = useSelector(
-    (state: any) => state.tracklistHandler?.value?.tracklistItems
-  );
-
-  const currentShow = tracklistItems.find(
-    (show: { title: string }) => show.title === props.title
-  );
-  const seenEpisodes = currentShow.seenEpisodes;
-
+  const [currentShow, seenEpisodes] = useTracklistShow(props.title);
   const [seriesInfos, loading, error, overallEpisodeNumber] =
     useFormattedEpisodes(props.title);
 
   const progress = seenEpisodes.length / overallEpisodeNumber;
-
   const seasons = Object.keys(seriesInfos);
   const renderedAccordions = seasons.map((season) => {
     //itt lehet baj
@@ -40,7 +32,6 @@ export default function TracklistCard(props: ITracklistCardProps) {
     );
   });
 
-  //seasonoket kinyerni az azt tartalmazó arrayekkel, propokkal lemegy a seasonbe ahol lerendereli majd az epizódokat
 
   return (
     <>

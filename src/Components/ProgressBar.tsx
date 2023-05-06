@@ -5,10 +5,7 @@ export interface IProgressBarProps {
   progress: number;
 }
 
-//Progress majd a sliceba!!
-
 export default function ProgressBar(props: IProgressBarProps) {
-
   return (
     <>
       <h3>{Math.ceil(props.progress)}</h3>

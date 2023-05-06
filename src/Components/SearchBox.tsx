@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ReactDOM } from "react";
+
 import Searchresults from "../Layout/Searchresults";
 
 export interface SearchBoxProps {}
@@ -7,8 +7,6 @@ export interface SearchBoxProps {}
 export default function SearchBox(props: SearchBoxProps) {
   const [isShowing, setIsShowing] = React.useState(false);
   const [searchResults, setSearchResults] = React.useState<[] | null>([]);
-
-
 
   function hideSearch() {
     setIsShowing(false);

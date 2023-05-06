@@ -1,11 +1,22 @@
 import * as React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToWatchlist } from "../features/watchlist/watchlistSlice";
 import { addToTracklist } from "../features/tracklist/tracklistSlice";
-/* export interface IAppProps {} */
+
+export interface ISearchCardProps {
+  title: string;
+  year: number;
+  genre: string;
+  time: number;
+  description: string;
+  imdbLink: string;
+  img: string;
+  id: number;
+}
+
 import RateButton from "./buttons/RateButton";
 
-export default function SearchCard(props: any /* props: IAppProps */) {
+export default function SearchCard(props: ISearchCardProps) {
   const dispatch = useDispatch();
   const id = props.id;
 
@@ -19,42 +30,29 @@ export default function SearchCard(props: any /* props: IAppProps */) {
     img: props.img,
     id,
   };
+
+  const { title, year, genre, time, description, imdbLink, img } = movieData;
+
   return (
     <div className="card">
       <div className="card_left">
         <div className="card_datails">
-          <h1>{props.title} </h1>
+          <h1>{title} </h1>
           <div className="card_cat">
             <p className="PG">PG-15</p>
-            <p className="year">{props.year} </p>
-            <p className="genre"> {props.genre} </p>
-            <p className="time">{props.time} </p>
+            <p className="year">{year} </p>
+            <p className="genre"> {genre} </p>
+            <p className="time">{time} </p>
           </div>
-          <p className="disc">{props.description}</p>
-          <a
-            href={`https://www.imdb.com/title/${props.imdbLink}/`}
-            target="_blank"
-          >
+          <p className="disc">{description}</p>
+          <a href={`https://www.imdb.com/title/${imdbLink}/`} target="_blank">
             Read More
           </a>
           <div className="btn-container">
             <button
               className="btn"
               aria-label="Decrement value"
-              onClick={() =>
-                dispatch(
-                  addToWatchlist({
-                    title: props.title,
-                    year: props.year,
-                    genre: props.genre,
-                    time: props.time,
-                    description: props.description,
-                    imdbLink: props.imdbLink,
-                    img: props.img,
-                    id,
-                  })
-                )
-              }
+              onClick={() => dispatch(addToWatchlist(movieData))}
             >
               Watchlist
             </button>
@@ -63,14 +61,7 @@ export default function SearchCard(props: any /* props: IAppProps */) {
               onClick={() =>
                 dispatch(
                   addToTracklist({
-                    title: props.title,
-                    year: props.year,
-                    genre: props.genre,
-                    time: props.time,
-                    description: props.description,
-                    imdbLink: props.imdbLink,
-                    img: props.img,
-                    id,
+                    ...movieData,
                     seenEpisodes: [],
                     seenSeason: [],
                   })
