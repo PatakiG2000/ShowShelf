@@ -12,19 +12,20 @@ export interface ITracklistCardProps {
 }
 
 export default function TracklistCard(props: ITracklistCardProps) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const tracklistItems = useSelector(
     (state: any) => state.tracklistHandler?.value?.tracklistItems
   );
 
-  const currentShow = tracklistItems.find((show: {title: string} )=> show.title === props.title )
- const seenEpisodes = currentShow.seenEpisodes
- 
-const [seriesInfos,loading,error, overallEpisodeNumber] = useFormattedEpisodes(props.title)
+  const currentShow = tracklistItems.find(
+    (show: { title: string }) => show.title === props.title
+  );
+  const seenEpisodes = currentShow.seenEpisodes;
 
+  const [seriesInfos, loading, error, overallEpisodeNumber] =
+    useFormattedEpisodes(props.title);
 
-const progress = seenEpisodes.length / overallEpisodeNumber
-
+  const progress = seenEpisodes.length / overallEpisodeNumber;
 
   const seasons = Object.keys(seriesInfos);
   const renderedAccordions = seasons.map((season) => {
@@ -49,7 +50,7 @@ const progress = seenEpisodes.length / overallEpisodeNumber
         <button onClick={() => dispatch(deleteFromTracklist(props.id))}>
           Remove
         </button>
-        <ProgressBar progress={progress * 100}/>
+        <ProgressBar progress={progress * 100} />
       </div>
     </>
   );

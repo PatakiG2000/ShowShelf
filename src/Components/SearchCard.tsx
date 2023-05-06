@@ -72,7 +72,7 @@ export default function SearchCard(props: any /* props: IAppProps */) {
                     img: props.img,
                     id,
                     seenEpisodes: [],
-                    
+                    seenSeason: [],
                   })
                 )
               }

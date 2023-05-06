@@ -7,7 +7,10 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { handleSeenEpisode } from "../features/tracklist/tracklistSlice";
+import {
+  handleSeenEpisode,
+  handleSeenSeason,
+} from "../features/tracklist/tracklistSlice";
 
 export interface IEpisodeAccordionProps {
   description: string;
@@ -16,13 +19,26 @@ export interface IEpisodeAccordionProps {
   seen: boolean;
   episodeId: number;
   showTitle: string;
+  seasonSeen: boolean;
+  season: string;
 }
 
 export default function EpisodeAccordion(props: IEpisodeAccordionProps) {
   const [episodeSeen, setEpisodeSeen] = useState(props.seen);
   const dispatch = useDispatch();
   const episodeId = props.episodeId;
-  const showTitle = props.showTitle
+  const showTitle = props.showTitle;
+  const checkedInput = episodeSeen;
+  const season = props.season;
+
+  const tracklistItems = useSelector(
+    (state: any) => state.tracklistHandler?.value?.tracklistItems
+  );
+
+  const currentShow = tracklistItems.find(
+    (show: { title: string }) => show.title === showTitle
+  );
+  const seenEpisodes = currentShow.seenEpisodes;
 
   return (
     <div className="accordion">
@@ -36,11 +52,11 @@ export default function EpisodeAccordion(props: IEpisodeAccordionProps) {
             type="checkbox"
             onClick={(e) => {
               e.stopPropagation();
-              setEpisodeSeen(!episodeSeen);
-            
-              dispatch(handleSeenEpisode({showTitle: showTitle , ep:episodeId}));
+              dispatch(
+                handleSeenEpisode({ showTitle: showTitle, ep: episodeId })
+              );
             }}
-            defaultChecked={episodeSeen}
+            checked={seenEpisodes.includes(episodeId)}
           />
           <Typography>{props.episodeTitle} </Typography>
         </AccordionSummary>

@@ -30,12 +30,11 @@ const initialState: TracklistState = {
             seenByUser: {},
             progress: 0,
             seenEpisodes: [],
+            seenSeason: [],
           },
         ],
-      
       },
 };
-
 
 export const tracklistSlice = createSlice({
   name: "tracklist",
@@ -61,25 +60,76 @@ export const tracklistSlice = createSlice({
       );
       state.value.tracklistItems = newState;
     },
-    handleSeenEpisode: (state, action: PayloadAction<{showTitle: string, ep: number;}>) => {
-      state.value.tracklistItems.forEach((item: {title:string, seenEpisodes: number[]}) => {
-        if(item.title === action.payload.showTitle){
-          if(!item.seenEpisodes.includes(action.payload.ep)){
-            item.seenEpisodes.push(action.payload.ep)
-          } else {
-            const newArr = item.seenEpisodes.filter(ep => ep !== action.payload.ep)
-            item.seenEpisodes = newArr
+    handleSeenEpisode: (
+      state,
+      action: PayloadAction<{ showTitle: string; ep: number }>
+    ) => {
+      state.value.tracklistItems.forEach(
+        (item: { title: string; seenEpisodes: number[] }) => {
+          if (item.title === action.payload.showTitle) {
+            if (!item.seenEpisodes.includes(action.payload.ep)) {
+              item.seenEpisodes.push(action.payload.ep);
+            } else {
+              const newArr = item.seenEpisodes.filter(
+                (ep) => ep !== action.payload.ep
+              );
+              item.seenEpisodes = newArr;
+            }
           }
         }
-      })
-  
+      );
     },
-  /*  handleSeenSeason(state,action: PayloadAction<[]>)  */
+    handleSeenSeason: (
+      state,
+      action: PayloadAction<{ showTitle: string; season: string }>
+    ) => {
+      const show = state.value.tracklistItems.find(
+        (show) => show.title === action.payload.showTitle
+      );
+
+      if (!show.seenSeason.includes(action.payload.season)) {
+        show.seenSeason.push(action.payload.season);
+      } else {
+        const filteredArr = show.seenSeason.filter(
+          (season: string) => season !== action.payload.season
+        );
+        show.seenSeason = filteredArr;
+      }
+    },
+    addToSeenEpisode: (
+      state,
+      action: PayloadAction<{ showTitle: string; ep: number }>
+    ) => {
+      const show = state.value.tracklistItems.find(
+        (show: { title: string }) => show.title === action.payload.showTitle
+      );
+      if (!show.seenEpisodes.includes(action.payload.ep)) {
+        show.seenEpisodes.push(action.payload.ep);
+      }
+    },
+    removeFromSeenEpisode: (
+      state,
+      action: PayloadAction<{ showTitle: string; ep: number }>
+    ) => {
+      const show = state.value.tracklistItems.find(
+        (show) => show.title === action.payload.showTitle
+      );
+      const filteredArr = show.seenEpisodes.filter(
+        (ep) => ep === action.payload.ep
+      );
+      show.seenEpisodes = filteredArr;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addToTracklist, deleteFromTracklist, handleSeenEpisode } =
-  tracklistSlice.actions;
+export const {
+  addToTracklist,
+  deleteFromTracklist,
+  handleSeenEpisode,
+  handleSeenSeason,
+  addToSeenEpisode,
+  removeFromSeenEpisode,
+} = tracklistSlice.actions;
 
 export default tracklistSlice.reducer;

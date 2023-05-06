@@ -5,7 +5,14 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addToSeenEpisode,
+  handleSeenSeason,
+  handleSeenEpisode,
+  removeFromSeenEpisode,
+} from "../features/tracklist/tracklistSlice";
+import { useState, useEffect } from "react";
 
 export interface ISeasonAccordionProps {
   season: number | string;
@@ -15,6 +22,47 @@ export interface ISeasonAccordionProps {
 
 export default function SeasonAccordion(props: ISeasonAccordionProps) {
   const episodes = props.episodes;
+  const dispatch = useDispatch();
+  const showTitle = props.showTitle;
+  const season = `${showTitle}${props.season}`;
+
+  //episodeba kéne a season
+
+  const tracklistItems = useSelector(
+    (state: any) => state.tracklistHandler?.value?.tracklistItems
+  );
+
+  const currentShow = tracklistItems.find(
+    (show: { title: string }) => show.title === showTitle
+  );
+
+  const seenSeasons = currentShow.seenSeason;
+  const isSeasonSeen = seenSeasons.includes(season);
+
+  const allEpisodesSeen = episodes.every((episode) =>
+    currentShow.seenEpisodes.includes(episode.id)
+  );
+
+  useEffect(() => {
+    if (allEpisodesSeen && !isSeasonSeen) {
+      dispatch(
+        handleSeenSeason({
+          showTitle: showTitle,
+          season: season,
+        })
+      );
+      console.log("yo");
+    } else if (!allEpisodesSeen && isSeasonSeen) {
+      dispatch(
+        handleSeenSeason({
+          showTitle: showTitle,
+          season: season,
+        })
+      );
+    }
+  }, [currentShow.seenEpisodes]);
+
+  console.log("seenSeason", isSeasonSeen);
 
   const renderedEpisodeAccordions = episodes.map((episode: any, i) => {
     return (
@@ -26,6 +74,8 @@ export default function SeasonAccordion(props: ISeasonAccordionProps) {
         episodeId={episode.id}
         key={episode.id}
         showTitle={props.showTitle}
+        seasonSeen={isSeasonSeen}
+        season={season}
       />
     );
   });
@@ -40,8 +90,28 @@ export default function SeasonAccordion(props: ISeasonAccordionProps) {
         >
           <input
             type="checkbox"
+            checked={isSeasonSeen || allEpisodesSeen}
             onClick={(e) => {
               e.stopPropagation();
+
+              episodes.forEach((ep) => {
+                if (!isSeasonSeen) {
+                  dispatch(
+                    addToSeenEpisode({ showTitle: showTitle, ep: ep.id })
+                  );
+                } else {
+                  dispatch(
+                    //removeolja
+                    removeFromSeenEpisode({ showTitle: showTitle, ep: ep.id })
+                  );
+                }
+              });
+              dispatch(
+                handleSeenSeason({
+                  showTitle: showTitle,
+                  season: season,
+                })
+              );
             }}
           />
           <Typography>{props.season} </Typography>
