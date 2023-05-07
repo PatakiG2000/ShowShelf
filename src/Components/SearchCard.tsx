@@ -70,7 +70,7 @@ export default function SearchCard(props: ISearchCardProps) {
             >
               Track show
             </button>
-            <RateButton movieData={movieData} />
+            <RateButton movieData={movieData}  />
           </div>
         </div>
       </div>

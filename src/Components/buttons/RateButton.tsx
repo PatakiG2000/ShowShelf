@@ -4,7 +4,14 @@ import { useState } from "react";
 import { Modal } from "react-overlays";
 
 export interface IRateButtonProps {
-  movieData: {};
+  movieData: {
+    title: string;
+    id: string;
+    year: number;
+    genre: string;
+    time: number;
+    img: string;
+  };
 }
 
 export default function RateButton(props: IRateButtonProps) {
@@ -15,6 +22,7 @@ export default function RateButton(props: IRateButtonProps) {
   function handleClose() {
     setShowModal(false);
   }
+
   const renderBackdrop = (props: any) => (
     <div className="backdrop" {...props} />
   );

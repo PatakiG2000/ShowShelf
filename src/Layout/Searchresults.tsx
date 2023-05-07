@@ -1,7 +1,9 @@
 import * as React from "react";
 import SearchCard from "../Components/SearchCard";
+import useControlledShows from "../Hooks/useControlledShows";
 
 export default function Searchresults(props: any) {
+  const [tracklistItems, watchlist, toplist, allShows] = useControlledShows();
   const [seen, setSeen] = React.useState(true);
   const renderedCards = props.results.map(
     (show: {
@@ -18,19 +20,24 @@ export default function Searchresults(props: any) {
         };
       };
     }) => {
-      return (
-        <SearchCard
-          title={show.show.name}
-          img={show.show.image?.medium}
-          description={show.show.summary}
-          time={show.show.averageRuntime}
-          genre={show.show.genres.join(" ")}
-          year={show.show?.ended}
-          imdbLink={show.show.externals.imdb}
-          id={show.show.id}
-          key={show.show.id}
-        />
-      );
+      //If you have the show somewhere it won't show up in search results
+      if (
+        !allShows.some((result: { id: number }) => result.id === show.show.id)
+      ) {
+        return (
+          <SearchCard
+            title={show.show.name}
+            img={show.show.image?.medium}
+            description={show.show.summary}
+            time={show.show.averageRuntime}
+            genre={show.show.genres.join(" ")}
+            year={show.show?.ended}
+            imdbLink={show.show.externals.imdb}
+            id={show.show.id}
+            key={show.show.id}
+          />
+        );
+      }
     }
   );
   const show = props.show;
