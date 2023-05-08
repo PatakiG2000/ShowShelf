@@ -6,8 +6,7 @@ body,
 html {
   margin: 0;
   height: 100%;
-
-  background-color: grey;
+  background-color: rgb(26, 24, 24);
 }
 
 .hidden {
@@ -21,11 +20,12 @@ html {
 /* NAVBAR */
 
 .navbar {
-  color: rgb(0, 0, 0);
-  background-color: rgb(241, 240, 240);
+  color: rgb(236, 232, 232);
+  background-color: rgb(26, 24, 24);
   display: flex;
   justify-content: space-around;
   align-items: center;
+  border-bottom: 1px solid grey;
 }
 
 .nav-list {
@@ -43,7 +43,7 @@ html {
 
 .nav-link {
   font-weight: 500;
-  color: #000000;
+  color: #faf9f9;
   text-decoration: none;
 }
 
@@ -52,6 +52,25 @@ html {
   align-items: center;
   justify-content: center;
   gap: 2em;
+}
+
+/* HOMEPAGE */
+.home {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.home-leftside {
+  border-right: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.home-rightside {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
 }
 
 .searchbar {
