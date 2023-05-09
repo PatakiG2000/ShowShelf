@@ -7,7 +7,7 @@ const useControlledShows = (id: number) => {
   const tracklistItems = useSelector(
     (state: any) => state.tracklistHandler?.value?.tracklistItems
   );
-  const watchlist = useSelector((state: any) => state.watchlistHandler.value);
+  const watchlist = useSelector((state: any) => state.watchlistHandler?.value);
 
   const toplist = useSelector((state: any) => state.toplistHandler?.value);
 

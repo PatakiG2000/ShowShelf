@@ -3,7 +3,7 @@ import SearchCard from "../Components/SearchCard";
 import useControlledShows from "../Hooks/useControlledShows";
 
 export default function Searchresults(props: any) {
-  const [tracklistItems, watchlist, toplist, allShows] = useControlledShows();
+  const [tracklistItems, watchlist, toplist, allShows] = useControlledShows(0);
   const [seen, setSeen] = React.useState(true);
   const renderedCards = props.results.map(
     (show: {
