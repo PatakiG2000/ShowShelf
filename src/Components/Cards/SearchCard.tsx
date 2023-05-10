@@ -2,6 +2,7 @@ import * as React from "react";
 import { useDispatch } from "react-redux";
 import { addToWatchlist } from "../../features/watchlist/watchlistSlice";
 import { addToTracklist } from "../../features/tracklist/tracklistSlice";
+import useFormatText from "../../Hooks/useFormatText";
 
 export interface ISearchCardProps {
   title: string;
@@ -33,6 +34,8 @@ export default function SearchCard(props: ISearchCardProps) {
 
   const { title, year, genre, time, description, imdbLink, img } = movieData;
 
+  const text = useFormatText(description)
+
   return (
     <div className="card">
       <div className="card_left">
@@ -44,7 +47,7 @@ export default function SearchCard(props: ISearchCardProps) {
             <p className="genre"> {genre} </p>
             <p className="time">{time} </p>
           </div>
-          <p className="disc">{description}</p>
+          <p className="disc">{text}</p>
           <a href={`https://www.imdb.com/title/${imdbLink}/`} target="_blank">
             Read More
           </a>

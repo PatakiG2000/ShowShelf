@@ -5,7 +5,7 @@ import { addToToplist } from "../features/toplist/toplistSlice";
 export interface IRatingFormProps {
   movieData: {
     title: string;
-    id: string;
+    id: number;
     year: number;
     genre: string;
     time: number;

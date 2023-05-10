@@ -1,11 +1,13 @@
 import * as React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteFromWatchlist } from "../../features/watchlist/watchlistSlice";
+import useFormatText from "../../Hooks/useFormatText";
 
 /* export interface IAppProps {} */
 
 export default function WatchlistCard(props: any /* props: IAppProps */) {
   const dispatch = useDispatch();
+  const text = useFormatText(props.description)
 
   return (
     <div className="card">
@@ -18,7 +20,7 @@ export default function WatchlistCard(props: any /* props: IAppProps */) {
             <p className="genre"> {props.genre} </p>
             <p className="time">{props.time} </p>
           </div>
-          <p className="disc">{props.description}</p>
+          <p className="disc">{text}</p>
           <a
             href={`https://www.imdb.com/title/${props.imdbLink}/`}
             target="_blank"

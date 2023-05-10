@@ -6,7 +6,7 @@ import { Modal } from "react-overlays";
 export interface IRateButtonProps {
   movieData: {
     title: string;
-    id: string;
+    id: number;
     year: number;
     genre: string;
     time: number;
