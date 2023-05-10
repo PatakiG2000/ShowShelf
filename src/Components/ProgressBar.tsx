@@ -1,6 +1,7 @@
 import * as React from "react";
 import LinearProgress from "@mui/material/LinearProgress";
 
+
 export interface IProgressBarProps {
   progress: number;
 }
@@ -9,6 +10,7 @@ export default function ProgressBar(props: IProgressBarProps) {
   return (
     <>
       <h3>{Math.ceil(props.progress)}</h3>
+      
       <LinearProgress
         color={"primary"}
         variant="determinate"

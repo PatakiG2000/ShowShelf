@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useDispatch } from "react-redux";
-import { addToWatchlist } from "../features/watchlist/watchlistSlice";
-import { addToTracklist } from "../features/tracklist/tracklistSlice";
+import { addToWatchlist } from "../../features/watchlist/watchlistSlice";
+import { addToTracklist } from "../../features/tracklist/tracklistSlice";
 
 export interface ISearchCardProps {
   title: string;
@@ -14,7 +14,7 @@ export interface ISearchCardProps {
   id: number;
 }
 
-import RateButton from "./buttons/RateButton";
+import RateButton from "../buttons/RateButton";
 
 export default function SearchCard(props: ISearchCardProps) {
   const dispatch = useDispatch();

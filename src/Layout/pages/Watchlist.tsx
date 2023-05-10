@@ -2,7 +2,7 @@
 
 import { useSelector, useDispatch } from "react-redux";
 
-import WatchlistCard from "../../Components/WatchlistCard";
+import WatchlistCard from "../../Components/Cards/WatchlistCard";
 
 export interface IWatchlistProps {}
 

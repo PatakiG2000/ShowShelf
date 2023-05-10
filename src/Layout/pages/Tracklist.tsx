@@ -1,5 +1,5 @@
 import * as React from "react";
-import TracklistCard from "../../Components/TracklistCard";
+import TracklistCard from "../../Components/Cards/TracklistCard";
 import { useSelector } from "react-redux";
 
 export interface ITracklistProps {}

@@ -7,11 +7,12 @@ import Tracklist from "./Layout/pages/Tracklist";
 import Toplist from "./Layout/pages/Toplist";
 
 
+
 function App() {
   return (
     <>
       <Navbar />
-
+      
       <Routes>
         <Route path="*" element={<Home />} />
         <Route path="/watchlist" element={<Watchlist />} />

@@ -1,5 +1,5 @@
 import * as React from "react";
-import SearchCard from "../Components/SearchCard";
+import SearchCard from "../Components/Cards/SearchCard";
 import useControlledShows from "../Hooks/useControlledShows";
 
 export default function Searchresults(props: any) {

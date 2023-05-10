@@ -1,4 +1,8 @@
 import * as React from "react";
+import UpcomingCard from "../../Components/Cards/UpcomingCard";
+import UpcomingEpisodeCard from "../../Components/Cards/UpcomingEpisodeCard";
+import RecommendedCard from "../../Components/Cards/RecommendedCard";
+import NewsFeedCard from "../../Components/Cards/NewsFeedCard";
 
 export interface IHomeProps {}
 
@@ -9,14 +13,21 @@ export default function Home(props: IHomeProps) {
         <div className="newsfeed-title">
           <h3 className="newsfeed-title">Newsfeed</h3>
         </div>
-        <div className="newsfeed-card"></div>
-        <div className="newsfeed-card"></div>
-        <div className="newsfeed-card"></div>
+       <NewsFeedCard/>
+       <NewsFeedCard/>
+       <NewsFeedCard/>
+       
       </div>
       <div className="home-rightside">
-        <div className="main-recommendation">Upcoming</div>
-        <div className="continue-watching"></div>
-        <div className="Currently trending"></div>
+        <p>Upcoming:</p>
+        <UpcomingCard />
+        <p>Your upcoming episodes:</p>
+        <div className="continue-watching">
+          <UpcomingEpisodeCard/>
+          <UpcomingEpisodeCard/>
+        </div>
+        <p>Recommended for you:</p>
+        <RecommendedCard/>
       </div>
     </div>
   );

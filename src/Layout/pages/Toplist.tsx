@@ -1,5 +1,5 @@
 import * as React from "react";
-import ToplistCard from "../../Components/ToplistCard";
+import ToplistCard from "../../Components/Cards/ToplistCard";
 import { useSelector, useDispatch } from "react-redux";
 
 export interface IToplistProps {}

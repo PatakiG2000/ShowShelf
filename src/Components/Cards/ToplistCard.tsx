@@ -1,10 +1,10 @@
 import * as React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteFromWatchlist } from "../features/watchlist/watchlistSlice";
+import { deleteFromToplist } from "../../features/toplist/toplistSlice";
 
 /* export interface IAppProps {} */
 
-export default function WatchlistCard(props: any /* props: IAppProps */) {
+export default function ToplistCard(props: any /* props: IAppProps */) {
   const dispatch = useDispatch();
 
   return (
@@ -18,7 +18,7 @@ export default function WatchlistCard(props: any /* props: IAppProps */) {
             <p className="genre"> {props.genre} </p>
             <p className="time">{props.time} </p>
           </div>
-          <p className="disc">{props.description}</p>
+          <p className="disc">{props.formData?.experience}</p>
           <a
             href={`https://www.imdb.com/title/${props.imdbLink}/`}
             target="_blank"
@@ -29,12 +29,10 @@ export default function WatchlistCard(props: any /* props: IAppProps */) {
             <button
               className="btn"
               aria-label="Decrement value"
-              onClick={() => dispatch(deleteFromWatchlist(props.id))}
+              onClick={() => dispatch(deleteFromToplist(props.id))}
             >
               Remove
             </button>
-            <button className="btn">Start Watching</button>
-            <button className="btn">Rate</button>
           </div>
         </div>
       </div>
