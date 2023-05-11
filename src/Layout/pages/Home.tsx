@@ -13,21 +13,20 @@ export default function Home(props: IHomeProps) {
         <div className="newsfeed-title">
           <h3 className="newsfeed-title">Newsfeed</h3>
         </div>
-       <NewsFeedCard/>
-       <NewsFeedCard/>
-       <NewsFeedCard/>
-       
+        <NewsFeedCard />
+        <NewsFeedCard />
+        <NewsFeedCard />
       </div>
       <div className="home-rightside">
         <p>Upcoming:</p>
         <UpcomingCard />
         <p>Your upcoming episodes:</p>
         <div className="continue-watching">
-          <UpcomingEpisodeCard/>
-          <UpcomingEpisodeCard/>
+          <UpcomingEpisodeCard />
+          <UpcomingEpisodeCard />
         </div>
         <p>Recommended for you:</p>
-        <RecommendedCard/>
+        <RecommendedCard />
       </div>
     </div>
   );
