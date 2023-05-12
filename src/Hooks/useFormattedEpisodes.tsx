@@ -18,6 +18,7 @@ const useFormattedEpisodes = (title: string) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [overallEpisodeNumber, setOverallEpisodeNumber] = useState(0);
+  const [episodes, setEpisodes] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -27,6 +28,7 @@ const useFormattedEpisodes = (title: string) => {
         .json()
         .then((data) => {
           setShowData(data);
+          setEpisodes(data._embedded.episodes);
 
           //Organizing the series data by seasons and episodes
           setOverallEpisodeNumber(data._embedded.episodes.length);
@@ -60,7 +62,7 @@ const useFormattedEpisodes = (title: string) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [title]);
 
-  return [seriesInfos, loading, error, overallEpisodeNumber];
+  return [seriesInfos, loading, error, overallEpisodeNumber, episodes];
 };
 
 export default useFormattedEpisodes;

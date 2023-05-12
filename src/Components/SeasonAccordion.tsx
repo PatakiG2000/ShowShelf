@@ -59,8 +59,6 @@ export default function SeasonAccordion(props: ISeasonAccordionProps) {
     }
   }, [currentShow.seenEpisodes]);
 
- 
-
   const renderedEpisodeAccordions = episodes.map((episode: any, i) => {
     return (
       <EpisodeAccordion
