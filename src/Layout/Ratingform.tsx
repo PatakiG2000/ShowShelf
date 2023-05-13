@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addToToplist } from "../features/toplist/toplistSlice";
+import { handleModal } from "../features/toplist/modalHandler";
 
 export interface IRatingFormProps {
   movieData: {
@@ -14,15 +15,19 @@ export interface IRatingFormProps {
 }
 
 export default function Ratingform(props: IRatingFormProps) {
-  const movieData = props.movieData;
   const dispatch = useDispatch();
+
+  const movieData = props.movieData;
+  function handleClose() {
+    dispatch(handleModal({ open: false, movieData: {} }));
+  }
 
   function formSubmit(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
     const target = e.target as HTMLFormElement;
     const data = new FormData(target);
     const formData: any = {};
-
+    handleClose();
     for (const [name, value] of data.entries()) {
       formData[name] = value;
     }

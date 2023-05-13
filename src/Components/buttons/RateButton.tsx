@@ -2,6 +2,9 @@ import * as React from "react";
 import Ratingform from "../../Layout/Ratingform";
 import { useState } from "react";
 import { Modal } from "react-overlays";
+import Box from "@mui/material/Box";
+import { useSelector, useDispatch } from "react-redux";
+import { handleModal } from "../../features/toplist/modalHandler";
 
 export interface IRateButtonProps {
   movieData: {
@@ -15,29 +18,16 @@ export interface IRateButtonProps {
 }
 
 export default function RateButton(props: IRateButtonProps) {
-  const [showModal, setShowModal] = useState(false);
-
+  const dispatch = useDispatch();
   const movieData = props.movieData;
 
-  function handleClose() {
-    setShowModal(false);
+  function handleOpen() {
+    dispatch(handleModal({ open: true, movieData }));
   }
-
-  const renderBackdrop = (props: any) => (
-    <div className="backdrop" {...props} />
-  );
 
   return (
     <>
-      <Modal
-        className="modal"
-        show={showModal}
-        onHide={handleClose}
-        renderBackdrop={renderBackdrop}
-      >
-        <Ratingform movieData={movieData}></Ratingform>
-      </Modal>
-      <button onClick={() => setShowModal(true)} className="btn">
+      <button onClick={() => handleOpen()} className="btn">
         Rate
       </button>
     </>

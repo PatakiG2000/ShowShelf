@@ -16,11 +16,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 export default function Alerts(props: IAlertsProps) {
   //meg kell nézni hogy lesz kiszedve az ami változik
   const [open, setOpen] = React.useState(false);
-  const [message, setMessage] = React.useState("");
-  //holding so can be checked if a removal or a adding happens
-  const [length, setLength] = React.useState(0);
-  //holding so can be checked the place of the removal orr adding ha a where nem lenne jó valamiért
-  const [place, setPlace] = React.useState("");
+
   const [tracklistItems, watchlist, toplist, allShows, where] =
     useControlledShows(0);
 
@@ -43,7 +39,7 @@ export default function Alerts(props: IAlertsProps) {
     setOpen(true);
     setTimeout(() => {
       setOpen(false);
-    }, 200);
+    }, 300);
   }, [allShows]);
 
   return (

@@ -55,7 +55,6 @@ export const toplistSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addToToplist, decrement, deleteFromToplist } =
-  toplistSlice.actions;
+export const { addToToplist, deleteFromToplist } = toplistSlice.actions;
 
 export default toplistSlice.reducer;
