@@ -29,10 +29,10 @@ export default function Watchlist(props: IWatchlistProps) {
     <div className="watchlist">
       <div className="watchlist-nav">
         <h1 className="watchlist-title">Your current watchlist:</h1>
-        <select name="" id="">
+       {/*  <select name="" id="">
           <option value="New">Recently Added</option>
           <option value="Old">Oldest</option>
-        </select>
+        </select> */}
       </div>
       <div>
         {currentWatchlist.length === 0

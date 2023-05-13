@@ -14,9 +14,10 @@ export interface ITracklistCardProps {
 
 export default function TracklistCard(props: ITracklistCardProps) {
   const dispatch = useDispatch();
-  const [currentShow, seenEpisodes] = useTracklistShow(props.title);
   const [seriesInfos, loading, error, overallEpisodeNumber, episodes] =
     useFormattedEpisodes(props.title);
+  const [currentShow, seenEpisodes, seenSeasons, nextEpisode] =
+    useTracklistShow(props.title, episodes);
 
   const progress = seenEpisodes.length / overallEpisodeNumber;
   const seasons = Object.keys(seriesInfos);
@@ -31,15 +32,6 @@ export default function TracklistCard(props: ITracklistCardProps) {
       ></SeasonAccordion>
     );
   });
-
-  //POZICIÓJÁT MEGNÉZNI NEM AZ ID-HOZ ADNI
-  //EZT ÁTIRNI
-
-  const thisId = seenEpisodes[seenEpisodes.length - 1];
-  const thisEpPosition = episodes.findIndex(
-    (ep: { id: number }) => ep.id === thisId
-  );
-  const nextEpisode = episodes[thisEpPosition + 1];
 
   return (
     <>

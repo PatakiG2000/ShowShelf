@@ -2,12 +2,25 @@ import * as React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteFromWatchlist } from "../../features/watchlist/watchlistSlice";
 import useFormatText from "../../Hooks/useFormatText";
+import RateButton from "../buttons/RateButton";
 
 /* export interface IAppProps {} */
 
 export default function WatchlistCard(props: any /* props: IAppProps */) {
   const dispatch = useDispatch();
-  const text = useFormatText(props.description)
+  const text = useFormatText(props.description);
+  const movieData = {
+    title: props.title,
+    id: props.id,
+    year: props.year,
+    genre: props.genre,
+    time: props.time,
+    img: props.img,
+  };
+
+  function handleClick(id: number): void {
+    dispatch(deleteFromWatchlist(id));
+  }
 
   return (
     <div className="card">
@@ -31,12 +44,15 @@ export default function WatchlistCard(props: any /* props: IAppProps */) {
             <button
               className="btn"
               aria-label="Decrement value"
-              onClick={() => dispatch(deleteFromWatchlist(props.id))}
+              onClick={() => handleClick(props.id)}
             >
               Remove
             </button>
             <button className="btn">Start Watching</button>
-            <button className="btn">Rate</button>
+            <RateButton
+              movieData={movieData}
+              customAction={() => handleClick(props.id)}
+            />
           </div>
         </div>
       </div>

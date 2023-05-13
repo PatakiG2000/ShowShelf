@@ -1,12 +1,8 @@
-import * as React from "react";
-import Ratingform from "../../Layout/Ratingform";
-import { useState } from "react";
-import { Modal } from "react-overlays";
-import Box from "@mui/material/Box";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { handleModal } from "../../features/toplist/modalHandler";
 
 export interface IRateButtonProps {
+  customAction(): void;
   movieData: {
     title: string;
     id: number;
@@ -22,6 +18,7 @@ export default function RateButton(props: IRateButtonProps) {
   const movieData = props.movieData;
 
   function handleOpen() {
+    props.customAction();
     dispatch(handleModal({ open: true, movieData }));
   }
 

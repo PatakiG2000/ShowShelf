@@ -34,7 +34,7 @@ export default function SearchCard(props: ISearchCardProps) {
 
   const { title, year, genre, time, description, imdbLink, img } = movieData;
 
-  const text = useFormatText(description)
+  const text = useFormatText(description);
 
   return (
     <div className="card">
@@ -73,7 +73,7 @@ export default function SearchCard(props: ISearchCardProps) {
             >
               Track show
             </button>
-            <RateButton movieData={movieData}  />
+            <RateButton movieData={movieData} customAction={() => {}} />
           </div>
         </div>
       </div>
