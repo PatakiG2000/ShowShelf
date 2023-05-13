@@ -191,6 +191,7 @@ html {
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 90%;
+  justify-content: center;
 }
 
 .continue-btn,
@@ -212,11 +213,36 @@ html {
 }
 
 .upcoming-episode-card {
-  background-position: center;
-  background-size: cover;
-  padding: 2em;
   border-radius: 10px;
   margin: 1em;
+  display: flex;
+  align-items: center;
+
+  max-width: 90%;
+}
+
+.upcoming-episode-card img {
+  position: relative;
+  object-fit: cover;
+  aspect-ratio: 21/9;
+  max-width: 700px;
+  max-height: 250px;
+  filter: blur(1px);
+  opacity: 70%;
+  border-radius: 10px;
+}
+
+.upcoming-episode-card-content {
+  position: absolute;
+  padding: 2em;
+}
+
+.continue-title {
+  font-size: 2.4em;
+}
+
+.continue-episode {
+  font-size: 2em;
 }
 
 .recommended-foryou {

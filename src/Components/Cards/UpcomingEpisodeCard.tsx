@@ -23,16 +23,18 @@ export default function UpcomingEpisodeCard(props: IUpcomingEpisodeCardProps) {
   return (
     <div className="upcoming-episode-card">
       <img src={randomItem.img} alt="" />
-      <p>Continue watching</p>
-      <p>{randomItem.title}</p>
-      <p>
-        Your upcoming episode is:{" "}
-        {nextEpisode?.name
-          ? nextEpisode?.name
-          : "You finished, you may add it to your toplist now!"}
-      </p>
-      <p>Watch it on: </p>
-      <button className="continue-btn">Go to tracklist</button>
+      <div className="upcoming-episode-card-content">
+        <p className="continue-title">Continue watching: {randomItem.title}</p>
+
+        <p className="continue-episode">
+          Your upcoming episode is:{" "}
+          {nextEpisode?.name
+            ? nextEpisode?.name
+            : "You finished, you may add it to your toplist now!"}
+        </p>
+
+        <button className="continue-btn">Go to tracklist</button>
+      </div>
     </div>
   );
 }

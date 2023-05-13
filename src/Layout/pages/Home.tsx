@@ -3,6 +3,7 @@ import UpcomingCard from "../../Components/Cards/UpcomingCard";
 import UpcomingEpisodeCard from "../../Components/Cards/UpcomingEpisodeCard";
 import RecommendedCard from "../../Components/Cards/RecommendedCard";
 import NewsFeed from "../NewsFeed";
+import WatchlistRecommendation from "../../Components/Cards/WatchlistRecommendation";
 
 export interface IHomeProps {}
 
@@ -17,7 +18,7 @@ export default function Home(props: IHomeProps) {
 
         <div className="continue-watching">
           <UpcomingEpisodeCard />
-          <UpcomingEpisodeCard />
+          <WatchlistRecommendation />
         </div>
 
         <RecommendedCard />
