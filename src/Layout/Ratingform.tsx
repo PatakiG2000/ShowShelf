@@ -48,7 +48,7 @@ export default function Ratingform(props: IRatingFormProps) {
 
   return (
     <div className="rating">
-      <h1 className="rating-title">How did you enjoy {movieData.title}?</h1>
+      <h1 className="rating-title">How did you enjoy "{movieData.title}" ?</h1>
       <div>
         <form id="form" className="form" action="" onSubmit={formSubmit}>
           <label htmlFor="story">Story</label>

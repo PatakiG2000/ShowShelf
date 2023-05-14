@@ -10,7 +10,17 @@ export default function Tracklist(props: ITracklistProps) {
   );
 
   const currentTracklist = tracklist.map((show: any) => {
-    return <TracklistCard title={show.title} id={show.id} />;
+    return (
+      <TracklistCard
+        title={show.title}
+        id={show.id}
+        year={show.year}
+        genre={show.genre}
+        time={show.time}
+        img={show.img}
+        date={show.date}
+      />
+    );
   });
 
   return (

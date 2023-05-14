@@ -7,6 +7,7 @@ html {
   margin: 0;
   height: 100%;
   background-color: rgb(26, 24, 24);
+  padding: 0;
 }
 
 .hidden {
@@ -235,10 +236,11 @@ html {
 .upcoming-episode-card-content {
   position: absolute;
   padding: 2em;
+  max-width: 600px;
 }
 
 .continue-title {
-  font-size: 2.4em;
+  font-size: 2em;
 }
 
 .continue-episode {
@@ -299,13 +301,14 @@ html {
   transition: all 600ms;
   flex-direction: column;
   max-width: 100%;
-  margin: 0 auto;
   background-color: rgba(0, 0, 0, 0.377);
   border-radius: 4px;
   max-height: 100vh;
   overflow-y: scroll;
   cursor: pointer;
   z-index: 4;
+  gap: 2em;
+  padding: 0.2;
 }
 
 .search-results::-webkit-scrollbar {
@@ -329,6 +332,8 @@ html {
   max-width: 60%;
   max-height: 300px;
   margin: 0 auto;
+  margin-bottom: 1em;
+
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -477,12 +482,14 @@ a {
 
 /* //Rating form */
 .rating {
-  background-color: #305c68;
+  background-color: #000000ec;
   text-align: center;
   color: white;
   flex-direction: column;
   border-radius: 10px;
   z-index: 99;
+  padding: 2em;
+  border: 1px solid rgba(255, 255, 255, 0.623);
 }
 
 .form {

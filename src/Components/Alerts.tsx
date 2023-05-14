@@ -45,7 +45,8 @@ export default function Alerts(props: IAlertsProps) {
   return (
     <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
       <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-        {`Succesfully added to your ${where}!`}
+        {/*  {`Succesfully added to your ${where}!`} */}
+        Success
       </Alert>
     </Snackbar>
   );

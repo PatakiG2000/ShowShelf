@@ -1,5 +1,3 @@
-
-
 import { useSelector, useDispatch } from "react-redux";
 
 import WatchlistCard from "../../Components/Cards/WatchlistCard";
@@ -8,7 +6,6 @@ export interface IWatchlistProps {}
 
 export default function Watchlist(props: IWatchlistProps) {
   const watchlist = useSelector((state: any) => state.watchlistHandler.value);
- 
 
   const currentWatchlist = watchlist.map((show: any) => {
     return (
@@ -21,6 +18,7 @@ export default function Watchlist(props: IWatchlistProps) {
         description={show.description}
         time={show.time}
         imdbLink={show.imdbLink}
+        date={show.date}
       />
     );
   });
@@ -29,7 +27,7 @@ export default function Watchlist(props: IWatchlistProps) {
     <div className="watchlist">
       <div className="watchlist-nav">
         <h1 className="watchlist-title">Your current watchlist:</h1>
-       {/*  <select name="" id="">
+        {/*  <select name="" id="">
           <option value="New">Recently Added</option>
           <option value="Old">Oldest</option>
         </select> */}

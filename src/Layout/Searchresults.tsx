@@ -1,8 +1,7 @@
 import * as React from "react";
 import SearchCard from "../Components/Cards/SearchCard";
 import useControlledShows from "../Hooks/useControlledShows";
-import CircularProgress from '@mui/material/CircularProgress';
-
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Searchresults(props: any) {
   const [tracklistItems, watchlist, toplist, allShows] = useControlledShows(0);
@@ -49,7 +48,7 @@ export default function Searchresults(props: any) {
       style={{
         display: seen ? show : "none",
         position: "fixed",
-        top: 60,
+        top: 50,
         bottom: 0,
         left: 0,
         right: 0,
@@ -58,8 +57,11 @@ export default function Searchresults(props: any) {
         props.showing();
       }}
     >
-      
-      {renderedCards.length > 0 ? renderedCards :  <CircularProgress sx={{zIndex: 99}} />}
+      {renderedCards.length > 0 ? (
+        renderedCards
+      ) : (
+        <CircularProgress sx={{ zIndex: 99 }} />
+      )}
     </div>
   );
 }

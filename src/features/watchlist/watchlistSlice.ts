@@ -16,19 +16,20 @@ const persistedState: any = localStorage.getItem("reduxState")
       imdbLink: "tt564656",
       img: "https://images.unsplash.com/photo-1681696559487-264354658add?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
       id: 123,
+      date: 123,
     };
 
-
-
 const initialState: WatchlistState = {
-  value: persistedState.watchlistHandler?.value ?  persistedState.watchlistHandler?.value  : ['ASD']
+  value: persistedState.watchlistHandler?.value
+    ? persistedState.watchlistHandler?.value
+    : ["ASD"],
 };
 
 export const watchlistSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    addToWatchlist: (state, action: PayloadAction<{}>) => {
+    addToWatchlist: (state, action: PayloadAction<{ id: number }>) => {
       let alreadyOnList = false;
       state.value.forEach((show: any) => {
         if (show.id === action.payload.id) {

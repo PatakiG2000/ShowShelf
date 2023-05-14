@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export interface IWatchlistRecommendationProps {}
 
@@ -20,8 +21,9 @@ export default function WatchlistRecommendation(
             ? randomItem.title
             : "Add your first item to watchlist"}
         </p>
-
-        <button className="continue-btn">Go to watchlist</button>
+        <Link to="/watchlist" className="continue-btn">
+          Go to watchlist
+        </Link>
       </div>
     </div>
   );

@@ -21,6 +21,8 @@ export default function SearchCard(props: ISearchCardProps) {
   const dispatch = useDispatch();
   const id = props.id;
 
+  const date = new Date();
+  const timestamp = date.getTime();
   const movieData = {
     title: props.title,
     year: props.year,
@@ -30,6 +32,7 @@ export default function SearchCard(props: ISearchCardProps) {
     imdbLink: props.imdbLink,
     img: props.img,
     id,
+    date: timestamp,
   };
 
   const { title, year, genre, time, description, imdbLink, img } = movieData;

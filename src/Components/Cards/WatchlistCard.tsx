@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteFromWatchlist } from "../../features/watchlist/watchlistSlice";
+import { addToTracklist } from "../../features/tracklist/tracklistSlice";
 import useFormatText from "../../Hooks/useFormatText";
 import RateButton from "../buttons/RateButton";
 
@@ -16,6 +17,7 @@ export default function WatchlistCard(props: any /* props: IAppProps */) {
     genre: props.genre,
     time: props.time,
     img: props.img,
+    date: props.date,
   };
 
   function handleClick(id: number): void {
@@ -48,7 +50,21 @@ export default function WatchlistCard(props: any /* props: IAppProps */) {
             >
               Remove
             </button>
-            <button className="btn">Start Watching</button>
+            <button
+              className="btn"
+              onClick={() => {
+                dispatch(
+                  addToTracklist({
+                    ...movieData,
+                    seenEpisodes: [],
+                    seenSeason: [],
+                  })
+                );
+                dispatch(deleteFromWatchlist(props.id));
+              }}
+            >
+              Start Watching
+            </button>
             <RateButton
               movieData={movieData}
               customAction={() => handleClick(props.id)}

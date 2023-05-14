@@ -10,6 +10,7 @@ export interface IRateButtonProps {
     genre: string;
     time: number;
     img: string;
+    date: number;
   };
 }
 

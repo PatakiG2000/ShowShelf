@@ -2,6 +2,7 @@ import * as React from "react";
 import useControlledShows from "../../Hooks/useControlledShows";
 import useFormattedEpisodes from "../../Hooks/useFormattedEpisodes";
 import useTracklistShow from "../../Hooks/useTracklistShow";
+import { Link } from "react-router-dom";
 
 export interface IUpcomingEpisodeCardProps {}
 
@@ -33,7 +34,9 @@ export default function UpcomingEpisodeCard(props: IUpcomingEpisodeCardProps) {
             : "You finished, you may add it to your toplist now!"}
         </p>
 
-        <button className="continue-btn">Go to tracklist</button>
+        <Link to="/tracklist" className="continue-btn">
+          Go to tracklist
+        </Link>
       </div>
     </div>
   );
