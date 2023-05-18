@@ -3,6 +3,7 @@ import * as React from "react";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import useControlledShows from "../Hooks/useControlledShows";
+import useAlerts from "../Hooks/useAlerts";
 
 export interface IAlertsProps {}
 
@@ -15,14 +16,8 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 
 export default function Alerts(props: IAlertsProps) {
   //meg kell nézni hogy lesz kiszedve az ami változik
-  const [open, setOpen] = React.useState(false);
+  const alert = useAlerts()
 
-  const [tracklistItems, watchlist, toplist, allShows, where] =
-    useControlledShows(0);
-
-  const handleClick = () => {
-    setOpen(true);
-  };
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
@@ -32,21 +27,14 @@ export default function Alerts(props: IAlertsProps) {
       return;
     }
 
-    setOpen(false);
   };
 
-  React.useEffect(() => {
-    setOpen(true);
-    setTimeout(() => {
-      setOpen(false);
-    }, 300);
-  }, [allShows]);
 
   return (
-    <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+    <Snackbar open={alert} autoHideDuration={0} onClose={handleClose}>
       <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
         {/*  {`Succesfully added to your ${where}!`} */}
-        Success
+        {alert}
       </Alert>
     </Snackbar>
   );
