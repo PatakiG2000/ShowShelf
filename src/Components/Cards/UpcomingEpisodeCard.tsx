@@ -10,8 +10,13 @@ export default function UpcomingEpisodeCard(props: IUpcomingEpisodeCardProps) {
   const [tracklistItems, watchlist, toplist, allShows, where] =
     useControlledShows(0);
 
-  const randomItem =
-    tracklistItems[Math.floor(Math.random() * tracklistItems.length)];
+  const randomItem = tracklistItems[
+    Math.floor(Math.random() * tracklistItems.length)
+  ]
+    ? tracklistItems[Math.floor(Math.random() * tracklistItems.length)]
+    : {
+        title: "Add your first show",
+      };
 
   //hokokba legyen az üres handling
 
@@ -23,9 +28,19 @@ export default function UpcomingEpisodeCard(props: IUpcomingEpisodeCardProps) {
 
   return (
     <div className="upcoming-episode-card">
-      <img src={randomItem.img} alt="" />
+      <img
+        src={
+          randomItem.img
+            ? randomItem.img
+            : "https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80"
+        }
+        alt=""
+      />
       <div className="upcoming-episode-card-content">
-        <p className="continue-title">Continue watching: {randomItem.title}</p>
+        <p className="continue-title">
+          Continue watching:{" "}
+          {randomItem.title ? randomItem.title : "Your title"}
+        </p>
 
         <p className="continue-episode">
           Your upcoming episode is:{" "}

@@ -34,7 +34,7 @@ const initialState: TracklistState = {
     : {
         tracklistItems: [
           {
-            title: "asd",
+            /*   title: "",
             year: 2013,
             genre: "horror",
             time: "4h12m",
@@ -45,7 +45,7 @@ const initialState: TracklistState = {
             id: 123,
             seasons: [],
             seenByUser: {},
-            progress: 0,
+            progress: 0, */
             seenEpisodes: [],
             seenSeason: [],
             date: 123,

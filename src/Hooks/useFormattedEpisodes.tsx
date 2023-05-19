@@ -13,8 +13,14 @@ const useFormattedEpisodes = (title: string) => {
 
   const currentShow = tracklistItems.find(
     (show: { title: string }) => show.title === title
-  );
-  const seenEpisodes = currentShow.seenEpisodes;
+  )
+    ? tracklistItems.find((show: { title: string }) => show.title === title)
+    : {
+        title: "",
+      };
+  const seenEpisodes = currentShow.seenEpisodes
+    ? currentShow.seenEpisodes
+    : [123];
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [overallEpisodeNumber, setOverallEpisodeNumber] = useState(0);

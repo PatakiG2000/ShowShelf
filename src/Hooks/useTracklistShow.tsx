@@ -8,9 +8,15 @@ const useTracklistShow = (title: string, episodes: []) => {
 
   const currentShow = tracklistItems.find(
     (show: { title: string }) => show.title === title
-  );
+  )
+    ? tracklistItems.find((show: { title: string }) => show.title === title)
+    : {
+        title: "",
+      };
 
-  const seenEpisodes = currentShow.seenEpisodes;
+  const seenEpisodes = currentShow.seenEpisodes
+    ? currentShow.seenEpisodes
+    : [123];
   const seenSeasons = currentShow.seenSeason;
 
   const thisId = seenEpisodes[seenEpisodes.length - 1];
