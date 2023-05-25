@@ -76,7 +76,7 @@ export default function SearchCard(props: ISearchCardProps) {
             >
               Track show
             </button>
-            <RateButton movieData={movieData} customAction={() => {}} />
+            <RateButton movieData={movieData} />
           </div>
         </div>
       </div>

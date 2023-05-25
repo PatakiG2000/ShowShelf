@@ -23,11 +23,12 @@ export default function SearchBox(props: SearchBoxProps) {
 
   function onChange(e: React.FormEvent<HTMLInputElement>): void {
     const target = e.target as HTMLInputElement;
+    const joinedTarget = target.value.split(" ").join("");
     if (!target.value) {
       setIsShowing(false);
     } else {
       setIsShowing(true);
-      searching(target.value);
+      searching(joinedTarget);
     }
   }
 

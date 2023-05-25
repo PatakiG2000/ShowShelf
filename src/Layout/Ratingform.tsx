@@ -1,7 +1,9 @@
 import * as React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { addToToplist } from "../features/toplist/toplistSlice";
 import { handleModal } from "../features/toplist/modalHandler";
+import { deleteFromWatchlist } from "../features/watchlist/watchlistSlice";
+import { deleteFromTracklist } from "../features/tracklist/tracklistSlice";
 
 export interface IRatingFormProps {
   movieData: {
@@ -68,7 +70,15 @@ export default function Ratingform(props: IRatingFormProps) {
             cols={15}
             rows={5}
           ></textarea>
-          <button className="rate-btn">Rate</button>
+          <button
+            className="rate-btn"
+            onClick={() => {
+              dispatch(deleteFromWatchlist(movieData.id));
+              dispatch(deleteFromTracklist(movieData.id));
+            }}
+          >
+            Rate
+          </button>
         </form>
       </div>
     </div>

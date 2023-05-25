@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { deleteFromWatchlist } from "../../../features/watchlist/watchlistSlice";
 import { addToTracklist } from "../../../features/tracklist/tracklistSlice";
 import useFormatText from "../../../Hooks/useFormatText";
@@ -65,10 +65,7 @@ export default function WatchlistCard(props: any /* props: IAppProps */) {
             >
               Start Watching
             </button>
-            <RateButton
-              movieData={movieData}
-              customAction={() => handleClick(props.id)}
-            />
+            <RateButton movieData={movieData} />
           </div>
         </div>
       </div>

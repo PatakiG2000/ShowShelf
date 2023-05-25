@@ -18,12 +18,16 @@ export const toplistModalSlice = createSlice({
   reducers: {
     handleModal: (
       state,
-      action: PayloadAction<{ open: boolean; movieData: {} }>
+      action: PayloadAction<{
+        open: boolean;
+        movieData: { id: number };
+      }>
     ) => {
       console.log("ased", action.payload);
       state.value.isOpen = action.payload.open;
       state.value.movieData = action.payload.movieData;
     },
+  
   },
 });
 
