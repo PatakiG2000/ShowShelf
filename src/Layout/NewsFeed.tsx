@@ -1,5 +1,5 @@
 import React from "react";
-import NewsFeedCard from "../Components/Cards/NewsFeedCard";
+import NewsFeedCard from "../Components/Cards/homepage/NewsFeedCard";
 
 export interface INewsFeedProps {}
 
@@ -15,7 +15,7 @@ export default function NewsFeed(props: INewsFeedProps) {
 
   //fetching news to feed
 
-  /*  React.useEffect(() => {
+  /*   React.useEffect(() => {
     fetch(`https://newsapi.org/v2/everything?q=netflix&apiKey=${key}`)
       .then((res) => res.json())
       .then((data) => {

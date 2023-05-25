@@ -1,6 +1,7 @@
 import * as React from "react";
-import TracklistCard from "../../Components/Cards/TracklistCard";
+import TracklistCard from "../../Components/Cards/tracklist/TracklistCard";
 import { useSelector } from "react-redux";
+import TracklistPlaceholderCard from "../../Components/Cards/tracklist/TracklistPlaceholderCard";
 
 export interface ITracklistProps {}
 
@@ -26,7 +27,11 @@ export default function Tracklist(props: ITracklistProps) {
   return (
     <div>
       <h1>This is Tracklist:</h1>
-      {currentTracklist}
+      {currentTracklist.length === 0 ? (
+        <TracklistPlaceholderCard />
+      ) : (
+        currentTracklist
+      )}
     </div>
   );
 }

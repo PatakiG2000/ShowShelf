@@ -1,6 +1,7 @@
 import * as React from "react";
-import ToplistCard from "../../Components/Cards/ToplistCard";
+import ToplistCard from "../../Components/Cards/toplist/ToplistCard";
 import { useSelector, useDispatch } from "react-redux";
+import ToplistPlaceholderCard from "../../Components/Cards/toplist/ToplistPlaceholderCard";
 
 export interface IToplistProps {}
 
@@ -23,5 +24,14 @@ export default function Toplist(props: IToplistProps) {
     );
   });
 
-  return <div>{currentToplist}</div>;
+  return (
+    <div>
+      {" "}
+      {currentToplist.length === 0 ? (
+        <ToplistPlaceholderCard />
+      ) : (
+        currentToplist
+      )}
+    </div>
+  );
 }

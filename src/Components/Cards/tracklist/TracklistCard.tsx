@@ -1,12 +1,12 @@
 import * as React from "react";
-import SeasonAccordion from "../SeasonAccordion";
+import SeasonAccordion from "../../SeasonAccordion";
 import { useDispatch } from "react-redux";
-import { deleteFromTracklist } from "../../features/tracklist/tracklistSlice";
-import RateButton from "../buttons/RateButton";
+import { deleteFromTracklist } from "../../../features/tracklist/tracklistSlice";
+import RateButton from "../../buttons/RateButton";
 
-import useFormattedEpisodes from "../../Hooks/useFormattedEpisodes";
-import ProgressBar from "../ProgressBar";
-import useTracklistShow from "../../Hooks/useTracklistShow";
+import useFormattedEpisodes from "../../../Hooks/useFormattedEpisodes";
+import ProgressBar from "../../ProgressBar";
+import useTracklistShow from "../../../Hooks/useTracklistShow";
 
 export interface ITracklistCardProps {
   title: string;

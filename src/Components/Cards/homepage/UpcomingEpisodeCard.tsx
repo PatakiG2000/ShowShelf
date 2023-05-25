@@ -1,7 +1,7 @@
 import * as React from "react";
-import useControlledShows from "../../Hooks/useControlledShows";
-import useFormattedEpisodes from "../../Hooks/useFormattedEpisodes";
-import useTracklistShow from "../../Hooks/useTracklistShow";
+import useControlledShows from "../../../Hooks/useControlledShows";
+import useFormattedEpisodes from "../../../Hooks/useFormattedEpisodes";
+import useTracklistShow from "../../../Hooks/useTracklistShow";
 import { Link } from "react-router-dom";
 
 export interface IUpcomingEpisodeCardProps {}
@@ -15,7 +15,7 @@ export default function UpcomingEpisodeCard(props: IUpcomingEpisodeCardProps) {
   ]
     ? tracklistItems[Math.floor(Math.random() * tracklistItems.length)]
     : {
-        title: "Add your first show",
+        title: "There is no item on your tracklist! Add one now",
       };
 
   //hokokba legyen az üres handling
@@ -38,13 +38,15 @@ export default function UpcomingEpisodeCard(props: IUpcomingEpisodeCardProps) {
       />
       <div className="upcoming-episode-card-content">
         <p className="continue-title">
-          Continue watching:{" "}
-          {randomItem.title ? randomItem.title : "Your title"}
+          {randomItem.title && "Continue watching:"}
+          {randomItem.title
+            ? randomItem.title
+            : "There is no item on your tracklist! Add one now"}
         </p>
 
         <p className="continue-episode">
-          Your upcoming episode is:{" "}
-          {nextEpisode?.name
+          {nextEpisode?.name && "Your upcoming episode is"}
+          {randomItem?.title
             ? nextEpisode?.name
             : "You finished, you may add it to your toplist now!"}
         </p>

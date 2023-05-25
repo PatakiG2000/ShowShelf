@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 
-import WatchlistCard from "../../Components/Cards/WatchlistCard";
+import WatchlistCard from "../../Components/Cards/watchlist/WatchlistCard";
+import WatchlistPlaceholderCard from "../../Components/Cards/watchlist/WatchlistPlaceholderCard";
 
 export interface IWatchlistProps {}
 
@@ -33,9 +34,11 @@ export default function Watchlist(props: IWatchlistProps) {
         </select> */}
       </div>
       <div>
-        {currentWatchlist.length === 0
-          ? "add ur first card placeholder"
-          : currentWatchlist}
+        {currentWatchlist.length === 0 ? (
+          <WatchlistPlaceholderCard />
+        ) : (
+          currentWatchlist
+        )}
       </div>
     </div>
   );

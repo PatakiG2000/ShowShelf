@@ -1,9 +1,9 @@
 import * as React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteFromWatchlist } from "../../features/watchlist/watchlistSlice";
-import { addToTracklist } from "../../features/tracklist/tracklistSlice";
-import useFormatText from "../../Hooks/useFormatText";
-import RateButton from "../buttons/RateButton";
+import { deleteFromWatchlist } from "../../../features/watchlist/watchlistSlice";
+import { addToTracklist } from "../../../features/tracklist/tracklistSlice";
+import useFormatText from "../../../Hooks/useFormatText";
+import RateButton from "../../buttons/RateButton";
 
 /* export interface IAppProps {} */
 

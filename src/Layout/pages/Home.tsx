@@ -1,9 +1,9 @@
 import * as React from "react";
-import UpcomingCard from "../../Components/Cards/UpcomingCard";
-import UpcomingEpisodeCard from "../../Components/Cards/UpcomingEpisodeCard";
-import RecommendedCard from "../../Components/Cards/RecommendedCard";
+import UpcomingCard from "../../Components/Cards/homepage/UpcomingCard";
+import UpcomingEpisodeCard from "../../Components/Cards/homepage/UpcomingEpisodeCard";
+import RecommendedCard from "../../Components/Cards/homepage/RecommendedCard";
 import NewsFeed from "../NewsFeed";
-import WatchlistRecommendation from "../../Components/Cards/WatchlistRecommendation";
+import WatchlistRecommendation from "../../Components/Cards/homepage/WatchlistRecommendation";
 
 export interface IHomeProps {}
 

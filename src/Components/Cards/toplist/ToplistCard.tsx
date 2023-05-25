@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteFromToplist } from "../../features/toplist/toplistSlice";
+import { deleteFromToplist } from "../../../features/toplist/toplistSlice";
 
 /* export interface IAppProps {} */
 
