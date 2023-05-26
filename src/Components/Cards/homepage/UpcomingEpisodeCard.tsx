@@ -28,14 +28,17 @@ export default function UpcomingEpisodeCard(props: IUpcomingEpisodeCardProps) {
 
   return (
     <div className="upcoming-episode-card">
-      <img
-        src={
-          randomItem.img
-            ? randomItem.img
-            : "https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80"
-        }
-        alt=""
-      />
+      <div className="upcoming-img-container">
+        <img
+          src={
+            randomItem.img
+              ? randomItem.img
+              : "https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80"
+          }
+          alt=""
+        />
+      </div>
+
       <div className="upcoming-episode-card-content">
         <p className="continue-title">
           {randomItem.title && "Continue watching:"}
@@ -45,7 +48,7 @@ export default function UpcomingEpisodeCard(props: IUpcomingEpisodeCardProps) {
         </p>
 
         <p className="continue-episode">
-          {nextEpisode?.name && "Your upcoming episode is"}
+          {nextEpisode?.name && "Your upcoming episode is: "}
           {randomItem?.title
             ? nextEpisode?.name
             : "You finished, you may add it to your toplist now!"}

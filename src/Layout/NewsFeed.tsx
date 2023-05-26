@@ -15,11 +15,11 @@ export default function NewsFeed(props: INewsFeedProps) {
 
   //fetching news to feed
 
-  /*   React.useEffect(() => {
+  React.useEffect(() => {
     fetch(`https://newsapi.org/v2/everything?q=netflix&apiKey=${key}`)
       .then((res) => res.json())
       .then((data) => {
-        const slicedNews = data?.articles.slice(0, 4);
+        const slicedNews = data?.articles.slice(0, 10);
         setNews(slicedNews);
       })
       .catch((err) => {
@@ -31,7 +31,7 @@ export default function NewsFeed(props: INewsFeedProps) {
           },
         ]);
       });
-  }, []); */
+  }, []);
 
   const newsFeedElements = news.map(
     (item: { title: string; urlToImage: string; url: string }) => {

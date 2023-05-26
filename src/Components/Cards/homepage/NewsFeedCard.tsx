@@ -17,7 +17,9 @@ export default function NewsFeedCard(props: INewsFeedCardProps) {
         <p>{props.title}</p>
       </div>
       <img src="/external-link.png" alt="" className="external-icon" />
-      <img src={props.img} alt="" className="news-main-image" />
+      <div className="newsfeed-card-img-container">
+        <img src={props.img} alt="" className="news-main-image" />
+      </div>
     </div>
   );
 }

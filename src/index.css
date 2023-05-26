@@ -77,17 +77,23 @@ html {
   flex-direction: column;
   padding: 2em;
   gap: 2em;
+  max-height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .newsfeed-card {
   margin: 0 auto;
-  max-width: 100%;
-
+  width: 100%;
+  height: 400px;
+  padding: 5.3em;
   color: white;
   position: relative;
   cursor: pointer;
   overflow: hidden;
   border-radius: 10px;
+  box-shadow: rgba(222, 221, 226, 0.15) 0px 5px 20px 0px;
 }
 
 .newsfeed-card-title {
@@ -96,17 +102,24 @@ html {
   left: 0;
   background-color: #000000af;
   width: 100%;
-  z-index: 99;
+  z-index: 3;
   text-align: center;
-  padding: 0.2em;
+}
+
+.newsfeed-card-img-container {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .news-main-image {
+  position: absolute;
   border-radius: 10px;
   width: 100%;
-
-  object-fit: cover;
   height: 100%;
+  object-fit: cover;
+  left: 0;
+  top: 0;
   transition: all 300ms;
 }
 
@@ -134,14 +147,15 @@ html {
   width: 100%;
   color: white;
   align-items: center;
-  justify-content: space-around;
+  gap: 1em;
+  padding: 0.6em;
 }
 
 .main-recommendation {
   color: white;
   background-color: green;
-  background-image: url(https://m.blog.hu/dv/dvdnews/image/oppenheimer_maxresdefault.png);
-  background-size: 100%;
+  background-image: url(https://www.whats-on-netflix.com/wp-content/uploads/2023/03/black-mirror-season-6-everything-we-know-so-far-netflix-jpg.webp);
+  background-size: 102%;
   border-radius: 5px;
   width: 90%;
   padding: 2em;
@@ -155,6 +169,7 @@ html {
   -ms-transition: background-size 0.5s ease-in;
   -o-transition: background-size 0.5s ease-in;
   -webkit-transition: background-size 0.5s ease-in;
+  box-shadow: rgba(222, 221, 226, 0.15) 0px 5px 14px 0px;
 }
 
 .main-recommendation:hover {
@@ -169,6 +184,13 @@ html {
 
 .recommendation-title {
   letter-spacing: 2px;
+}
+
+.upcoming-title {
+  font-size: 2.2em;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.356);
+  text-stroke: 1px rgba(0, 0, 0, 0.185);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 14px 50px 0px inset;
 }
 
 .recommendation-title-container {
@@ -193,6 +215,18 @@ html {
   grid-template-columns: 1fr 1fr;
 
   justify-content: center;
+
+  max-width: 90%;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-height: 40%;
+}
+
+.upcoming-img-container {
+  display: flex;
+  justify-content: center;
+  width: 600px;
 }
 
 .continue-btn,
@@ -204,13 +238,16 @@ html {
   border: none;
   font-size: 1em;
   transition: all 300ms;
+  background-color: #000;
+  color: white;
+  display: inline-block;
 }
 
 .continue-btn:hover,
 .recommend-btn:hover,
 .upcoming-btn:hover {
-  color: white;
-  background-color: #000;
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
 }
 
 .upcoming-episode-card {
@@ -225,7 +262,7 @@ html {
   position: relative;
   object-fit: cover;
   aspect-ratio: 16/9;
-
+  width: 100%;
   height: 100%;
   filter: blur(1px);
   opacity: 70%;
@@ -234,16 +271,17 @@ html {
 
 .upcoming-episode-card-content {
   position: absolute;
-  padding: 2em;
+  padding: 1em;
   max-width: 400px;
+  display: flex;
 }
 
 .continue-title {
-  font-size: 1em;
+  font-size: 2.5em;
 }
 
 .continue-episode {
-  font-size: 1em;
+  font-size: 1.5em;
 }
 
 .recommended-foryou {
@@ -253,7 +291,7 @@ html {
   background-size: 100%;
   border-radius: 5px;
   width: 90%;
-  padding: 2em;
+  padding: 4em;
   display: grid;
   grid-template-columns: 1fr 1fr;
   background-position: center;
@@ -264,6 +302,7 @@ html {
   -ms-transition: background-size 0.5s ease-in;
   -o-transition: background-size 0.5s ease-in;
   -webkit-transition: background-size 0.5s ease-in;
+  box-shadow: rgba(222, 221, 226, 0.15) 0px 5px 20px 0px;
 }
 
 /* SEARCH */
@@ -556,7 +595,7 @@ input[type="range"] {
   color: white;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1500px) {
   .home {
     display: flex;
     flex-direction: column;
@@ -564,6 +603,22 @@ input[type="range"] {
   .home-leftside {
     flex-direction: row;
     border: none;
+    padding-top: 6em;
+    padding-bottom: 6em;
+    height: 100px;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+
+  .newsfeed-card {
+    height: 100px;
+  }
+  .news-main-image {
+    height: 100%;
+    object-fit: cover;
   }
 
   .home-rightside {
@@ -574,24 +629,36 @@ input[type="range"] {
   .continue-watching {
     display: flex;
     flex-direction: column;
+    max-width: 90%;
     justify-content: center;
-    max-height: 40%;
-    width: 100%;
-    gap: 1em;
     align-items: center;
     margin: 0 auto;
+    max-height: 40%;
+    gap: 1em;
   }
   .upcoming-episode-card {
     height: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+  }
 
+  .upcoming-episode-card-content {
+    max-width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .upcoming-img-container {
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
   }
 
   .upcoming-episode-card img {
-    width: 90%;
+    width: 1070px;
   }
 
   .upcoming-episode-card-content {
@@ -599,7 +666,7 @@ input[type="range"] {
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1500px) {
   .upcoming-episode-card img {
     max-width: 80%;
   }
