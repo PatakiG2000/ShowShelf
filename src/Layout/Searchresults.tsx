@@ -1,6 +1,6 @@
 import * as React from "react";
 import SearchCard from "../Components/Cards/SearchCard";
-import useControlledShows from "../Hooks/useControlledShows";
+import useControlledShows from "../hooks/useControlledShows";
 import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Searchresults(props: any) {
@@ -60,7 +60,9 @@ export default function Searchresults(props: any) {
       {renderedCards.length > 0 ? (
         renderedCards
       ) : (
-        <CircularProgress sx={{ zIndex: 99 }} />
+        <div className="spinner-container">
+          <CircularProgress sx={{ zIndex: 99, margin: "0 auto" }} />
+        </div>
       )}
     </div>
   );

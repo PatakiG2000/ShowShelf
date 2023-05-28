@@ -8,7 +8,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { handleSeenEpisode } from "../features/tracklist/tracklistSlice";
-import useFormatText from "../Hooks/useFormatText";
+import useFormatText from "../hooks/useFormatText";
 
 export interface IEpisodeAccordionProps {
   description: string;
@@ -36,7 +36,7 @@ export default function EpisodeAccordion(props: IEpisodeAccordionProps) {
   );
   const seenEpisodes = currentShow.seenEpisodes;
 
-  const text = useFormatText(props.description)
+  const text = useFormatText(props.description);
 
   return (
     <div className="accordion">

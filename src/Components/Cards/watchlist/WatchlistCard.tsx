@@ -2,7 +2,7 @@ import * as React from "react";
 import { useDispatch } from "react-redux";
 import { deleteFromWatchlist } from "../../../features/watchlist/watchlistSlice";
 import { addToTracklist } from "../../../features/tracklist/tracklistSlice";
-import useFormatText from "../../../Hooks/useFormatText";
+import useFormatText from "../../../hooks/useFormatText";
 import RateButton from "../../buttons/RateButton";
 
 /* export interface IAppProps {} */
@@ -45,13 +45,6 @@ export default function WatchlistCard(props: any /* props: IAppProps */) {
           <div className="btn-container">
             <button
               className="btn"
-              aria-label="Decrement value"
-              onClick={() => handleClick(props.id)}
-            >
-              Remove
-            </button>
-            <button
-              className="btn"
               onClick={() => {
                 dispatch(
                   addToTracklist({
@@ -66,6 +59,9 @@ export default function WatchlistCard(props: any /* props: IAppProps */) {
               Start Watching
             </button>
             <RateButton movieData={movieData} />
+            <button className="btn" onClick={() => handleClick(props.id)}>
+              Remove
+            </button>
           </div>
         </div>
       </div>

@@ -2,11 +2,11 @@ import * as React from "react";
 import { useDispatch } from "react-redux";
 import { addToWatchlist } from "../../features/watchlist/watchlistSlice";
 import { addToTracklist } from "../../features/tracklist/tracklistSlice";
-import useFormatText from "../../Hooks/useFormatText";
+import useFormatText from "../../hooks/useFormatText";
 
 export interface ISearchCardProps {
   title: string;
-  year: number;
+  year: string;
   genre: string;
   time: number;
   description: string;

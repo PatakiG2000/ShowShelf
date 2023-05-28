@@ -1,7 +1,7 @@
 import * as React from "react";
-import useControlledShows from "../../../Hooks/useControlledShows";
-import useFormattedEpisodes from "../../../Hooks/useFormattedEpisodes";
-import useTracklistShow from "../../../Hooks/useTracklistShow";
+import useControlledShows from "../../../hooks/useControlledShows";
+import useFormattedEpisodes from "../../../hooks/useFormattedEpisodes";
+import useTracklistShow from "../../../hooks/useTracklistShow";
 import { Link } from "react-router-dom";
 
 export interface IUpcomingEpisodeCardProps {}

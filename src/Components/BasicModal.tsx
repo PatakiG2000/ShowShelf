@@ -17,7 +17,7 @@ const style = {
   boxShadow: 24,
 };
 
-export default function BasicModal(props) {
+export default function BasicModal() {
   const dispatch = useDispatch();
   function handleClose() {
     dispatch(handleModal({ open: false, movieData: {} }));

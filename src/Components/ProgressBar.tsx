@@ -7,8 +7,6 @@ export interface IProgressBarProps {
 }
 
 export default function ProgressBar(props: IProgressBarProps) {
-  //maybe a hookot használni itt?
-
   return (
     <div className="progress-bar">
       <div className="progress-info">

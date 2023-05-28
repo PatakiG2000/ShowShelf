@@ -2,8 +2,8 @@ import * as React from "react";
 
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
-import useControlledShows from "../Hooks/useControlledShows";
-import useAlerts from "../Hooks/useAlerts";
+import useControlledShows from "../hooks/useControlledShows";
+import useAlerts from "../hooks/useAlerts";
 
 export interface IAlertsProps {}
 
@@ -16,8 +16,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 
 export default function Alerts(props: IAlertsProps) {
   //meg kell nézni hogy lesz kiszedve az ami változik
-  const alert = useAlerts()
-
+  const alert = useAlerts();
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
@@ -26,9 +25,7 @@ export default function Alerts(props: IAlertsProps) {
     if (reason === "clickaway") {
       return;
     }
-
   };
-
 
   return (
     <Snackbar open={alert} autoHideDuration={0} onClose={handleClose}>

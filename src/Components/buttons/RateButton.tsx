@@ -5,7 +5,7 @@ export interface IRateButtonProps {
   movieData: {
     title: string;
     id: number;
-    year: number;
+    year: string;
     genre: string;
     time: number;
     img: string;

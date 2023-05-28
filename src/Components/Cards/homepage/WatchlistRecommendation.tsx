@@ -12,7 +12,7 @@ export default function WatchlistRecommendation(
   const randomItem = watchlist[Math.floor(Math.random() * watchlist.length)]
     ? watchlist[Math.floor(Math.random() * watchlist.length)]
     : {
-        title: "asd",
+        title: "Add your first item",
       };
 
   return (

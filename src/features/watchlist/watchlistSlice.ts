@@ -7,22 +7,12 @@ export interface WatchlistState {
 
 const persistedState: any = localStorage.getItem("reduxState")
   ? JSON.parse(localStorage.getItem("reduxState"))
-  : {
-      title: "asd",
-      year: 2013,
-      genre: "horror",
-      time: "4h12m",
-      description: "lorem asd asa ds asdklas  adsjiosd aias jd aos daisd ",
-      imdbLink: "tt564656",
-      img: "https://images.unsplash.com/photo-1681696559487-264354658add?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-      id: 123,
-      date: 123,
-    };
+  : {};
 
 const initialState: WatchlistState = {
   value: persistedState.watchlistHandler?.value
     ? persistedState.watchlistHandler?.value
-    : ["ASD"],
+    : [],
 };
 
 export const watchlistSlice = createSlice({

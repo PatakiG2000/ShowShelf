@@ -4,9 +4,9 @@ import { useDispatch } from "react-redux";
 import { deleteFromTracklist } from "../../../features/tracklist/tracklistSlice";
 import RateButton from "../../buttons/RateButton";
 
-import useFormattedEpisodes from "../../../Hooks/useFormattedEpisodes";
+import useFormattedEpisodes from "../../../hooks/useFormattedEpisodes";
 import ProgressBar from "../../ProgressBar";
-import useTracklistShow from "../../../Hooks/useTracklistShow";
+import useTracklistShow from "../../../hooks/useTracklistShow";
 
 export interface ITracklistCardProps {
   title: string;
