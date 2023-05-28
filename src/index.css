@@ -68,7 +68,7 @@ html {
 .home {
   display: grid;
   grid-template-columns: 1fr 4fr;
-  height: 100vh;
+  max-height: 100vh;
 }
 
 .home-leftside {
@@ -77,10 +77,42 @@ html {
   flex-direction: column;
   padding: 2em;
   gap: 2em;
-  max-height: 100vh;
+  max-height: 94vh;
   overflow-y: scroll;
   overflow-x: hidden;
   width: 100%;
+}
+
+/* Chrome, Safari */
+.home-leftside::-webkit-scrollbar {
+  width: 8px;
+}
+
+.home-leftside::-webkit-scrollbar-track {
+  background-color: #222;
+}
+
+.home-leftside::-webkit-scrollbar-thumb {
+  background-color: #888;
+}
+
+/* Firefox */
+.home-leftside {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #222;
+}
+
+/* Edge,Internet Explorer */
+.home-leftside::-ms-scrollbar {
+  width: 8px;
+}
+
+.home-leftside::-ms-scrollbar-track {
+  background-color: #222;
+}
+
+.home-leftside::-ms-scrollbar-thumb {
+  background-color: #888;
 }
 
 .newsfeed-card {
@@ -136,14 +168,14 @@ html {
   width: 15px;
   right: 15px;
   top: 15px;
-  z-index: 99;
+  z-index: 2;
   filter: invert(100%);
 }
 
 .home-rightside {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  max-height: 90vh;
   width: 100%;
   color: white;
   align-items: center;
@@ -229,6 +261,11 @@ html {
   width: 600px;
 }
 
+.recommend-btn-container {
+  display: flex;
+  gap: 1em;
+}
+
 .continue-btn,
 .recommend-btn,
 .upcoming-btn {
@@ -241,6 +278,7 @@ html {
   background-color: #000;
   color: white;
   display: inline-block;
+  text-align: center;
 }
 
 .continue-btn:hover,
@@ -265,19 +303,22 @@ html {
   width: 100%;
   height: 100%;
   filter: blur(1px);
-  opacity: 70%;
+  opacity: 50%;
   border-radius: 10px;
 }
 
 .upcoming-episode-card-content {
   position: absolute;
-  padding: 1em;
+  padding: 0.2em;
   max-width: 400px;
   display: flex;
+  flex-direction: column;
 }
 
 .continue-title {
-  font-size: 2.5em;
+  font-size: 2em;
+  padding: 0;
+  margin: 0;
 }
 
 .continue-episode {
@@ -287,14 +328,14 @@ html {
 .recommended-foryou {
   color: white;
   background-color: green;
-  background-image: url(https://m.blog.hu/dv/dvdnews/image/oppenheimer_maxresdefault.png);
+  background-image: url(https://occ-0-1722-1567.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZVqj8OEDSEEmdFxb3DR-yz-dZBDb172MAwsxY0RRtM9eH4USBA-StcCyWmToRq7spDo2egjo5BYgMs2cbAnSSwfXw8eNEynURoF.jpg?r=dbe);
   background-size: 100%;
   border-radius: 5px;
   width: 90%;
   padding: 4em;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background-position: center;
+  background-position: top;
   margin-bottom: 1em;
 
   transition: background-size 0.5s ease-in;
@@ -368,7 +409,7 @@ html {
 .card {
   color: #fff;
   max-width: 60%;
-  max-height: 300px;
+  max-height: 295px;
   margin: 0 auto;
   margin-bottom: 1em;
 
@@ -416,11 +457,9 @@ html {
 
 .card_cat {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
+
   display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -581,7 +620,7 @@ input[type="range"] {
 .watchlist {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -645,7 +684,7 @@ input[type="range"] {
   }
 
   .upcoming-episode-card-content {
-    max-width: 90%;
+    max-width: 70%;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -672,14 +711,49 @@ input[type="range"] {
   }
 }
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 1200px) {
+  .card {
+    max-width: 60%;
+  }
+
+  .card_left {
+    max-width: 80%;
+  }
+
+  .card_datails {
+    padding: 10px;
+  }
+
   .card_datails h1 {
-    font-size: 15px;
+    font-size: 25px;
   }
 
   .btn {
-    font-size: 14px;
+    font-size: 12px;
   }
+
+  .PG,
+  .genre {
+    font-size: 12px;
+    padding: 4px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .card {
+    max-width: 90%;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .card_right {
+    height: 300px;
+  }
+
+  .card_datails {
+    padding: 40px;
+  }
+
   .disc {
     font-size: 12px;
   }
@@ -692,13 +766,40 @@ input[type="range"] {
   .year,
   .genre,
   .time {
-    font-size: 10px;
+    font-size: 12px;
+    padding: 2px;
   }
 
   .burger {
     display: block;
     padding: 1em;
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .card_right img {
+    max-height: 250px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .card_right {
+    height: 300px;
+  }
+  .card_right img {
+    max-height: 100%;
+    overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .continue-title {
+    font-size: 1.4em;
+  }
+
+  .continue-episode {
+    font-size: 1em;
   }
 }
 

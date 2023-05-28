@@ -42,6 +42,7 @@ export default function UpcomingEpisodeCard(props: IUpcomingEpisodeCardProps) {
       <div className="upcoming-episode-card-content">
         <p className="continue-title">
           {randomItem.title && "Continue watching:"}
+          <br />
           {randomItem.title
             ? randomItem.title
             : "There is no item on your tracklist! Add one now"}
@@ -49,6 +50,7 @@ export default function UpcomingEpisodeCard(props: IUpcomingEpisodeCardProps) {
 
         <p className="continue-episode">
           {nextEpisode?.name && "Your upcoming episode is: "}
+          <br></br>
           {randomItem?.title
             ? nextEpisode?.name
             : "You finished, you may add it to your toplist now!"}
