@@ -327,13 +327,13 @@ html {
 }
 
 .continue-title {
-  font-size: 2em;
+  font-size: 1.6em;
   padding: 0;
   margin: 0;
 }
 
 .continue-episode {
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 .recommended-foryou {
@@ -357,6 +357,16 @@ html {
   box-shadow: rgba(222, 221, 226, 0.15) 0px 5px 20px 0px;
 }
 
+.recommended-foryou:hover {
+  background-size: 110%;
+  cursor: pointer;
+}
+
+.recommended-foryou:active {
+  background-size: 100%;
+  cursor: pointer;
+}
+
 .tracklist {
   padding: 1em;
 }
@@ -364,7 +374,7 @@ html {
 /* SEARCH */
 
 .searchbar {
-  margin-left: 2em;
+  margin-left: 60px;
   line-height: 1.6;
   max-width: 350px;
   height: 30px;
@@ -801,18 +811,32 @@ input[type="range"] {
 }
 
 @media screen and (max-width: 660px) {
-  .card_right img {
-    max-height: 250px;
+  .card_left {
+    padding: 0;
   }
-}
+  .btn-container button {
+    font-size: 0.6em;
+    margin-left: 4px;
+  }
 
-@media screen and (max-width: 550px) {
-  .card_right {
-    height: 300px;
+  .card_datails {
+    width: 110%;
   }
-  .card_right img {
-    max-height: 100%;
-    overflow: hidden;
+
+  .card_datails h1 {
+    font-size: 1.2em;
+  }
+
+  .img_container {
+    width: 160px;
+    height: 100%;
+  }
+
+  .img_container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-left: 0;
   }
 }
 
@@ -829,6 +853,36 @@ input[type="range"] {
 
   .continue-episode {
     font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .continue-title {
+    font-size: 1.2em;
+  }
+
+  .continue-episode {
+    font-size: 0.9em;
+  }
+
+  .recommendation-title {
+    font-size: 1.4em;
+  }
+
+  .logo {
+    margin-left: 9px;
+  }
+  .upcoming-title {
+    font-size: 1.8em;
+  }
+
+  .searchbar {
+    width: 160px;
+    margin: 0 auto;
+  }
+
+  .tracklist-head h1 {
+    font-size: 1.2em;
   }
 }
 

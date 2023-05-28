@@ -17,13 +17,13 @@ export default function ProgressBar(props: IProgressBarProps) {
       </div>
 
       <LinearProgress
-        color={"primary"}
+        color={"secondary"}
         variant="determinate"
         value={props.progress}
         sx={{
           height: "10px",
-          backgroundColor: "red",
-          borderRadius: 0,
+          backgroundColor: "grey",
+          borderRadius: "4px",
           width: "100%",
           margin: "0 auto",
         }}
