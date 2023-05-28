@@ -7,12 +7,14 @@ export default function UpcomingCard(props: IUpcomingCardProps) {
     <div className="main-recommendation">
       <div className="recommendation-available-container">
         <h1 className="upcoming-title">Upcoming show on Netflix</h1>
-        <p>Arrives in June</p>
+
         <button className="upcoming-btn">Read more</button>
       </div>
+
       <div className="recommendation-title-container">
         <h1 className="recommendation-title">Black mirror season 6</h1>
       </div>
+      <p className="arrives">Arrives in June</p>
     </div>
   );
 }

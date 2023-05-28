@@ -25,7 +25,7 @@ export default function Toplist(props: IToplistProps) {
   });
 
   return (
-    <div>
+    <div className="toplist">
       {" "}
       {currentToplist.length === 0 ? (
         <ToplistPlaceholderCard />

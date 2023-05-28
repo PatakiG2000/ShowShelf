@@ -1,16 +1,6 @@
 import ProgressBar from "../../ProgressBar";
 
-export interface ITracklistCardProps {
-  title: string;
-  id: number;
-  year: number;
-  genre: string;
-  time: number;
-  img: string;
-  date: number;
-}
-
-export default function TracklistPlaceholderCard(props: ITracklistCardProps) {
+export default function TracklistPlaceholderCard() {
   return (
     <>
       <div className="tracklist-card">

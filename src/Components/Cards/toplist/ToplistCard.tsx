@@ -13,10 +13,9 @@ export default function ToplistCard(props: any /* props: IAppProps */) {
         <div className="card_datails">
           <h1>{props.title} </h1>
           <div className="card_cat">
-            <p className="PG">PG-15</p>
             <p className="year">{props.year} </p>
             <p className="genre"> {props.genre} </p>
-            <p className="time">{props.time} </p>
+            <p className="time">Your overall rating: {props.time}%</p>
           </div>
           <p className="disc">{props.formData?.experience}</p>
           <a

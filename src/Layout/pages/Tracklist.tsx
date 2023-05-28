@@ -25,8 +25,7 @@ export default function Tracklist(props: ITracklistProps) {
   });
 
   return (
-    <div>
-      <h1>This is Tracklist:</h1>
+    <div className="tracklist">
       {currentTracklist.length === 0 ? (
         <TracklistPlaceholderCard />
       ) : (

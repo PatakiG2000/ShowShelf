@@ -55,9 +55,11 @@ export default function TracklistCard(props: ITracklistCardProps) {
         <div className="tracklist-head">
           <h1>{props.title}</h1>
           <div>
-            customba removeolja
             <RateButton movieData={movieData} />
-            <button onClick={() => dispatch(deleteFromTracklist(props.id))}>
+            <button
+              onClick={() => dispatch(deleteFromTracklist(props.id))}
+              className="btn"
+            >
               Remove
             </button>
           </div>
