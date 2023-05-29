@@ -2,7 +2,6 @@ import * as React from "react";
 
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
-import useControlledShows from "../hooks/useControlledShows";
 import useAlerts from "../hooks/useAlerts";
 
 export interface IAlertsProps {}
@@ -14,8 +13,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export default function Alerts(props: IAlertsProps) {
-  //meg kell nézni hogy lesz kiszedve az ami változik
+export default function Alerts() {
   const alert = useAlerts();
 
   const handleClose = (
@@ -30,7 +28,6 @@ export default function Alerts(props: IAlertsProps) {
   return (
     <Snackbar open={alert} autoHideDuration={0} onClose={handleClose}>
       <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-        {/*  {`Succesfully added to your ${where}!`} */}
         {alert}
       </Alert>
     </Snackbar>

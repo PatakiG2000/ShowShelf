@@ -7,15 +7,14 @@ export interface IRateButtonProps {
     id: number;
     year: string;
     genre: string;
-    time: number;
+    time: string;
     img: string;
     date: number;
   };
 }
 
-export default function RateButton(props: IRateButtonProps) {
+export default function RateButton({ movieData }: IRateButtonProps) {
   const dispatch = useDispatch();
-  const movieData = props.movieData;
 
   function handleOpen() {
     dispatch(

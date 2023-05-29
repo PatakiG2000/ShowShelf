@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export interface IUpcomingCardProps {}
 
-export default function UpcomingCard(props: IUpcomingCardProps) {
+export default function UpcomingCard() {
   return (
     <div className="main-recommendation">
       <div className="recommendation-available-container">

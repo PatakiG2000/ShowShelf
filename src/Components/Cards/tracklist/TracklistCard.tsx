@@ -3,7 +3,6 @@ import SeasonAccordion from "../../SeasonAccordion";
 import { useDispatch } from "react-redux";
 import { deleteFromTracklist } from "../../../features/tracklist/tracklistSlice";
 import RateButton from "../../buttons/RateButton";
-
 import useFormattedEpisodes from "../../../hooks/useFormattedEpisodes";
 import ProgressBar from "../../ProgressBar";
 import useTracklistShow from "../../../hooks/useTracklistShow";
@@ -18,22 +17,30 @@ export interface ITracklistCardProps {
   date: number;
 }
 
-export default function TracklistCard(props: ITracklistCardProps) {
+export default function TracklistCard({
+  title,
+  id,
+  year,
+  genre,
+  time,
+  img,
+  date,
+}: ITracklistCardProps) {
   const movieData = {
-    title: props.title,
-    id: props.id,
-    year: props.year,
-    genre: props.genre,
-    time: props.time,
-    img: props.img,
-    date: props.date,
+    title,
+    id,
+    year,
+    genre,
+    time,
+    img,
+    date,
   };
 
   const dispatch = useDispatch();
   const [seriesInfos, loading, error, overallEpisodeNumber, episodes] =
-    useFormattedEpisodes(props.title);
+    useFormattedEpisodes(title);
   const [currentShow, seenEpisodes, seenSeasons, nextEpisode] =
-    useTracklistShow(props.title, episodes);
+    useTracklistShow(title, episodes);
 
   const progress = seenEpisodes.length / overallEpisodeNumber;
   const seasons = Object.keys(seriesInfos);
@@ -43,8 +50,8 @@ export default function TracklistCard(props: ITracklistCardProps) {
       <SeasonAccordion
         season={season}
         episodes={seriesInfos[season]}
-        key={props.id}
-        showTitle={props.title}
+        key={id}
+        showTitle={title}
       ></SeasonAccordion>
     );
   });
@@ -53,11 +60,11 @@ export default function TracklistCard(props: ITracklistCardProps) {
     <>
       <div className="tracklist-card">
         <div className="tracklist-head">
-          <h1>{props.title}</h1>
+          <h1>{title}</h1>
           <div>
             <RateButton movieData={movieData} />
             <button
-              onClick={() => dispatch(deleteFromTracklist(props.id))}
+              onClick={() => dispatch(deleteFromTracklist(id))}
               className="btn"
             >
               Remove

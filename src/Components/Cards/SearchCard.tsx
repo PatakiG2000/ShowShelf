@@ -8,7 +8,7 @@ export interface ISearchCardProps {
   title: string;
   year: string;
   genre: string;
-  time: number;
+  time: string;
   description: string;
   imdbLink: string;
   img: string;
@@ -17,25 +17,31 @@ export interface ISearchCardProps {
 
 import RateButton from "../buttons/RateButton";
 
-export default function SearchCard(props: ISearchCardProps) {
+export default function SearchCard({
+  title,
+  year,
+  genre,
+  time,
+  description,
+  imdbLink,
+  img,
+  id,
+}: ISearchCardProps) {
   const dispatch = useDispatch();
-  const id = props.id;
 
   const date = new Date();
   const timestamp = date.getTime();
   const movieData = {
-    title: props.title,
-    year: props.year,
-    genre: props.genre,
-    time: props.time,
-    description: props.description,
-    imdbLink: props.imdbLink,
-    img: props.img,
+    title,
+    year,
+    genre,
+    description,
+    imdbLink,
+    img,
     id,
+    time,
     date: timestamp,
   };
-
-  const { title, year, genre, time, description, imdbLink, img } = movieData;
 
   const text = useFormatText(description);
 
@@ -82,7 +88,7 @@ export default function SearchCard(props: ISearchCardProps) {
       </div>
       <div className="card_right">
         <div className="img_container">
-          <img src={props.img} alt="" />
+          <img src={img} alt="" />
         </div>
       </div>
     </div>

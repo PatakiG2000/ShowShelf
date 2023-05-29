@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export interface IRecommendedCardProps {}
 
-export default function RecommendedCard(props: IRecommendedCardProps) {
+export default function RecommendedCard() {
   return (
     <div className="recommended-foryou">
       <div className="recommendation-available-container"></div>

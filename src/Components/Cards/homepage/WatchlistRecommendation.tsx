@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 
 export interface IWatchlistRecommendationProps {}
 
-export default function WatchlistRecommendation(
-  props: IWatchlistRecommendationProps
-) {
+export default function WatchlistRecommendation() {
   const watchlist = useSelector((state: any) => state.watchlistHandler.value);
 
   const randomItem = watchlist[Math.floor(Math.random() * watchlist.length)]

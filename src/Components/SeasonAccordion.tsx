@@ -48,7 +48,7 @@ export default function SeasonAccordion(props: ISeasonAccordionProps) {
           season: season,
         })
       );
-      console.log("yo");
+     
     } else if (!allEpisodesSeen && isSeasonSeen) {
       dispatch(
         handleSeenSeason({

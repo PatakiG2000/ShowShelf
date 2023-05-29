@@ -5,19 +5,39 @@ import { addToTracklist } from "../../../features/tracklist/tracklistSlice";
 import useFormatText from "../../../hooks/useFormatText";
 import RateButton from "../../buttons/RateButton";
 
-/* export interface IAppProps {} */
+export interface IAppProps {
+  title: string;
+  id: number;
+  year: string;
+  genre: string;
+  time: number;
+  img: string;
+  date: number;
+  description: string;
+  imdbLink: string;
+}
 
-export default function WatchlistCard(props: any /* props: IAppProps */) {
+export default function WatchlistCard({
+  title,
+  id,
+  year,
+  genre,
+  time,
+  img,
+  date,
+  description,
+  imdbLink,
+}: IAppProps) {
   const dispatch = useDispatch();
-  const text = useFormatText(props.description);
+  const text = useFormatText(description);
   const movieData = {
-    title: props.title,
-    id: props.id,
-    year: props.year,
-    genre: props.genre,
-    time: props.time,
-    img: props.img,
-    date: props.date,
+    title,
+    id,
+    year,
+    genre,
+    time,
+    img,
+    date,
   };
 
   function handleClick(id: number): void {
@@ -28,18 +48,15 @@ export default function WatchlistCard(props: any /* props: IAppProps */) {
     <div className="card">
       <div className="card_left">
         <div className="card_datails">
-          <h1>{props.title} </h1>
+          <h1>{title} </h1>
           <div className="card_cat">
             <p className="PG">PG-15</p>
-            <p className="year">{props.year} </p>
-            <p className="genre"> {props.genre} </p>
-            <p className="time">{props.time} </p>
+            <p className="year">{year} </p>
+            <p className="genre"> {genre} </p>
+            <p className="time">{time} </p>
           </div>
           <p className="disc">{text}</p>
-          <a
-            href={`https://www.imdb.com/title/${props.imdbLink}/`}
-            target="_blank"
-          >
+          <a href={`https://www.imdb.com/title/${imdbLink}/`} target="_blank">
             Read More
           </a>
           <div className="btn-container">
@@ -53,13 +70,13 @@ export default function WatchlistCard(props: any /* props: IAppProps */) {
                     seenSeason: [],
                   })
                 );
-                dispatch(deleteFromWatchlist(props.id));
+                dispatch(deleteFromWatchlist(id));
               }}
             >
               Start Watching
             </button>
             <RateButton movieData={movieData} />
-            <button className="btn" onClick={() => handleClick(props.id)}>
+            <button className="btn" onClick={() => handleClick(id)}>
               Remove
             </button>
           </div>
@@ -67,7 +84,7 @@ export default function WatchlistCard(props: any /* props: IAppProps */) {
       </div>
       <div className="card_right">
         <div className="img_container">
-          <img src={props.img} alt="" />
+          <img src={img} alt="" />
         </div>
       </div>
     </div>

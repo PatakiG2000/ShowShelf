@@ -1,7 +1,5 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useSelector, useDispatch } from "react-redux";
 import { handleModal } from "../features/toplist/modalHandler";
@@ -13,14 +11,13 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: "70%",
-
   boxShadow: 24,
 };
 
 export default function BasicModal() {
   const dispatch = useDispatch();
   function handleClose() {
-    dispatch(handleModal({ open: false, movieData: {} }));
+    dispatch(handleModal({ open: false, movieData: { id: 0 } }));
   }
   const open = useSelector(
     (state: { value: any }) => state?.modalHandler?.value.isOpen

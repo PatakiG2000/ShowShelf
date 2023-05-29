@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export interface IUpcomingEpisodeCardProps {}
 
-export default function UpcomingEpisodeCard(props: IUpcomingEpisodeCardProps) {
+export default function UpcomingEpisodeCard() {
   const [tracklistItems, watchlist, toplist, allShows, where] =
     useControlledShows(0);
 
