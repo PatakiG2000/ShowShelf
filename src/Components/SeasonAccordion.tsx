@@ -19,11 +19,13 @@ export interface ISeasonAccordionProps {
   showTitle: string;
 }
 
-export default function SeasonAccordion(props: ISeasonAccordionProps) {
-  const episodes = props.episodes;
+export default function SeasonAccordion({
+  episodes,
+  showTitle,
+  season,
+}: ISeasonAccordionProps) {
   const dispatch = useDispatch();
-  const showTitle = props.showTitle;
-  const season = `${showTitle}${props.season}`;
+  const seasonName = `${showTitle} ${season}`;
 
   const tracklistItems = useSelector(
     (state: any) => state.tracklistHandler?.value?.tracklistItems
@@ -34,7 +36,7 @@ export default function SeasonAccordion(props: ISeasonAccordionProps) {
   );
 
   const seenSeasons = currentShow.seenSeason;
-  const isSeasonSeen = seenSeasons.includes(season);
+  const isSeasonSeen = seenSeasons.includes(seasonName);
 
   const allEpisodesSeen = episodes.every((episode: { id: number }) =>
     currentShow.seenEpisodes.includes(episode.id)
@@ -45,15 +47,14 @@ export default function SeasonAccordion(props: ISeasonAccordionProps) {
       dispatch(
         handleSeenSeason({
           showTitle: showTitle,
-          season: season,
+          season: seasonName,
         })
       );
-     
     } else if (!allEpisodesSeen && isSeasonSeen) {
       dispatch(
         handleSeenSeason({
           showTitle: showTitle,
-          season: season,
+          season: seasonName,
         })
       );
     }
@@ -68,9 +69,9 @@ export default function SeasonAccordion(props: ISeasonAccordionProps) {
         seen={episode.seen}
         episodeId={episode.id}
         key={episode.id}
-        showTitle={props.showTitle}
+        showTitle={showTitle}
         seasonSeen={isSeasonSeen}
-        season={season}
+        season={seasonName}
       />
     );
   });
@@ -106,12 +107,12 @@ export default function SeasonAccordion(props: ISeasonAccordionProps) {
               dispatch(
                 handleSeenSeason({
                   showTitle: showTitle,
-                  season: season,
+                  season: seasonName,
                 })
               );
             }}
           />
-          <Typography>{props.season} </Typography>
+          <Typography>{season} </Typography>
         </AccordionSummary>
         <AccordionDetails>{renderedEpisodeAccordions}</AccordionDetails>
       </Accordion>

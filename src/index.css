@@ -650,6 +650,11 @@ input[type="range"] {
 .toplist {
   padding: 1em;
 }
+
+.toplist-experience {
+  word-break: break-all;
+}
+
 /* //WATCHLIST */
 .watchlist {
   display: flex;

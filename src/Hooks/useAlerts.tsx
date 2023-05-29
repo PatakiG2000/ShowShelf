@@ -18,7 +18,6 @@ const useAlerts = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulating an asynchronous operation
     setTimeout(() => {
       setIsLoading(false);
     }, 600);
@@ -43,6 +42,26 @@ const useAlerts = () => {
       }
     }
   }, [tracklistItems]);
+
+  useEffect(() => {
+    if (!isLoading) {
+      if (toplist.length > toplistLength) {
+        setAlert("Successfully added to your toplist");
+        setToplistLength(toplist.length);
+        setTimeout(() => {
+          setAlert(null);
+        }, 1300);
+      }
+
+      if (toplist.length < toplistLength) {
+        setAlert("Successfully removed from your toplist");
+        setToplistLength(toplist.length);
+        setTimeout(() => {
+          setAlert(null);
+        }, 1300);
+      }
+    }
+  }, [toplist]);
 
   useEffect(() => {
     if (!isLoading) {

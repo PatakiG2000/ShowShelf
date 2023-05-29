@@ -21,11 +21,14 @@ export interface IEpisodeAccordionProps {
   season: string;
 }
 
-export default function EpisodeAccordion(props: IEpisodeAccordionProps) {
-  const [episodeSeen, setEpisodeSeen] = useState(props.seen);
+export default function EpisodeAccordion({
+  seen,
+  episodeId,
+  showTitle,
+  description,
+  episodeTitle,
+}: IEpisodeAccordionProps) {
   const dispatch = useDispatch();
-  const episodeId = props.episodeId;
-  const showTitle = props.showTitle;
 
   const tracklistItems = useSelector(
     (state: any) => state.tracklistHandler?.value?.tracklistItems
@@ -36,7 +39,7 @@ export default function EpisodeAccordion(props: IEpisodeAccordionProps) {
   );
   const seenEpisodes = currentShow.seenEpisodes;
 
-  const text = useFormatText(props.description);
+  const text = useFormatText(description);
 
   return (
     <div className="accordion">
@@ -56,7 +59,7 @@ export default function EpisodeAccordion(props: IEpisodeAccordionProps) {
             }}
             checked={seenEpisodes.includes(episodeId)}
           />
-          <Typography>{props.episodeTitle} </Typography>
+          <Typography>{episodeTitle} </Typography>
         </AccordionSummary>
         <AccordionDetails>{text}</AccordionDetails>
       </Accordion>

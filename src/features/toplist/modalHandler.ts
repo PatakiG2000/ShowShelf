@@ -23,11 +23,9 @@ export const toplistModalSlice = createSlice({
         movieData: { id: number };
       }>
     ) => {
-     
       state.value.isOpen = action.payload.open;
       state.value.movieData = action.payload.movieData;
     },
-  
   },
 });
 

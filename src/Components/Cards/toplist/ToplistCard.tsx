@@ -1,13 +1,19 @@
+import * as React from "react";
 import { useDispatch } from "react-redux";
 import { deleteFromToplist } from "../../../features/toplist/toplistSlice";
 
-export interface IAppProps {
+export interface IToplistProps {
   title: string;
+  description: string;
   year: number;
   genre: string;
   time: string;
   formData: {
     experience: string;
+    story: string;
+    acting: string;
+    music: string;
+    ending: string;
   };
   imdbLink: string;
   id: number;
@@ -23,23 +29,26 @@ export default function ToplistCard({
   imdbLink,
   id,
   img,
-}: IAppProps) {
+}: IToplistProps) {
   const dispatch = useDispatch();
-
+  const { music, story, ending, acting, experience } = formData;
+  const overallScore = Math.floor(
+    (parseInt(music) + parseInt(story) + parseInt(ending) + parseInt(acting)) /
+      5
+  );
   return (
     <div className="card">
       <div className="card_left">
         <div className="card_datails">
           <h1>{title} </h1>
-          <div className="card_cat">
-            <p className="year">{year} </p>
-            <p className="genre"> {genre} </p>
-            <p className="time">Your overall rating: {time}%</p>
-          </div>
-          <p className="disc">{formData?.experience}</p>
+          <div className="card_cat"></div>
+
+          <p className="disc toplist-experience">{experience}</p>
+
           <a href={`https://www.imdb.com/title/${imdbLink}/`} target="_blank">
             Read More
           </a>
+
           <div className="btn-container">
             <button
               className="btn"
@@ -51,6 +60,14 @@ export default function ToplistCard({
           </div>
         </div>
       </div>
+      <div>
+        <p className="time">Your overall rating: {overallScore}%</p>
+        <p className="year">Music: {music} %</p>
+        <p className="genre"> Story: {story} %</p>
+        <p className="genre">Acting: {acting} %</p>
+        <p className="genre">Ending: {ending} %</p>
+      </div>
+
       <div className="card_right">
         <div className="img_container">
           <img src={img} alt={`Poster of ${title}`} />

@@ -1,11 +1,11 @@
 import * as React from "react";
 import ToplistCard from "../../Components/Cards/toplist/ToplistCard";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import ToplistPlaceholderCard from "../../Components/Cards/toplist/ToplistPlaceholderCard";
 
 export interface IToplistProps {}
 
-export default function Toplist(props: IToplistProps) {
+export default function Toplist() {
   const toplist = useSelector((state: any) => state.toplistHandler?.value);
 
   const currentToplist = toplist.map((show: any) => {

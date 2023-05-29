@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import WatchlistCard from "../../Components/Cards/watchlist/WatchlistCard";
 import WatchlistPlaceholderCard from "../../Components/Cards/watchlist/WatchlistPlaceholderCard";
@@ -26,12 +26,7 @@ export default function Watchlist(props: IWatchlistProps) {
 
   return (
     <div className="watchlist">
-      <div className="watchlist-nav">
-        {/*  <select name="" id="">
-          <option value="New">Recently Added</option>
-          <option value="Old">Oldest</option>
-        </select> */}
-      </div>
+      <div className="watchlist-nav"></div>
       <div>
         {currentWatchlist.length === 0 ? (
           <WatchlistPlaceholderCard />

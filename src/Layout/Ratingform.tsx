@@ -1,5 +1,5 @@
 import * as React from "react";
-import {  useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addToToplist } from "../features/toplist/toplistSlice";
 import { handleModal } from "../features/toplist/modalHandler";
 import { deleteFromWatchlist } from "../features/watchlist/watchlistSlice";
@@ -69,6 +69,7 @@ export default function Ratingform(props: IRatingFormProps) {
             id="experience"
             cols={15}
             rows={5}
+            maxLength={300}
           ></textarea>
           <button
             className="rate-btn"

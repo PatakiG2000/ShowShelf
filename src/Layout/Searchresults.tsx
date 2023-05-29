@@ -13,7 +13,7 @@ export default function Searchresults(props: any) {
         name: string;
         image: { medium: string };
         summary: string;
-        averageRuntime: number;
+        averageRuntime: string;
         genres: [];
         ended: string;
         externals: {

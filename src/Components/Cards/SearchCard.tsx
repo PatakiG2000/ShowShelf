@@ -51,7 +51,6 @@ export default function SearchCard({
         <div className="card_datails">
           <h1>{title} </h1>
           <div className="card_cat">
-            <p className="PG">PG-15</p>
             <p className="year">{year} </p>
             <p className="genre"> {genre} </p>
             <p className="time">{time} </p>
