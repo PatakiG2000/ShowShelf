@@ -55,7 +55,12 @@ export const tracklistSlice = createSlice({
         }
       });
       if (!alreadyOnList) {
-        state.value.tracklistItems.push(action.payload);
+        if (state.value.tracklistItems.length === 5) {
+          alert("You can only have the maximum of 5 items on your tracklist");
+          return;
+        } else {
+          state.value.tracklistItems.push(action.payload);
+        }
       } else {
         alert("This item is already on your watchlist");
       }
