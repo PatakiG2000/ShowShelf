@@ -20,7 +20,19 @@ export const toplistSlice = createSlice({
   name: "toplist",
   initialState,
   reducers: {
-    addToToplist: (state, action: PayloadAction<{ id: string | number }>) => {
+    addToToplist: (
+      state,
+      action: PayloadAction<{
+        id: number;
+        title: string;
+        year: number;
+        genre: string;
+        time: number;
+        img: string;
+        formData: any;
+        key: string;
+      }>
+    ) => {
       let alreadyOnList = false;
       state.value.forEach((show: any) => {
         if (show.id === action.payload.id) {

@@ -17,7 +17,10 @@ export default function WatchlistPlaceholderCard() {
       </div>
       <div className="card_right">
         <div className="img_container">
-          <img src="+" alt="" />
+          <img
+            src="./placeholderimage.webp"
+            alt=""
+          />
         </div>
       </div>
     </div>

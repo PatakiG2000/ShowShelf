@@ -8,21 +8,35 @@ export interface IToplistProps {}
 export default function Toplist() {
   const toplist = useSelector((state: any) => state.toplistHandler?.value);
 
-  const currentToplist = toplist.map((show: any) => {
-    return (
-      <ToplistCard
-        title={show.title}
-        id={show.id}
-        img={show.img}
-        year={show.year}
-        genre={show.genre}
-        description={show.description}
-        time={show.time}
-        imdbLink={show.imdbLink}
-        formData={show.formData}
-      />
-    );
-  });
+  const currentToplist = toplist.map(
+    ({
+      title,
+      id,
+      img,
+      year,
+      genre,
+      description,
+      time,
+      imdbLink,
+      formData,
+      key,
+    }: any) => {
+      return (
+        <ToplistCard
+          title={title}
+          id={id}
+          img={img}
+          year={year}
+          genre={genre}
+          description={description}
+          time={time}
+          imdbLink={imdbLink}
+          formData={formData}
+          key={key}
+        />
+      );
+    }
+  );
 
   return (
     <div className="toplist">

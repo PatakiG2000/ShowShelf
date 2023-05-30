@@ -1,17 +1,15 @@
 import React from "react";
 import NewsFeedCard from "../Components/Cards/homepage/NewsFeedCard";
+import { useState } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
+import { v4 as uuidv4 } from "uuid";
 
 export interface INewsFeedProps {}
 
 export default function NewsFeed(props: INewsFeedProps) {
   const key = import.meta.env.VITE_NEWS_API_KEY;
-  const [news, setNews] = React.useState([
-    {
-      title: "failed to fetch news",
-      urlToImage: "idevmibasichibakep",
-      url: "homepageurl",
-    },
-  ]);
+
+  const [newsfeedElements, setNewsfeedElements] = useState<any>();
 
   //fetching news to feed
 
@@ -20,10 +18,23 @@ export default function NewsFeed(props: INewsFeedProps) {
       .then((res) => res.json())
       .then((data) => {
         const slicedNews = data?.articles.slice(0, 10);
-        setNews(slicedNews);
+
+        const news = slicedNews.map(
+          (item: { title: string; urlToImage: string; url: string }) => {
+            return (
+              <NewsFeedCard
+                title={item.title}
+                link={item.url}
+                img={item.urlToImage}
+                key={uuidv4()}
+              />
+            );
+          }
+        );
+        setNewsfeedElements(news);
       })
       .catch((err) => {
-        setNews([
+        setNewsfeedElements([
           {
             title: "failed to fetch news",
             urlToImage: "idevmibasichibakep",
@@ -33,17 +44,5 @@ export default function NewsFeed(props: INewsFeedProps) {
       });
   }, []);
 
-  const newsFeedElements = news.map(
-    (item: { title: string; urlToImage: string; url: string }) => {
-      return (
-        <NewsFeedCard
-          title={item.title}
-          link={item.url}
-          img={item.urlToImage}
-        />
-      );
-    }
-  );
-
-  return <>{newsFeedElements}</>;
+  return <>{newsfeedElements || <CircularProgress />}</>;
 }

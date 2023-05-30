@@ -51,7 +51,7 @@ export default function EpisodeAccordion({
         >
           <input
             type="checkbox"
-            onClick={(e) => {
+            onChange={(e) => {
               e.stopPropagation();
               dispatch(
                 handleSeenEpisode({ showTitle: showTitle, ep: episodeId })

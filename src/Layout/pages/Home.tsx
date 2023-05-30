@@ -5,9 +5,7 @@ import RecommendedCard from "../../Components/Cards/homepage/RecommendedCard";
 import NewsFeed from "../NewsFeed";
 import WatchlistRecommendation from "../../Components/Cards/homepage/WatchlistRecommendation";
 
-export interface IHomeProps {}
-
-export default function Home(props: IHomeProps) {
+export default function Home() {
   return (
     <div className="home">
       <div className="home-leftside">
@@ -20,7 +18,6 @@ export default function Home(props: IHomeProps) {
           <UpcomingEpisodeCard />
           <WatchlistRecommendation />
         </div>
-
         <RecommendedCard />
       </div>
     </div>

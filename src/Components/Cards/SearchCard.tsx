@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { addToWatchlist } from "../../features/watchlist/watchlistSlice";
 import { addToTracklist } from "../../features/tracklist/tracklistSlice";
 import useFormatText from "../../hooks/useFormatText";
+import { v4 as uuidv4 } from "uuid";
 
 export interface ISearchCardProps {
   title: string;
@@ -41,6 +42,7 @@ export default function SearchCard({
     id,
     time,
     date: timestamp,
+    key: uuidv4(),
   };
 
   const text = useFormatText(description);

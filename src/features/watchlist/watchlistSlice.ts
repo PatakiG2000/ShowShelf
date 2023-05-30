@@ -5,8 +5,9 @@ export interface WatchlistState {
   value: any;
 }
 
-const persistedState: any = localStorage.getItem("reduxState")
-  ? JSON.parse(localStorage.getItem("reduxState"))
+const watchlistLocalStorage = localStorage.getItem("reduxState");
+const persistedState: any = watchlistLocalStorage
+  ? JSON.parse(watchlistLocalStorage)
   : {};
 
 const initialState: WatchlistState = {

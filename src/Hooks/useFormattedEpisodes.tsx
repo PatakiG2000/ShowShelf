@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useSelector } from "react-redux";
 
 const useFormattedEpisodes = (title: string) => {
@@ -66,9 +66,18 @@ const useFormattedEpisodes = (title: string) => {
         .catch()
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [title]);
+  }, []);
 
-  return [seriesInfos, loading, error, overallEpisodeNumber, episodes];
+  const memoizedSeriesInfos = useMemo(() => seriesInfos, [seriesInfos]);
+  const memoizedEpisodes = useMemo(() => episodes, [episodes]);
+
+  return [
+    memoizedSeriesInfos,
+    loading,
+    error,
+    overallEpisodeNumber,
+    memoizedEpisodes,
+  ];
 };
 
 export default useFormattedEpisodes;

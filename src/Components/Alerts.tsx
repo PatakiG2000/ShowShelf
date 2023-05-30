@@ -15,6 +15,14 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 
 export default function Alerts() {
   const alert = useAlerts();
+  const [showing, setShowing] = React.useState(false);
+  React.useEffect(() => {
+    if (alert) {
+      setShowing(true);
+    } else {
+      setShowing(false);
+    }
+  }, [alert]);
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
@@ -26,7 +34,7 @@ export default function Alerts() {
   };
 
   return (
-    <Snackbar open={alert} autoHideDuration={0} onClose={handleClose}>
+    <Snackbar open={showing} autoHideDuration={0} onClose={handleClose}>
       <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
         {alert}
       </Alert>

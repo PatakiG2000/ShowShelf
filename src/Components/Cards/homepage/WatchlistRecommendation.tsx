@@ -20,7 +20,7 @@ export default function WatchlistRecommendation() {
           src={
             randomItem?.img
               ? randomItem?.img
-              : "https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80"
+              : "https://images.unsplash.com/photo-1512113569142-8a60fccc7caa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
           }
           alt=""
         />
@@ -33,7 +33,7 @@ export default function WatchlistRecommendation() {
             ? randomItem.title
             : "Add your first item to watchlist"}
         </p>
-        <Link to="/watchlist" className="continue-btn">
+        <Link to="/watchlist" className="continue-btn down">
           Go to watchlist
         </Link>
       </div>

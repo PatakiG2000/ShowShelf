@@ -38,7 +38,7 @@ export default function ToplistCard({
   );
   return (
     <div className="card">
-      <div className="card_left">
+      <div className="card_left toplist-left">
         <div className="card_datails">
           <h1>{title} </h1>
           <div className="card_cat"></div>
@@ -60,7 +60,7 @@ export default function ToplistCard({
           </div>
         </div>
       </div>
-      <div>
+      <div className="toplist-ratings">
         <p className="time">Your overall rating: {overallScore}%</p>
         <p className="year">Music: {music} %</p>
         <p className="genre"> Story: {story} %</p>

@@ -20,7 +20,7 @@ export const toplistModalSlice = createSlice({
       state,
       action: PayloadAction<{
         open: boolean;
-        movieData: { id: number };
+        movieData: {};
       }>
     ) => {
       state.value.isOpen = action.payload.open;

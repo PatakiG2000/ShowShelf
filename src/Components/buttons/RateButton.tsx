@@ -10,6 +10,7 @@ export interface IRateButtonProps {
     time: string;
     img: string;
     date: number;
+    key: string;
   };
 }
 

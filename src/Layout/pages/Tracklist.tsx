@@ -20,6 +20,7 @@ export default function Tracklist(props: ITracklistProps) {
         time={show.time}
         img={show.img}
         date={show.date}
+        key={show.key}
       />
     );
   });

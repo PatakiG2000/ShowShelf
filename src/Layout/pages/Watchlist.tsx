@@ -20,6 +20,7 @@ export default function Watchlist(props: IWatchlistProps) {
         time={show.time}
         imdbLink={show.imdbLink}
         date={show.date}
+        key={show.key}
       />
     );
   });

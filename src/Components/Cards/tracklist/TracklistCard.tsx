@@ -6,6 +6,7 @@ import RateButton from "../../buttons/RateButton";
 import useFormattedEpisodes from "../../../hooks/useFormattedEpisodes";
 import ProgressBar from "../../ProgressBar";
 import useTracklistShow from "../../../hooks/useTracklistShow";
+import { v4 as uuidv4 } from "uuid";
 
 export interface ITracklistCardProps {
   title: string;
@@ -37,6 +38,7 @@ export default function TracklistCard({
   };
 
   const dispatch = useDispatch();
+
   const [seriesInfos, loading, error, overallEpisodeNumber, episodes] =
     useFormattedEpisodes(title);
   const [currentShow, seenEpisodes, seenSeasons, nextEpisode] =
@@ -50,7 +52,7 @@ export default function TracklistCard({
       <SeasonAccordion
         season={season}
         episodes={seriesInfos[season]}
-        key={id}
+        key={uuidv4()}
         showTitle={title}
       ></SeasonAccordion>
     );

@@ -4,6 +4,7 @@ import Modal from "@mui/material/Modal";
 import { useSelector, useDispatch } from "react-redux";
 import { handleModal } from "../features/toplist/modalHandler";
 import Ratingform from "../Layout/Ratingform";
+import { ModalHandle } from "react-overlays/cjs/Modal";
 
 const style = {
   position: "absolute" as "absolute",
@@ -20,11 +21,23 @@ export default function BasicModal() {
     dispatch(handleModal({ open: false, movieData: { id: 0 } }));
   }
   const open = useSelector(
-    (state: { value: any }) => state?.modalHandler?.value.isOpen
+    (state: {
+      modalHandler: {
+        value: {
+          isOpen: boolean;
+        };
+      };
+    }) => state?.modalHandler?.value.isOpen
   );
 
   const movieData = useSelector(
-    (state: { value: any }) => state?.modalHandler?.value.movieData
+    (state: {
+      modalHandler: {
+        value: {
+          movieData: any;
+        };
+      };
+    }) => state?.modalHandler?.value.movieData
   );
 
   return (

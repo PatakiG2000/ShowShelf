@@ -20,6 +20,10 @@ html {
   cursor: pointer;
 }
 
+.down {
+  margin-top: 1.5em;
+}
+
 /* NAVBAR */
 
 .navbar {
@@ -442,6 +446,7 @@ html {
   max-width: 60%;
   max-height: 295px;
   margin: 0 auto;
+  margin-top: 10px;
   margin-bottom: 1em;
 
   display: flex;
@@ -632,7 +637,9 @@ a {
   cursor: pointer;
   font-size: 16px;
   font-weight: 700;
-  border-radius: 2px;
+  border-radius: 4px;
+  margin-top: 10px;
+  border: none;
 }
 
 textarea {
@@ -641,6 +648,7 @@ textarea {
   max-width: 98%;
   padding: 1%;
   border: none;
+  background-color: #f5f2f2fa;
 }
 
 input[type="range"] {
@@ -653,6 +661,22 @@ input[type="range"] {
 
 .toplist-experience {
   word-break: break-all;
+}
+
+.toplist-ratings {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 0.8em;
+}
+
+.toplist-ratings p {
+  margin: 0;
+}
+
+.toplist-left {
+  max-width: 90%;
 }
 
 /* //WATCHLIST */
@@ -753,7 +777,7 @@ input[type="range"] {
 
 @media screen and (max-width: 1200px) {
   .card {
-    max-width: 60%;
+    max-width: 90%;
   }
 
   .card_left {
@@ -789,6 +813,12 @@ input[type="range"] {
 }
 
 @media screen and (max-width: 680px) {
+  .rating {
+    padding: 1em;
+  }
+  .form {
+    padding: 1em;
+  }
   .card_right {
     height: 300px;
   }
@@ -850,13 +880,23 @@ input[type="range"] {
   }
 }
 
-@media screen and (max-width: 440px) {
+@media screen and (max-width: 445px) {
   .recommended-foryou {
     grid-template-columns: 1fr;
+  }
+
+  .card_datails {
+    padding: 1em;
   }
 }
 
 @media screen and (max-width: 420px) {
+  .rating {
+    padding: 0.2em;
+  }
+  .form {
+    padding: 0.2em;
+  }
   .continue-title {
     font-size: 1.4em;
   }
@@ -900,4 +940,11 @@ input[type="range"] {
   width: 100%;
   margin: 0 auto;
   z-index: 0;
+}
+
+@media screen and (max-width: 360px) {
+  .card_datails {
+    padding: 0.3em;
+    width: 160px;
+  }
 }

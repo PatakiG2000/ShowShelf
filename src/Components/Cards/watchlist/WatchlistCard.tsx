@@ -4,6 +4,7 @@ import { deleteFromWatchlist } from "../../../features/watchlist/watchlistSlice"
 import { addToTracklist } from "../../../features/tracklist/tracklistSlice";
 import useFormatText from "../../../hooks/useFormatText";
 import RateButton from "../../buttons/RateButton";
+import { v4 as uuidv4 } from "uuid";
 
 export interface IAppProps {
   title: string;
@@ -38,6 +39,7 @@ export default function WatchlistCard({
     time,
     img,
     date,
+    key: uuidv4(),
   };
 
   function handleClick(id: number): void {
@@ -54,7 +56,7 @@ export default function WatchlistCard({
             <p className="genre"> {genre} </p>
             <p className="time">{time} </p>
           </div>
-          <p className="disc">{text}</p>
+          {text}
           <a href={`https://www.imdb.com/title/${imdbLink}/`} target="_blank">
             Read More
           </a>
@@ -65,6 +67,7 @@ export default function WatchlistCard({
                 dispatch(
                   addToTracklist({
                     ...movieData,
+
                     seenEpisodes: [],
                     seenSeason: [],
                   })

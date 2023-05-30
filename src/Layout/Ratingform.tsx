@@ -13,6 +13,7 @@ export interface IRatingFormProps {
     genre: string;
     time: number;
     img: string;
+    key: string;
   };
 }
 
@@ -43,6 +44,7 @@ export default function Ratingform(props: IRatingFormProps) {
         img: movieData.img,
         formData,
         id: movieData.id,
+        key: movieData.key,
       })
     );
   }
@@ -64,7 +66,7 @@ export default function Ratingform(props: IRatingFormProps) {
 
           <label htmlFor="">What are your toughts?</label>
           <textarea
-            placeholder={`Write your experience with ${movieData.title}`}
+            placeholder={`Write your experience with ${movieData.title}...`}
             name="experience"
             id="experience"
             cols={15}

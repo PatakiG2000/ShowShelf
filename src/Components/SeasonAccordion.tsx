@@ -12,6 +12,7 @@ import {
   removeFromSeenEpisode,
 } from "../features/tracklist/tracklistSlice";
 import { useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export interface ISeasonAccordionProps {
   season: number | string;
@@ -68,7 +69,7 @@ export default function SeasonAccordion({
         episodeTitle={episode.name}
         seen={episode.seen}
         episodeId={episode.id}
-        key={episode.id}
+        key={uuidv4()}
         showTitle={showTitle}
         seasonSeen={isSeasonSeen}
         season={seasonName}
@@ -87,7 +88,7 @@ export default function SeasonAccordion({
           <input
             type="checkbox"
             checked={isSeasonSeen || allEpisodesSeen}
-            onClick={(e) => {
+            onChange={(e) => {
               e.stopPropagation();
 
               episodes.forEach((episode: { id: number }) => {

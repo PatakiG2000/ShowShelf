@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 const useAlerts = () => {
-  const [alert, setAlert] = useState<null | string>(null);
+  const [alert, setAlert] = useState<boolean | string>(false);
   const [tracklength, setTrackLength] = useState(0);
   const [watchlistLength, setWatchlistLength] = useState(0);
   const [toplistLength, setToplistLength] = useState(0);
@@ -29,7 +29,7 @@ const useAlerts = () => {
         setAlert("Successfully added to your tracklist");
         setTrackLength(tracklistItems.length);
         setTimeout(() => {
-          setAlert(null);
+          setAlert(false);
         }, 1300);
       }
 
@@ -37,7 +37,7 @@ const useAlerts = () => {
         setAlert("Successfully removed from your tracklist");
         setTrackLength(tracklistItems.length);
         setTimeout(() => {
-          setAlert(null);
+          setAlert(false);
         }, 1300);
       }
     }
@@ -49,7 +49,7 @@ const useAlerts = () => {
         setAlert("Successfully added to your toplist");
         setToplistLength(toplist.length);
         setTimeout(() => {
-          setAlert(null);
+          setAlert(false);
         }, 1300);
       }
 
@@ -57,7 +57,7 @@ const useAlerts = () => {
         setAlert("Successfully removed from your toplist");
         setToplistLength(toplist.length);
         setTimeout(() => {
-          setAlert(null);
+          setAlert(false);
         }, 1300);
       }
     }
@@ -69,7 +69,7 @@ const useAlerts = () => {
         setAlert("Successfully added to your watchlist");
         setWatchlistLength(watchlist.length);
         setTimeout(() => {
-          setAlert(null);
+          setAlert(false);
         }, 1300);
       }
 
@@ -77,7 +77,7 @@ const useAlerts = () => {
         setAlert("Successfully removed from your watchlist");
         setWatchlistLength(watchlist.length);
         setTimeout(() => {
-          setAlert(null);
+          setAlert(false);
         }, 1300);
       }
     }
