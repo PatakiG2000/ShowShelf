@@ -53,10 +53,16 @@ export const toplistSlice = createSlice({
       );
       state.value = newState;
     },
+    sorting: (state, action: PayloadAction<string>) => {
+      //számoljon majd overallt
+      /* const newState = state.value.sort((a, b) => a - b); */
+      console.log(initialState);
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addToToplist, deleteFromToplist } = toplistSlice.actions;
+export const { addToToplist, deleteFromToplist, sorting } =
+  toplistSlice.actions;
 
 export default toplistSlice.reducer;
