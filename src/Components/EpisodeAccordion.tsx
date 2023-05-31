@@ -5,7 +5,6 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { handleSeenEpisode } from "../features/tracklist/tracklistSlice";
 import useFormatText from "../hooks/useFormatText";

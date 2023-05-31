@@ -1,17 +1,10 @@
+import * as React from "react";
 import { useDispatch } from "react-redux";
 import { handleModal } from "../../features/toplist/modalHandler";
+import { MovieData } from "../../interfaces/interfaces";
 
 export interface IRateButtonProps {
-  movieData: {
-    title: string;
-    id: number;
-    year: string;
-    genre: string;
-    time: string;
-    img: string;
-    date: number;
-    key: string;
-  };
+  movieData: MovieData;
 }
 
 export default function RateButton({ movieData }: IRateButtonProps) {

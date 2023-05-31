@@ -4,7 +4,6 @@ import Modal from "@mui/material/Modal";
 import { useSelector, useDispatch } from "react-redux";
 import { handleModal } from "../features/toplist/modalHandler";
 import Ratingform from "../Layout/Ratingform";
-import { ModalHandle } from "react-overlays/cjs/Modal";
 
 const style = {
   position: "absolute" as "absolute",

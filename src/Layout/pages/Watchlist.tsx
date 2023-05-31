@@ -3,9 +3,7 @@ import { useSelector } from "react-redux";
 import WatchlistCard from "../../Components/Cards/watchlist/WatchlistCard";
 import WatchlistPlaceholderCard from "../../Components/Cards/watchlist/WatchlistPlaceholderCard";
 
-export interface IWatchlistProps {}
-
-export default function Watchlist(props: IWatchlistProps) {
+export default function Watchlist() {
   const watchlist = useSelector((state: any) => state.watchlistHandler.value);
 
   const currentWatchlist = watchlist.map((show: any) => {

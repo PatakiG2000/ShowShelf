@@ -1,15 +1,15 @@
 import * as React from "react";
-import { useDispatch } from "react-redux";
-import { addToWatchlist } from "../../features/watchlist/watchlistSlice";
-import { addToTracklist } from "../../features/tracklist/tracklistSlice";
+
 import useFormatText from "../../hooks/useFormatText";
 import { v4 as uuidv4 } from "uuid";
+import TrackButton from "../buttons/TrackButton";
+import WatchlistButton from "../buttons/WatchlistButton";
 
 export interface ISearchCardProps {
   title: string;
-  year: string;
+  year: number;
   genre: string;
-  time: string;
+  time: number;
   description: string;
   imdbLink: string;
   img: string;
@@ -28,8 +28,6 @@ export default function SearchCard({
   img,
   id,
 }: ISearchCardProps) {
-  const dispatch = useDispatch();
-
   const date = new Date();
   const timestamp = date.getTime();
   const movieData = {
@@ -62,27 +60,8 @@ export default function SearchCard({
             Read More
           </a>
           <div className="btn-container">
-            <button
-              className="btn"
-              aria-label="Decrement value"
-              onClick={() => dispatch(addToWatchlist(movieData))}
-            >
-              Watchlist
-            </button>
-            <button
-              className="btn"
-              onClick={() =>
-                dispatch(
-                  addToTracklist({
-                    ...movieData,
-                    seenEpisodes: [],
-                    seenSeason: [],
-                  })
-                )
-              }
-            >
-              Track show
-            </button>
+            <WatchlistButton movieData={movieData} text="Add to watchlist" />
+            <TrackButton movieData={movieData} text="Track show" />
             <RateButton movieData={movieData} />
           </div>
         </div>

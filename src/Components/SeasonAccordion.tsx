@@ -89,8 +89,6 @@ export default function SeasonAccordion({
             type="checkbox"
             checked={isSeasonSeen || allEpisodesSeen}
             onChange={(e) => {
-              e.stopPropagation();
-
               episodes.forEach((episode: { id: number }) => {
                 if (!isSeasonSeen) {
                   dispatch(
@@ -111,6 +109,9 @@ export default function SeasonAccordion({
                   season: seasonName,
                 })
               );
+            }}
+            onClick={(e) => {
+              e.stopPropagation();
             }}
           />
           <Typography>{season} </Typography>

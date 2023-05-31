@@ -31,6 +31,7 @@ export const toplistSlice = createSlice({
         img: string;
         formData: any;
         key: string;
+        imdbLink: string;
       }>
     ) => {
       let alreadyOnList = false;

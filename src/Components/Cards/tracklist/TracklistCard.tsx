@@ -6,17 +6,8 @@ import RateButton from "../../buttons/RateButton";
 import useFormattedEpisodes from "../../../hooks/useFormattedEpisodes";
 import ProgressBar from "../../ProgressBar";
 import useTracklistShow from "../../../hooks/useTracklistShow";
-import { v4 as uuidv4 } from "uuid";
-
-export interface ITracklistCardProps {
-  title: string;
-  id: number;
-  year: number;
-  genre: string;
-  time: number;
-  img: string;
-  date: number;
-}
+import { v4 } from "uuid";
+import { MovieData } from "../../../interfaces/interfaces";
 
 export default function TracklistCard({
   title,
@@ -26,7 +17,7 @@ export default function TracklistCard({
   time,
   img,
   date,
-}: ITracklistCardProps) {
+}: MovieData) {
   const movieData = {
     title,
     id,
@@ -35,6 +26,7 @@ export default function TracklistCard({
     time,
     img,
     date,
+    key: v4(),
   };
 
   const dispatch = useDispatch();
@@ -47,13 +39,14 @@ export default function TracklistCard({
   const progress = seenEpisodes.length / overallEpisodeNumber;
   const seasons = Object.keys(seriesInfos);
   const renderedAccordions = seasons.map((season) => {
-    //itt lehet baj
+    const key = `${currentShow.id}${season}`;
+
     return (
       <SeasonAccordion
         season={season}
         episodes={seriesInfos[season]}
-        key={uuidv4()}
         showTitle={title}
+        key={key}
       ></SeasonAccordion>
     );
   });

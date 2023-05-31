@@ -13,9 +13,9 @@ export default function Searchresults(props: any) {
         name: string;
         image: { medium: string };
         summary: string;
-        averageRuntime: string;
+        averageRuntime: number;
         genres: [];
-        ended: string;
+        ended: number;
         externals: {
           imdb: string;
         };

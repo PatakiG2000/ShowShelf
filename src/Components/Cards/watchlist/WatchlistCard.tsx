@@ -4,12 +4,13 @@ import { deleteFromWatchlist } from "../../../features/watchlist/watchlistSlice"
 import { addToTracklist } from "../../../features/tracklist/tracklistSlice";
 import useFormatText from "../../../hooks/useFormatText";
 import RateButton from "../../buttons/RateButton";
+import TrackButton from "../../buttons/TrackButton";
 import { v4 as uuidv4 } from "uuid";
 
 export interface IAppProps {
   title: string;
   id: number;
-  year: string;
+  year: number;
   genre: string;
   time: number;
   img: string;
@@ -61,22 +62,7 @@ export default function WatchlistCard({
             Read More
           </a>
           <div className="btn-container">
-            <button
-              className="btn"
-              onClick={() => {
-                dispatch(
-                  addToTracklist({
-                    ...movieData,
-
-                    seenEpisodes: [],
-                    seenSeason: [],
-                  })
-                );
-                dispatch(deleteFromWatchlist(id));
-              }}
-            >
-              Start Watching
-            </button>
+            <TrackButton movieData={movieData} text="Start watching" />
             <RateButton movieData={movieData} />
             <button className="btn" onClick={() => handleClick(id)}>
               Remove

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useEffect, useState, useMemo } from "react";
 import { useSelector } from "react-redux";
+//EZ MAJD CSAK RENDEZZE EL A LEKÉRÉS LEGYEN A REDUXBA
 
 const useFormattedEpisodes = (title: string) => {
   const [showData, setShowData] = useState("breakingbad");

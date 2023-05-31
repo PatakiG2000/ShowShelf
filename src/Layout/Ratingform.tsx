@@ -4,26 +4,20 @@ import { addToToplist } from "../features/toplist/toplistSlice";
 import { handleModal } from "../features/toplist/modalHandler";
 import { deleteFromWatchlist } from "../features/watchlist/watchlistSlice";
 import { deleteFromTracklist } from "../features/tracklist/tracklistSlice";
+import { MovieData } from "../interfaces/interfaces";
 
 export interface IRatingFormProps {
-  movieData: {
-    title: string;
-    id: number;
-    year: number;
-    genre: string;
-    time: number;
-    img: string;
-    key: string;
-  };
+  movieData: MovieData;
 }
 
-export default function Ratingform(props: IRatingFormProps) {
+export default function Ratingform({ movieData }: IRatingFormProps) {
   const dispatch = useDispatch();
 
-  const movieData = props.movieData;
   function handleClose() {
     dispatch(handleModal({ open: false, movieData: {} }));
   }
+
+  const { title, year, genre, time, img, id, key, imdbLink } = movieData;
 
   function formSubmit(e: React.FormEvent<HTMLFormElement>): void {
     e.preventDefault();
@@ -37,18 +31,18 @@ export default function Ratingform(props: IRatingFormProps) {
 
     dispatch(
       addToToplist({
-        title: movieData.title,
-        year: movieData.year,
-        genre: movieData.genre,
-        time: movieData.time,
-        img: movieData.img,
+        title,
+        year,
+        genre,
+        time,
+        img,
         formData,
-        id: movieData.id,
-        key: movieData.key,
+        id,
+        key,
+        imdbLink,
       })
     );
   }
-  /* : IAppProps */
 
   return (
     <div className="rating">
