@@ -14,6 +14,7 @@ export interface IToplistProps {
     acting: string;
     music: string;
     ending: string;
+    overallRating: number;
   };
   imdbLink: string;
   id: number;
@@ -31,11 +32,8 @@ export default function ToplistCard({
   img,
 }: IToplistProps) {
   const dispatch = useDispatch();
-  const { music, story, ending, acting, experience } = formData;
-  const overallScore = Math.floor(
-    (parseInt(music) + parseInt(story) + parseInt(ending) + parseInt(acting)) /
-      5
-  );
+
+  const { music, story, ending, acting, experience, overallRating } = formData;
   return (
     <div className="card">
       <div className="card_left toplist-left">
@@ -61,7 +59,7 @@ export default function ToplistCard({
         </div>
       </div>
       <div className="toplist-ratings">
-        <p className="time">Your overall rating: {overallScore}%</p>
+        <p className="time">Your overall rating: {overallRating}%</p>
         <p className="year">Music: {music} %</p>
         <p className="genre"> Story: {story} %</p>
         <p className="genre">Acting: {acting} %</p>

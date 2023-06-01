@@ -32,6 +32,7 @@ export const toplistSlice = createSlice({
         formData: any;
         key: string;
         imdbLink: string;
+        timestamp: number;
       }>
     ) => {
       let alreadyOnList = false;
@@ -55,8 +56,45 @@ export const toplistSlice = createSlice({
     },
     sorting: (state, action: PayloadAction<string>) => {
       //számoljon majd overallt
-      /* const newState = state.value.sort((a, b) => a - b); */
-      console.log(initialState);
+      const newState = [...state.value];
+      if (action.payload === "lowtohigh") {
+        newState.sort(
+          (
+            a: { formData: { overallRating: number } },
+            b: { formData: { overallRating: number } }
+          ) => {
+            return a.formData.overallRating - b.formData.overallRating;
+          }
+        );
+
+        state.value = newState;
+      }
+      if (action.payload === "hightolow") {
+        newState.sort(
+          (
+            a: { formData: { overallRating: number } },
+            b: { formData: { overallRating: number } }
+          ) => {
+            return b.formData.overallRating - a.formData.overallRating;
+          }
+        );
+        console.log(newState);
+        state.value = newState;
+      }
+      if (action.payload === "newest") {
+        newState.sort((a: { timestamp: number }, b: { timestamp: number }) => {
+          return b.timestamp - a.timestamp;
+        });
+        console.log(newState);
+        state.value = newState;
+      }
+      if (action.payload === "oldest") {
+        newState.sort((a: { timestamp: number }, b: { timestamp: number }) => {
+          return a.timestamp - b.timestamp;
+        });
+        console.log(newState);
+        state.value = newState;
+      }
     },
   },
 });

@@ -4,10 +4,16 @@ import UpcomingEpisodeCard from "../../Components/Cards/homepage/UpcomingEpisode
 import RecommendedCard from "../../Components/Cards/homepage/RecommendedCard";
 import NewsFeed from "../NewsFeed";
 import WatchlistRecommendation from "../../Components/Cards/homepage/WatchlistRecommendation";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="home">
+    <motion.div
+      className="home"
+      initial={{ opacity: 0, width: 0 }}
+      animate={{ opacity: 1, width: "100%" }}
+      exit={{ opacity: 0, x: window.innerWidth, transition: { duration: 0.2 } }}
+    >
       <div className="home-leftside">
         <NewsFeed />
       </div>
@@ -20,6 +26,6 @@ export default function Home() {
         </div>
         <RecommendedCard />
       </div>
-    </div>
+    </motion.div>
   );
 }

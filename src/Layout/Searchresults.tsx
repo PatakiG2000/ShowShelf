@@ -2,6 +2,7 @@ import * as React from "react";
 import SearchCard from "../Components/Cards/SearchCard";
 import useControlledShows from "../hooks/useControlledShows";
 import CircularProgress from "@mui/material/CircularProgress";
+import { motion } from "framer-motion";
 
 export default function Searchresults(props: any) {
   const [tracklistItems, watchlist, toplist, allShows] = useControlledShows(0);
@@ -26,17 +27,19 @@ export default function Searchresults(props: any) {
         !allShows.some((result: { id: number }) => result.id === show.show.id)
       ) {
         return (
-          <SearchCard
-            title={show.show.name}
-            img={show.show.image?.medium}
-            description={show.show.summary}
-            time={show.show.averageRuntime}
-            genre={show.show.genres.join(" ")}
-            year={show.show?.ended}
-            imdbLink={show.show.externals.imdb}
-            id={show.show.id}
-            key={show.show.id}
-          />
+          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
+            <SearchCard
+              title={show.show.name}
+              img={show.show.image?.medium}
+              description={show.show.summary}
+              time={show.show.averageRuntime}
+              genre={show.show.genres.join(" ")}
+              year={show.show?.ended}
+              imdbLink={show.show.externals.imdb}
+              id={show.show.id}
+              key={show.show.id}
+            />
+          </motion.div>
         );
       }
     }

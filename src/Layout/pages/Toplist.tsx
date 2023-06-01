@@ -8,16 +8,19 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import { sorting } from "../../features/toplist/toplistSlice";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 export interface IToplistProps {}
 
 export default function Toplist() {
   const toplist = useSelector((state: any) => state.toplistHandler?.value);
-  const [sortType, setSortType] = React.useState("");
   const dispatch = useDispatch();
+  const [value, setValue] = useState("");
   const handleChange = (event: SelectChangeEvent) => {
-    setSortType(event.target.value as string);
-    dispatch(sorting("asd"));
+    const target = event.target.value as string;
+    setValue(target);
+    dispatch(sorting(target));
   };
 
   const currentToplist = toplist.map(
@@ -34,31 +37,51 @@ export default function Toplist() {
       key,
     }: any) => {
       return (
-        <ToplistCard
-          title={title}
-          id={id}
-          img={img}
-          year={year}
-          genre={genre}
-          description={description}
-          time={time}
-          imdbLink={imdbLink}
-          formData={formData}
-          key={key}
-        />
+        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
+          <ToplistCard
+            title={title}
+            id={id}
+            img={img}
+            year={year}
+            genre={genre}
+            description={description}
+            time={time}
+            imdbLink={imdbLink}
+            formData={formData}
+            key={key}
+          />
+        </motion.div>
       );
     }
   );
 
   return (
-    <div className="toplist">
-      <Box sx={{ minWidth: "10%", maxWidth: "400px", margin: "0 auto" }}>
+    <motion.div
+      className="toplist"
+      initial={{ opacity: 0, width: 0 }}
+      animate={{ opacity: 1, width: "100%" }}
+      exit={{ opacity: 0, x: window.innerWidth, transition: { duration: 0.2 } }}
+    >
+      <Box
+        sx={{
+          minWidth: "10%",
+          maxWidth: "400px",
+          margin: "0 auto",
+        }}
+      >
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Sort by:</InputLabel>
+          <InputLabel
+            id="demo-simple-select-label"
+            sx={{
+              color: "white",
+            }}
+          >
+            Sort by:
+          </InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={sortType}
+            value={value}
             label="Age"
             onChange={handleChange}
           >
@@ -74,6 +97,6 @@ export default function Toplist() {
       ) : (
         currentToplist
       )}
-    </div>
+    </motion.div>
   );
 }

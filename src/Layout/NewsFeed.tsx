@@ -13,7 +13,7 @@ export default function NewsFeed(props: INewsFeedProps) {
 
   //fetching news to feed
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     fetch(`https://newsapi.org/v2/everything?q=netflix&apiKey=${key}`)
       .then((res) => res.json())
       .then((data) => {

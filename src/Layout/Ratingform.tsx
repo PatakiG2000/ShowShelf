@@ -16,6 +16,9 @@ export default function Ratingform({ movieData }: IRatingFormProps) {
   function handleClose() {
     dispatch(handleModal({ open: false, movieData: {} }));
   }
+  const date = new Date();
+  const timestamp = date.getTime();
+  console.log("timestamp", timestamp);
 
   const { title, year, genre, time, img, id, key, imdbLink } = movieData;
 
@@ -28,6 +31,14 @@ export default function Ratingform({ movieData }: IRatingFormProps) {
     for (const [name, value] of data.entries()) {
       formData[name] = value;
     }
+    const { music, story, ending, acting } = formData;
+    formData.overallRating = Math.floor(
+      (parseInt(music) +
+        parseInt(story) +
+        parseInt(ending) +
+        parseInt(acting)) /
+        4
+    );
 
     dispatch(
       addToToplist({
@@ -40,6 +51,7 @@ export default function Ratingform({ movieData }: IRatingFormProps) {
         id,
         key,
         imdbLink,
+        timestamp,
       })
     );
   }
