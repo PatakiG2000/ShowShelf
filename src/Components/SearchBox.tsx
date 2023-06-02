@@ -40,6 +40,7 @@ export default function SearchBox(props: SearchBoxProps) {
         className="searchbar"
         placeholder="Search for a show..."
       />
+
       <Searchresults
         show={isShowing ? "block" : "none"}
         results={searchResults}

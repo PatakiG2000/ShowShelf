@@ -1,9 +1,11 @@
 import * as React from "react";
 import { useEffect, useState, useMemo } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteFromTracklist } from "../features/tracklist/tracklistSlice";
 //EZ MAJD CSAK RENDEZZE EL A LEKÉRÉS LEGYEN A REDUXBA
 
 const useFormattedEpisodes = (title: string) => {
+  const dispatch = useDispatch();
   const [showData, setShowData] = useState("breakingbad");
   const [seriesInfos, setSeriesInfos]: any = useState({
     season1: [{}],
@@ -34,35 +36,42 @@ const useFormattedEpisodes = (title: string) => {
       res
         .json()
         .then((data) => {
-          setShowData(data);
-          setEpisodes(data._embedded.episodes);
+          if (data._embedded.episodes.length > 1500) {
+            alert("You can't add a show with more than 1500 episodes for now");
+            dispatch(deleteFromTracklist(currentShow.id));
+            throw new Error();
+          } else {
+            setShowData(data);
+            setEpisodes(data._embedded.episodes);
 
-          //Organizing the series data by seasons and episodes
-          setOverallEpisodeNumber(data._embedded.episodes.length);
-          const seasonNumber =
-            data._embedded.episodes[data._embedded.episodes.length - 1]?.season;
+            //Organizing the series data by seasons and episodes
+            setOverallEpisodeNumber(data._embedded.episodes.length);
+            const seasonNumber =
+              data._embedded.episodes[data._embedded.episodes.length - 1]
+                ?.season;
 
-          const seriesObject: any = {};
+            const seriesObject: any = {};
 
-          for (let i = 1; i < seasonNumber + 1; i++) {
-            seriesObject[`season${i}`] = [];
-            data._embedded.episodes.forEach((episode: any) => {
-              if (episode.season == i) {
-                if (seenEpisodes.includes(episode.id)) {
-                  episode.seen = true;
-                } else {
-                  episode.seen = false;
+            for (let i = 1; i < seasonNumber + 1; i++) {
+              seriesObject[`season${i}`] = [];
+              data._embedded.episodes.forEach((episode: any) => {
+                if (episode.season == i) {
+                  if (seenEpisodes.includes(episode.id)) {
+                    episode.seen = true;
+                  } else {
+                    episode.seen = false;
+                  }
+
+                  seriesObject[`season${i}`] = [
+                    ...seriesObject[`season${i}`],
+                    episode,
+                  ];
                 }
+              });
+            }
 
-                seriesObject[`season${i}`] = [
-                  ...seriesObject[`season${i}`],
-                  episode,
-                ];
-              }
-            });
+            setSeriesInfos(seriesObject);
           }
-
-          setSeriesInfos(seriesObject);
         })
         .catch()
     );
@@ -71,7 +80,9 @@ const useFormattedEpisodes = (title: string) => {
 
   const memoizedSeriesInfos = useMemo(() => seriesInfos, [seriesInfos]);
   const memoizedEpisodes = useMemo(() => episodes, [episodes]);
-
+  if (overallEpisodeNumber > 1500) {
+    alert("Max episode you can track is 1500");
+  }
   return [
     memoizedSeriesInfos,
     loading,

@@ -8,6 +8,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useDispatch, useSelector } from "react-redux";
 import { handleSeenEpisode } from "../features/tracklist/tracklistSlice";
 import useFormatText from "../hooks/useFormatText";
+import { useState } from "react";
 
 export interface IEpisodeAccordionProps {
   description: string;

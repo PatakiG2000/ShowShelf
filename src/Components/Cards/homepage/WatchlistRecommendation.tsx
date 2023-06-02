@@ -17,11 +17,7 @@ export default function WatchlistRecommendation() {
     <div className="upcoming-episode-card">
       <div className="upcoming-img-container">
         <img
-          src={
-            randomItem?.img
-              ? randomItem?.img
-              : "https://images.unsplash.com/photo-1512113569142-8a60fccc7caa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-          }
+          src={randomItem?.img ? randomItem?.img : "/placeholderimage.webp"}
           alt=""
         />
       </div>

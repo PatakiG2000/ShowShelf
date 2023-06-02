@@ -30,7 +30,7 @@ html {
   color: rgb(236, 232, 232);
   background-color: rgb(26, 24, 24);
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid grey;
 }
@@ -40,6 +40,11 @@ html {
   justify-content: space-between;
   list-style: none;
   gap: 2em;
+  margin-right: 4em;
+}
+
+.nav {
+  margin-right: 1em;
 }
 
 .nav-el {
@@ -59,6 +64,27 @@ html {
   align-items: center;
   justify-content: center;
   gap: 2em;
+  width: 100%;
+}
+
+.mobile-nav {
+  background-color: rgb(26, 24, 24);
+  position: absolute;
+  border-radius: 5px;
+  gap: 5px;
+  top: 40px;
+  right: 0px;
+  z-index: 99;
+
+  padding-right: 1em;
+}
+
+.mobile-nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 1.4em;
 }
 
 .alerts {
@@ -74,7 +100,7 @@ html {
 .home {
   display: grid;
   grid-template-columns: 1fr 4fr;
-  max-height: 100vh;
+  height: 100vh;
 }
 
 .home-leftside {
@@ -192,7 +218,7 @@ html {
 .main-recommendation {
   color: white;
   background-color: rgb(24, 26, 24);
-  background-image: url(https://www.whats-on-netflix.com/wp-content/uploads/2023/03/black-mirror-season-6-everything-we-know-so-far-netflix-jpg.webp);
+  background-image: url("/black-mirror-season-6-everything-we-know-so-far-netflix-jpg.webp");
   background-size: 102%;
   border-radius: 5px;
   width: 90%;
@@ -343,7 +369,7 @@ html {
 .recommended-foryou {
   color: white;
   background-color: green;
-  background-image: url(https://occ-0-1722-1567.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABZVqj8OEDSEEmdFxb3DR-yz-dZBDb172MAwsxY0RRtM9eH4USBA-StcCyWmToRq7spDo2egjo5BYgMs2cbAnSSwfXw8eNEynURoF.jpg?r=dbe);
+  background-image: url("/bridgerton_photo.webp");
   background-size: 100%;
   border-radius: 5px;
   width: 90%;
@@ -378,8 +404,8 @@ html {
 /* SEARCH */
 
 .searchbar {
-  margin-left: 60px;
   line-height: 1.6;
+  justify-self: end;
   max-width: 350px;
   height: 30px;
   padding-left: 15px;
@@ -657,6 +683,7 @@ input[type="range"] {
 
 .toplist {
   padding: 1em;
+  height: 100vh;
 }
 
 .toplist-experience {
@@ -811,8 +838,16 @@ input[type="range"] {
     max-width: 90%;
   }
 }
+@media screen and (min-width: 736px) {
+  .mobile-nav {
+    display: none;
+  }
+}
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 736px) {
+  .searchbar {
+    width: 100%;
+  }
   .rating {
     padding: 1em;
   }
@@ -847,6 +882,7 @@ input[type="range"] {
     display: block;
     padding: 1em;
     cursor: pointer;
+    margin-right: 0.4em;
   }
 }
 
@@ -920,7 +956,7 @@ input[type="range"] {
   }
 
   .logo {
-    margin-left: 9px;
+    margin-left: 0.8em;
   }
   .upcoming-title {
     font-size: 1.8em;
