@@ -379,6 +379,7 @@ html {
   background-position: top;
   margin-bottom: 1em;
 
+  background-size: cover;
   transition: background-size 0.5s ease-in;
   -moz-transition: background-size 0.5s ease-in;
   -ms-transition: background-size 0.5s ease-in;
