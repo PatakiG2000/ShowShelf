@@ -34,12 +34,14 @@ export default function SearchBox(props: SearchBoxProps) {
 
   return (
     <>
-      <input
-        onInput={(e) => onChange(e)}
-        type="search"
-        className="searchbar"
-        placeholder="Search for a show..."
-      />
+      <div className="search-bar-container">
+        <input
+          onInput={(e) => onChange(e)}
+          type="search"
+          className="searchbar"
+          placeholder="Search for a show..."
+        />
+      </div>
 
       <Searchresults
         show={isShowing ? "block" : "none"}

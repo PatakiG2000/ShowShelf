@@ -8,9 +8,15 @@ const Navbar: React.FunctionComponent /* <NavbarProps>  */ = (props) => {
   return (
     <header className="navbar">
       <div className="nav-left">
-        <Link to="/">
-          <img src="vite.svg" alt="" className="logo" />
-        </Link>
+        <div className="title-logo-nav-container">
+          <Link to="/">
+            <img src="vite.svg" alt="" className="logo" />
+          </Link>
+          <Link to="/">
+            <h1 className="sitename">ShowShelf</h1>
+          </Link>
+        </div>
+
         <SearchBox />
       </div>
 

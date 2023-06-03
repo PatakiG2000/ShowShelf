@@ -1,5 +1,5 @@
 export interface MovieData {
-  timestamp: number;
+  timestamp?: number;
   title: string;
   id: number;
   year: number;
