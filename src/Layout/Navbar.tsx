@@ -27,25 +27,37 @@ const Navbar: React.FunctionComponent /* <NavbarProps>  */ = (props) => {
         <ul className="mobile-nav-list">
           <li className="nav-el">
             <i className="fa-solid fa-house"></i>
-            <Link to="/" className="nav-link">
+            <Link to="/" className="nav-link" onClick={() => setIsOpen(false)}>
               Home
             </Link>
           </li>
           <li className="nav-el">
             <i className="fa-solid fa-play"></i>
-            <Link to="/tracklist" className="nav-link">
+            <Link
+              to="/tracklist"
+              className="nav-link"
+              onClick={() => setIsOpen(false)}
+            >
               Tracklist
             </Link>
           </li>
           <li className="nav-el">
             <i className="fa-solid fa-ranking-star"></i>
-            <Link to="/toplist" className="nav-link">
+            <Link
+              to="/toplist"
+              className="nav-link"
+              onClick={() => setIsOpen(false)}
+            >
               Toplist
             </Link>
           </li>
           <li className="nav-el">
             <i className="fa-solid fa-eye"></i>
-            <Link to="/watchlist" className="nav-link">
+            <Link
+              to="/watchlist"
+              className="nav-link"
+              onClick={() => setIsOpen(false)}
+            >
               Watchlist
             </Link>
           </li>

@@ -53,9 +53,15 @@ export default function WatchlistCard({
         <div className="card_datails">
           <h1>{title} </h1>
           <div className="card_cat">
-            <p className="year">{year} </p>
-            <p className="genre"> {genre} </p>
-            <p className="time">{time} </p>
+            <p className="year">
+              <i className="fa-solid fa-calendar-days"></i> {year}{" "}
+            </p>
+            <p className="genre">
+              <i className="fa-solid fa-genderless"></i> {genre}{" "}
+            </p>
+            <p className="time">
+              <i className="fa-regular fa-clock"></i> {time}
+            </p>
           </div>
           {text}
           <a href={`https://www.imdb.com/title/${imdbLink}/`} target="_blank">

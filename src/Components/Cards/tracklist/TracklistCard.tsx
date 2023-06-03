@@ -29,8 +29,6 @@ export default function TracklistCard({
     key: v4(),
   };
 
-  
-
   const dispatch = useDispatch();
 
   const [seriesInfos, loading, error, overallEpisodeNumber, episodes] =
@@ -58,7 +56,7 @@ export default function TracklistCard({
       <div className="tracklist-card">
         <div className="tracklist-head">
           <h1>{title}</h1>
-          <div>
+          <div className="tracklist-buttons">
             <RateButton movieData={movieData} />
             <button
               onClick={() => dispatch(deleteFromTracklist(id))}

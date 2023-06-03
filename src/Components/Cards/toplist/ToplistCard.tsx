@@ -35,10 +35,10 @@ export default function ToplistCard({
 
   const { music, story, ending, acting, experience, overallRating } = formData;
   return (
-    <div className="card">
+    <div className="card toplist-card">
       <div className="card_left toplist-left">
         <div className="card_datails">
-          <h1>{title} </h1>
+          <h1>{title}</h1>
           <div className="card_cat"></div>
 
           <p className="disc toplist-experience">{experience}</p>
@@ -59,11 +59,22 @@ export default function ToplistCard({
         </div>
       </div>
       <div className="toplist-ratings">
-        <p className="time">Your overall rating: {overallRating}%</p>
-        <p className="year">Music: {music} %</p>
-        <p className="genre"> Story: {story} %</p>
-        <p className="genre">Acting: {acting} %</p>
-        <p className="genre">Ending: {ending} %</p>
+        <p className="time">
+          <i className="fa-solid fa-ranking-star"></i> Your overall rating:{" "}
+          {overallRating}%
+        </p>
+        <p className="year">
+          <i className="fa-solid fa-music"></i> Music: {music} %
+        </p>
+        <p className="genre">
+          <i className="fa-solid fa-book"></i> Story: {story} %
+        </p>
+        <p className="genre">
+          <i className="fa-solid fa-masks-theater"></i> Acting: {acting} %
+        </p>
+        <p className="genre">
+          <i className="fa-solid fa-forward-fast"></i> Ending: {ending} %
+        </p>
       </div>
 
       <div className="card_right">

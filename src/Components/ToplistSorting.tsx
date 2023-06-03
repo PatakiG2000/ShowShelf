@@ -69,10 +69,20 @@ export default function ToplistSorting(props: IToplistSortingProps) {
               },
             }}
           >
-            <MenuItem value={"hightolow"}>Rating: High to low</MenuItem>
-            <MenuItem value={"lowtohigh"}>Rating: Low to high</MenuItem>
-            <MenuItem value={"newest"}>Time: Newest</MenuItem>
-            <MenuItem value={"oldest"}>Time: Oldest</MenuItem>
+            <MenuItem value={"hightolow"}>
+              <i className="fa-solid fa-arrow-down-wide-short"></i>Rating: High
+              to low
+            </MenuItem>
+            <MenuItem value={"lowtohigh"}>
+              <i className="fa-solid fa-arrow-down-short-wide"></i>Rating: Low
+              to high
+            </MenuItem>
+            <MenuItem value={"newest"}>
+              <i className="fa-regular fa-clock"></i>Time: Newest
+            </MenuItem>
+            <MenuItem value={"oldest"}>
+              <i className="fa-solid fa-clock-rotate-left"></i>Time: Oldest
+            </MenuItem>
           </Select>
         </FormControl>
       </ThemeProvider>
