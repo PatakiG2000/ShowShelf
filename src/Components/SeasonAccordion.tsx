@@ -15,7 +15,7 @@ import { useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 export interface ISeasonAccordionProps {
-  season: number | string;
+  season: string;
   episodes: any[];
   showTitle: string;
 }
@@ -114,7 +114,7 @@ export default function SeasonAccordion({
               e.stopPropagation();
             }}
           />
-          <Typography>{season} </Typography>
+          <Typography>Season {season.replace(/[^0-9]/g, "")} </Typography>
         </AccordionSummary>
         <AccordionDetails>{renderedEpisodeAccordions}</AccordionDetails>
       </Accordion>

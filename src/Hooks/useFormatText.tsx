@@ -7,7 +7,7 @@ const useFormatText = (text: string) => {
 
   const formattedText = wrapper.textContent;
 
-  return <span>{formattedText}</span>;
+  return <div className="disc">{formattedText}</div>;
 };
 
 export default useFormatText;

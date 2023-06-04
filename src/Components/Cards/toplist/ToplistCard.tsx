@@ -43,7 +43,11 @@ export default function ToplistCard({
 
           <p className="disc toplist-experience">{experience}</p>
 
-          <a href={`https://www.imdb.com/title/${imdbLink}/`} target="_blank">
+          <a
+            href={`https://www.imdb.com/title/${imdbLink}/`}
+            target="_blank"
+            className="readmore"
+          >
             Read More
           </a>
 

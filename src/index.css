@@ -7,7 +7,8 @@
 body,
 html {
   margin: 0;
-  height: 100%;
+  height: 100vh;
+
   background-color: rgb(26, 24, 24);
   padding: 0;
 }
@@ -77,6 +78,14 @@ html {
   width: 100%;
 }
 
+.nav-el a:hover {
+  text-shadow: 0 0 15px #808081;
+}
+
+.nav-el:hover {
+  text-shadow: 0 0 15px #8a8a8b;
+}
+
 .mobile-nav {
   background-color: rgb(26, 24, 24);
   position: absolute;
@@ -119,7 +128,7 @@ html {
   flex-direction: column;
   padding: 2em;
   gap: 2em;
-  max-height: 94vh;
+
   overflow-y: scroll;
   overflow-x: hidden;
   width: 100%;
@@ -217,7 +226,7 @@ html {
 .home-rightside {
   display: flex;
   flex-direction: column;
-  max-height: 90vh;
+
   width: 100%;
   color: white;
   align-items: center;
@@ -378,7 +387,7 @@ html {
 
 .recommended-foryou {
   color: white;
-  background-color: green;
+  background-color: rgba(0, 128, 0, 0);
   background-image: url("/bridgerton_photo.webp");
   background-size: 100%;
   border-radius: 5px;
@@ -388,8 +397,8 @@ html {
   grid-template-columns: 1fr 1fr;
   background-position: top;
   margin-bottom: 1em;
+  background-position: top;
 
-  background-size: cover;
   transition: background-size 0.5s ease-in;
   -moz-transition: background-size 0.5s ease-in;
   -ms-transition: background-size 0.5s ease-in;
@@ -543,6 +552,21 @@ html {
   border-radius: 15px;
 }
 
+.readmore {
+  color: rgba(255, 255, 255, 0.733);
+  text-decoration: underline;
+  margin-top: 1px;
+  transition: all 300ms;
+}
+
+.readmore:hover {
+  color: white;
+}
+
+.readmore:active {
+  color: rgba(255, 255, 255, 0.733);
+}
+
 .PG {
   color: #000000;
   background: #ffffff;
@@ -583,6 +607,10 @@ html {
   border-radius: 10px;
   margin-bottom: 2em;
   padding: 0.4em;
+}
+
+.tracklist-placeholder-text {
+  padding: 0.2em;
 }
 
 .tracklist-head {
@@ -861,6 +889,7 @@ input[type="range"] {
   .search-bar-container {
     width: 90%;
     margin: 0 auto;
+    margin-right: 10px;
   }
 }
 
@@ -882,6 +911,13 @@ input[type="range"] {
 }
 
 @media screen and (max-width: 736px) {
+  .recommended-foryou {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
   .searchbar {
     width: 100%;
   }
