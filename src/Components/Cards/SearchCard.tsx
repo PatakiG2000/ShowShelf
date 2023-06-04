@@ -56,7 +56,11 @@ export default function SearchCard({
             <p className="time">{time} </p>
           </div>
           <p className="disc">{text}</p>
-          <a href={`https://www.imdb.com/title/${imdbLink}/`} target="_blank">
+          <a
+            href={`https://www.imdb.com/title/${imdbLink}/`}
+            target="_blank"
+            className="readmore"
+          >
             Read More
           </a>
           <div className="btn-container">

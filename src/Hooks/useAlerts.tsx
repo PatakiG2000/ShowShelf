@@ -23,22 +23,22 @@ const useAlerts = () => {
     }, 600);
   }, []);
 
+  function triggerAlert(message: string): void {
+    setAlert(message);
+    setTrackLength(tracklistItems.length);
+    setTimeout(() => {
+      setAlert(false);
+    }, 1300);
+  }
+
   useEffect(() => {
     if (!isLoading) {
       if (tracklistItems.length > tracklength) {
-        setAlert("Successfully added to your tracklist");
-        setTrackLength(tracklistItems.length);
-        setTimeout(() => {
-          setAlert(false);
-        }, 1300);
+        triggerAlert("Successfully added to your tracklist");
       }
 
       if (tracklistItems.length < tracklength) {
-        setAlert("Successfully removed from your tracklist");
-        setTrackLength(tracklistItems.length);
-        setTimeout(() => {
-          setAlert(false);
-        }, 1300);
+        triggerAlert("Successfully removed from your tracklist");
       }
     }
   }, [tracklistItems]);
@@ -46,19 +46,11 @@ const useAlerts = () => {
   useEffect(() => {
     if (!isLoading) {
       if (toplist.length > toplistLength) {
-        setAlert("Successfully added to your toplist");
-        setToplistLength(toplist.length);
-        setTimeout(() => {
-          setAlert(false);
-        }, 1300);
+        triggerAlert("Successfully added to your toplist");
       }
 
       if (toplist.length < toplistLength) {
-        setAlert("Successfully removed from your toplist");
-        setToplistLength(toplist.length);
-        setTimeout(() => {
-          setAlert(false);
-        }, 1300);
+        triggerAlert("Successfully removed from your toplist");
       }
     }
   }, [toplist]);
@@ -66,19 +58,11 @@ const useAlerts = () => {
   useEffect(() => {
     if (!isLoading) {
       if (watchlist.length > watchlistLength) {
-        setAlert("Successfully added to your watchlist");
-        setWatchlistLength(watchlist.length);
-        setTimeout(() => {
-          setAlert(false);
-        }, 1300);
+        triggerAlert("Successfully added to your watchlist");
       }
 
       if (watchlist.length < watchlistLength) {
-        setAlert("Successfully removed from your watchlist");
-        setWatchlistLength(watchlist.length);
-        setTimeout(() => {
-          setAlert(false);
-        }, 1300);
+        triggerAlert("Successfully removed from your watchlist");
       }
     }
   }, [watchlist]);
