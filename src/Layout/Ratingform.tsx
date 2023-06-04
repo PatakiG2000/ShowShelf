@@ -6,6 +6,7 @@ import { deleteFromWatchlist } from "../features/watchlist/watchlistSlice";
 import { deleteFromTracklist } from "../features/tracklist/tracklistSlice";
 import { MovieData } from "../interfaces/interfaces";
 import { useState } from "react";
+import Slider from "@mui/material/Slider";
 
 export interface IRatingFormProps {
   movieData: MovieData;
@@ -75,36 +76,46 @@ export default function Ratingform({ movieData }: IRatingFormProps) {
           <label htmlFor="story">
             Story <span>{inputValues.story}%</span>
           </label>
-          <input
-            type="range"
+          <Slider
             name="story"
+            aria-label="story"
+            defaultValue={50}
+            color="secondary"
             value={inputValues.story}
             onChange={handleInputChange}
           />
+
           <label htmlFor="music">
             Music <span>{inputValues.music}%</span>
           </label>
-          <input
-            type="range"
+
+          <Slider
             name="music"
+            aria-label="music"
+            defaultValue={50}
+            color="secondary"
             value={inputValues.music}
             onChange={handleInputChange}
           />
           <label htmlFor="acting">
             Acting <span>{inputValues.acting}%</span>
           </label>
-          <input
-            type="range"
+          <Slider
             name="acting"
+            aria-label="acting"
+            defaultValue={50}
+            color="secondary"
             value={inputValues.acting}
             onChange={handleInputChange}
           />
           <label htmlFor="ending">
             Ending <span>{inputValues.ending}%</span>
           </label>
-          <input
-            type="range"
+          <Slider
             name="ending"
+            aria-label="ending"
+            defaultValue={50}
+            color="secondary"
             value={inputValues.ending}
             onChange={handleInputChange}
           />
