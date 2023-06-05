@@ -2,7 +2,7 @@ import * as React from "react";
 
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
-import useAlerts from "../hooks/useAlerts";
+import { useSelector } from "react-redux";
 
 export interface IAlertsProps {}
 
@@ -14,13 +14,13 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 });
 
 export default function Alerts() {
-  const alert = useAlerts();
-  const [showing, setShowing] = React.useState(false);
+  const alert = useSelector((state: any) => state.alertHandler?.value);
+
+  const [open, setOpen] = React.useState(false);
+
   React.useEffect(() => {
-    if (alert) {
-      setShowing(true);
-    } else {
-      setShowing(false);
+    if (alert !== "") {
+      setOpen(true);
     }
   }, [alert]);
 
@@ -31,10 +31,12 @@ export default function Alerts() {
     if (reason === "clickaway") {
       return;
     }
+
+    setOpen(false);
   };
 
   return (
-    <Snackbar open={showing} autoHideDuration={0} onClose={handleClose}>
+    <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
       <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
         {alert}
       </Alert>

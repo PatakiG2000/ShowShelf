@@ -8,6 +8,7 @@ import ProgressBar from "../../ProgressBar";
 import useTracklistShow from "../../../hooks/useTracklistShow";
 import { v4 } from "uuid";
 import { MovieData } from "../../../interfaces/interfaces";
+import { setAlert } from "../../../features/alerts/alertSlice";
 
 export default function TracklistCard({
   title,
@@ -59,7 +60,14 @@ export default function TracklistCard({
           <div className="tracklist-buttons">
             <RateButton movieData={movieData} />
             <button
-              onClick={() => dispatch(deleteFromTracklist(id))}
+              onClick={() => {
+                dispatch(deleteFromTracklist(id));
+                dispatch(
+                  setAlert(
+                    `Successfully removed ${movieData.title} from your tracklist!`
+                  )
+                );
+              }}
               className="btn"
             >
               Remove

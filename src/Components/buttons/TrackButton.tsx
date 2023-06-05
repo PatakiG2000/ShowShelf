@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { addToTracklist } from "../../features/tracklist/tracklistSlice";
 import { deleteFromWatchlist } from "../../features/watchlist/watchlistSlice";
 import { MovieData } from "../../interfaces/interfaces";
+import { setAlert } from "../../features/alerts/alertSlice";
 
 export interface IRateButtonProps {
   movieData: MovieData;
@@ -17,6 +18,9 @@ export default function TrackButton({ movieData, text }: IRateButtonProps) {
       <button
         onClick={() => {
           dispatch(deleteFromWatchlist(movieData.id));
+          dispatch(
+            setAlert(`Successfully added ${movieData.title} to your tracklist!`)
+          );
           dispatch(
             addToTracklist({
               ...movieData,

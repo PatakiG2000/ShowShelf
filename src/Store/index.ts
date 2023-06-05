@@ -3,6 +3,7 @@ import watchlistReducer from "../features/watchlist/watchlistSlice";
 import toplistReducer from "../features/toplist/toplistSlice";
 import tracklistReducer from "../features/tracklist/tracklistSlice";
 import toplistModalReducer from "../features/toplist/modalHandler";
+import alertReducer from "../features/alerts/alertSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     toplistHandler: toplistReducer,
     tracklistHandler: tracklistReducer,
     modalHandler: toplistModalReducer,
+    alertHandler: alertReducer,
   },
 });
 

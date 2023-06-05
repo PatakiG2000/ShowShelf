@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useDispatch } from "react-redux";
 import { deleteFromToplist } from "../../../features/toplist/toplistSlice";
+import { setAlert } from "../../../features/alerts/alertSlice";
 
 export interface IToplistProps {
   title: string;
@@ -55,7 +56,12 @@ export default function ToplistCard({
             <button
               className="btn"
               aria-label="Decrement value"
-              onClick={() => dispatch(deleteFromToplist(id))}
+              onClick={() => {
+                dispatch(deleteFromToplist(id));
+                dispatch(
+                  setAlert(`Successfully removed ${title} from your toplist!`)
+                );
+              }}
             >
               Remove
             </button>

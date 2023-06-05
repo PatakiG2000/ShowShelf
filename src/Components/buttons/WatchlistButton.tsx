@@ -2,6 +2,7 @@ import * as React from "react";
 import { useDispatch } from "react-redux";
 import { addToWatchlist } from "../../features/watchlist/watchlistSlice";
 import { MovieData } from "../../interfaces/interfaces";
+import { setAlert } from "../../features/alerts/alertSlice";
 
 export interface IRateButtonProps {
   movieData: MovieData;
@@ -14,7 +15,12 @@ export default function WatchlistButton({ movieData, text }: IRateButtonProps) {
   return (
     <>
       <button
-        onClick={() => dispatch(addToWatchlist(movieData))}
+        onClick={() => {
+          dispatch(addToWatchlist(movieData));
+          dispatch(
+            setAlert(`Successfully added ${movieData.title} to your watchlist!`)
+          );
+        }}
         className="btn"
       >
         {text}

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { handleModal } from "../features/toplist/modalHandler";
 import Ratingform from "../Layout/Ratingform";
 
+
 const style = {
   position: "absolute" as "absolute",
   top: "50%",

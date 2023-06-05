@@ -7,6 +7,7 @@ import { deleteFromTracklist } from "../features/tracklist/tracklistSlice";
 import { MovieData } from "../interfaces/interfaces";
 import { useState } from "react";
 import Slider from "@mui/material/Slider";
+import { setAlert } from "../features/alerts/alertSlice";
 
 export interface IRatingFormProps {
   movieData: MovieData;
@@ -51,6 +52,7 @@ export default function Ratingform({ movieData }: IRatingFormProps) {
       overallRating: 0,
     };
     formData.overallRating = Math.floor((music + story + ending + acting) / 4);
+    dispatch(setAlert(`Successfully added ${title} to your toplist!`));
 
     dispatch(
       addToToplist({

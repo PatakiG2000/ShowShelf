@@ -1,11 +1,11 @@
 import * as React from "react";
 import { useDispatch } from "react-redux";
 import { deleteFromWatchlist } from "../../../features/watchlist/watchlistSlice";
-import { addToTracklist } from "../../../features/tracklist/tracklistSlice";
 import useFormatText from "../../../hooks/useFormatText";
 import RateButton from "../../buttons/RateButton";
 import TrackButton from "../../buttons/TrackButton";
 import { v4 as uuidv4 } from "uuid";
+import { setAlert } from "../../../features/alerts/alertSlice";
 
 export interface IAppProps {
   title: string;
@@ -74,7 +74,17 @@ export default function WatchlistCard({
           <div className="btn-container">
             <TrackButton movieData={movieData} text="Start watching" />
             <RateButton movieData={movieData} />
-            <button className="btn" onClick={() => handleClick(id)}>
+            <button
+              className="btn"
+              onClick={() => {
+                handleClick(id);
+                dispatch(
+                  setAlert(
+                    `Successfully removed ${movieData.title} from your watchlist!`
+                  )
+                );
+              }}
+            >
               Remove
             </button>
           </div>
