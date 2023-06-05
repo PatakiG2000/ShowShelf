@@ -10,7 +10,7 @@ const Navbar: React.FunctionComponent /* <NavbarProps>  */ = (props) => {
       <div className="nav-left">
         <div className="title-logo-nav-container">
           <Link to="/">
-            <img src="vite.svg" alt="" className="logo" />
+            <img src="showshelflogo.webp" alt="" className="logo" />
           </Link>
           <Link to="/">
             <h1 className="sitename">ShowShelf</h1>

@@ -36,7 +36,6 @@ export default function Ratingform({ movieData }: IRatingFormProps) {
   }
   const date = new Date();
   const timestamp = date.getTime();
-  console.log("timestamp", timestamp);
 
   const { title, year, genre, time, img, id, key, imdbLink } = movieData;
 
@@ -49,9 +48,15 @@ export default function Ratingform({ movieData }: IRatingFormProps) {
       story,
       ending,
       acting,
+      experience: "",
       overallRating: 0,
     };
     formData.overallRating = Math.floor((music + story + ending + acting) / 4);
+    const target = e.target as typeof e.target & {
+      experience: { value: string };
+    };
+    formData.experience = target.experience.value;
+
     dispatch(setAlert(`Successfully added ${title} to your toplist!`));
 
     dispatch(

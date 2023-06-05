@@ -38,7 +38,7 @@ export default function ToplistCard({
   return (
     <div className="card toplist-card">
       <div className="card_left toplist-left">
-        <div className="card_datails">
+        <div className="card_details toplist-details">
           <h1>{title}</h1>
           <div className="card_cat"></div>
 
@@ -52,7 +52,7 @@ export default function ToplistCard({
             Read More
           </a>
 
-          <div className="btn-container">
+          <div className="btn-container toplist-btn-container">
             <button
               className="btn"
               aria-label="Decrement value"
@@ -88,8 +88,12 @@ export default function ToplistCard({
       </div>
 
       <div className="card_right">
-        <div className="img_container">
-          <img src={img} alt={`Poster of ${title}`} />
+        <div className="img_container toplist-img-container">
+          <img
+            src={img}
+            alt={`Poster of ${title}`}
+            className="toplist-card-img"
+          />
         </div>
       </div>
     </div>

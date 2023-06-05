@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToTracklist } from "../../features/tracklist/tracklistSlice";
 import { deleteFromWatchlist } from "../../features/watchlist/watchlistSlice";
 import { MovieData } from "../../interfaces/interfaces";
@@ -12,6 +12,9 @@ export interface IRateButtonProps {
 
 export default function TrackButton({ movieData, text }: IRateButtonProps) {
   const dispatch = useDispatch();
+  const tracklistLength = useSelector(
+    (state: any) => state.tracklistHandler?.value?.tracklistItems.length
+  );
 
   return (
     <>
@@ -19,15 +22,19 @@ export default function TrackButton({ movieData, text }: IRateButtonProps) {
         onClick={() => {
           dispatch(deleteFromWatchlist(movieData.id));
           dispatch(
-            setAlert(`Successfully added ${movieData.title} to your tracklist!`)
-          );
-          dispatch(
             addToTracklist({
               ...movieData,
               seenEpisodes: [],
               seenSeason: [],
             })
           );
+          if (tracklistLength !== 5) {
+            dispatch(
+              setAlert(
+                `Successfully added ${movieData.title} to your tracklist!`
+              )
+            );
+          }
         }}
         className="btn"
       >

@@ -48,14 +48,14 @@ export default function SearchCard({
   return (
     <div className="card">
       <div className="card_left">
-        <div className="card_datails">
+        <div className="card_details">
           <h1>{title} </h1>
           <div className="card_cat">
             <p className="year">{year} </p>
             <p className="genre"> {genre} </p>
             <p className="time">{time} </p>
           </div>
-          <p className="disc">{text}</p>
+          <p className="disc search-disc">{text}</p>
           <a
             href={`https://www.imdb.com/title/${imdbLink}/`}
             target="_blank"
@@ -63,7 +63,7 @@ export default function SearchCard({
           >
             Read More
           </a>
-          <div className="btn-container">
+          <div className="btn-container search-btn-container">
             <WatchlistButton movieData={movieData} text="Add to watchlist" />
             <TrackButton movieData={movieData} text="Track show" />
             <RateButton movieData={movieData} />

@@ -45,8 +45,6 @@ export const tracklistSlice = createSlice({
         } else {
           state.value.tracklistItems.push(action.payload);
         }
-      } else {
-        alert("This item is already on your watchlist");
       }
     },
 

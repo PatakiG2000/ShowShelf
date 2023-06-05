@@ -8,9 +8,12 @@ export default function TracklistPlaceholderCard() {
           <h1>Add your first tracklist item!</h1>
         </div>
         <p className="tracklist-placeholder-text">
-          The seasons and episodes of your chosen show will appear here, where
-          you will be able to track your progress. Use the searchbar and then
-          the tracklist button to add a show.
+          The tracklist is designed to help you keep track of your ongoing
+          series and shows in one place. Whether you're a binge-watcher, a
+          dedicated fan, or simply someone who enjoys discovering new content,
+          this tracker is here to enhance your viewing experience. You will
+          never forget the upcoming episode again.You can add items to this list
+          by using the search bar and selecting the show from the results.
         </p>
         <ProgressBar
           progress={Math.random() * 100}

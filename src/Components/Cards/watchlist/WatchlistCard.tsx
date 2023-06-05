@@ -50,9 +50,9 @@ export default function WatchlistCard({
   return (
     <div className="card">
       <div className="card_left">
-        <div className="card_datails">
+        <div className="card_details watchlist_details">
           <h1>{title} </h1>
-          <div className="card_cat">
+          <div className="card_cat watchlist-cat">
             <p className="year">
               <i className="fa-solid fa-calendar-days"></i> {year}{" "}
             </p>
@@ -63,7 +63,7 @@ export default function WatchlistCard({
               <i className="fa-regular fa-clock"></i> {time}
             </p>
           </div>
-          {text}
+          <div className="watchlist-disc">{text}</div>
           <a
             href={`https://www.imdb.com/title/${imdbLink}/`}
             target="_blank"
@@ -71,7 +71,7 @@ export default function WatchlistCard({
           >
             Read More
           </a>
-          <div className="btn-container">
+          <div className="btn-container watchlist-btn-container">
             <TrackButton movieData={movieData} text="Start watching" />
             <RateButton movieData={movieData} />
             <button
@@ -91,7 +91,7 @@ export default function WatchlistCard({
         </div>
       </div>
       <div className="card_right">
-        <div className="img_container">
+        <div className="img_container watchlist-img-container">
           <img src={img} alt="" />
         </div>
       </div>
