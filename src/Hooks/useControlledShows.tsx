@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const useControlledShows = (id: number) => {
   const [where, setWhere] = useState("");

@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 export interface INewsFeedProps {}
 
 export default function NewsFeed(props: INewsFeedProps) {
-  const key = import.meta.env.VITE_NEWS_API_KEY;
+  const key = process.env.REACT_APP_NEWS_API_KEY;
 
   const [newsfeedElements, setNewsfeedElements] = useState<any>();
 

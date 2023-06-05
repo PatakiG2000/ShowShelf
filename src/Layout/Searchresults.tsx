@@ -1,6 +1,6 @@
 import * as React from "react";
 import SearchCard from "../Components/Cards/SearchCard";
-import useControlledShows from "../hooks/useControlledShows";
+import useControlledShows from "../Hooks/useControlledShows";
 import CircularProgress from "@mui/material/CircularProgress";
 import { motion } from "framer-motion";
 import { v4 as uuidv4 } from "uuid";

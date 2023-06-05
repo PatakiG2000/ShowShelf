@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useDispatch } from "react-redux";
 import { deleteFromWatchlist } from "../../../features/watchlist/watchlistSlice";
-import useFormatText from "../../../hooks/useFormatText";
+import useFormatText from "../../../Hooks/useFormatText";
 import RateButton from "../../buttons/RateButton";
 import TrackButton from "../../buttons/TrackButton";
 import { v4 as uuidv4 } from "uuid";

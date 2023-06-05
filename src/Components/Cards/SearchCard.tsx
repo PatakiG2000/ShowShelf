@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import useFormatText from "../../hooks/useFormatText";
+import useFormatText from "../../Hooks/useFormatText";
 import { v4 as uuidv4 } from "uuid";
 import TrackButton from "../buttons/TrackButton";
 import WatchlistButton from "../buttons/WatchlistButton";
