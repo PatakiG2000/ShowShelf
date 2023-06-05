@@ -3,6 +3,7 @@ import SearchCard from "../Components/Cards/SearchCard";
 import useControlledShows from "../hooks/useControlledShows";
 import CircularProgress from "@mui/material/CircularProgress";
 import { motion } from "framer-motion";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Searchresults(props: any) {
   const [tracklistItems, watchlist, toplist, allShows] = useControlledShows(0);
@@ -37,7 +38,7 @@ export default function Searchresults(props: any) {
               year={show.show?.ended}
               imdbLink={show.show.externals.imdb}
               id={show.show.id}
-              key={show.show.id}
+              key={show.show.id ? show.show.id : uuidv4()}
             />
           </motion.div>
         );

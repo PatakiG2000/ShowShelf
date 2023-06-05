@@ -35,11 +35,12 @@ export default function NewsFeed(props: INewsFeedProps) {
       })
       .catch((err) => {
         setNewsfeedElements([
-          {
-            title: "failed to fetch news",
-            urlToImage: "idevmibasichibakep",
-            url: "homepageurl",
-          },
+          <NewsFeedCard
+            title={"Couldn't fetch the news"}
+            link={"none"}
+            img={"/placeholderimage.webp"}
+            key={uuidv4()}
+          />,
         ]);
       });
   }, []);
